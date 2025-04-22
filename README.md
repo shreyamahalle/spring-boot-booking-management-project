@@ -60,7 +60,7 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 
 This project is built with the following technologies:
 
-- **Java**: The core programming language used for developing the application.
+- **Java**: **Java 21** The core programming language used for developing the application.
 - **JSP (JavaServer Pages)**: For creating dynamic web content.
 - **Servlets**: For handling requests and responses in a web environment.
 - **Spring Framework**: Used for creating a flexible and scalable application architecture, handling dependency
@@ -70,17 +70,13 @@ This project is built with the following technologies:
 - **JDBC**: Database connectivity
 - **HTML5/CSS3:** Frontend technologies.
 - **Git**: For version control and collaboration.
-
-- **Java 21**
 - **Spring Boot**
 - **Spring Web**
 - **Spring Data JPA**
-- **MySQL**
 - **Hibernate**
 - **Lombok**
 - **Maven**
-- **Git**
-- **HTML5/CSS3** (if UI is included)
+
 ---
 
 ## Getting Started
