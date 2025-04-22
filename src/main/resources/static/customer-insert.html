@@ -2,41 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Customer Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1>Customer Information</h1>
-    <form action="/submit" method="POST" class="customer-form">
+    <form action="/submit" class="customer-form" method="POST">
         <div class="form-group">
             <label for="id">ID:</label>
-            <input type="number" id="id" name="id" required>
+            <input id="id" name="id" required type="number">
         </div>
 
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input id="name" name="name" required type="text">
         </div>
 
         <div class="form-group">
             <label for="city">City:</label>
-            <input type="text" id="city" name="city" required>
+            <input id="city" name="city" required type="text">
         </div>
 
         <div class="form-group">
             <label for="mobileNo">Mobile No:</label>
-            <input type="number" id="mobileNo" name="mobileNo" required>
+            <input id="mobileNo" name="mobileNo" required type="number">
         </div>
 
         <div class="form-group">
             <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
+            <input id="age" name="age" required type="number">
         </div>
 
         <label>
-            <input type="checkbox" id="notRobot" name="notRobot" required>
+            <input id="notRobot" name="notRobot" required type="checkbox">
             I'm not a robot
         </label><br><br>
         <div class="form-actions">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
+
 @Controller
 @Component
 public class OrderNumberController {

@@ -2,7 +2,7 @@ package com.shreya.spring.service;
 
 import com.shreya.spring.model.Order;
 import com.shreya.spring.repository.OrderRepository;
-import lombok.*;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

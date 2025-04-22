@@ -1,4 +1,5 @@
 # spring-boot-booking-management-project
+
 spring-boot-booking-management-project
 
 ## Table of Contents
@@ -163,29 +164,35 @@ Before you begin, ensure you have the following:
 - **Session Management:** Manage user sessions effectively.
 
 ## Spring Annotations
+
 - **Overview of Spring Annotations
-In this project, Spring annotations replace XML-based configuration for defining beans, enabling easier configuration and management of the application. The following annotations are used:
+  In this project, Spring annotations replace XML-based configuration for defining beans, enabling easier configuration
+  and management of the application. The following annotations are used:
 
 1. @Configuration
-Description: Marks the class as a source of bean definitions for the application context. This is used in place of XML configuration files.
+   Description: Marks the class as a source of bean definitions for the application context. This is used in place of
+   XML configuration files.
 
 2. @ComponentScan
-Description: Tells Spring to scan the specified base package(s) for annotated components (like @Service, @Controller, @Repository, etc.) and register them as beans in the Spring context.
+   Description: Tells Spring to scan the specified base package(s) for annotated components (like @Service, @Controller,
+   @Repository, etc.) and register them as beans in the Spring context.
 
 3. @Service
-Description: Indicates that a class is a service, which typically holds business logic. It's a specialization of @Component.
+   Description: Indicates that a class is a service, which typically holds business logic. It's a specialization of
+   @Component.
 
 4. @Repository
-Description: Marks a class as a Data Access Object (DAO), typically used for database-related operations. It also provides exception translation.
+   Description: Marks a class as a Data Access Object (DAO), typically used for database-related operations. It also
+   provides exception translation.
 
 5. @Controller
-Description: Marks a class as a Spring MVC controller, handling incoming HTTP requests.
+   Description: Marks a class as a Spring MVC controller, handling incoming HTTP requests.
 6. @Autowired
-Description: Automatically injects the dependencies into the Spring beans. It can be used on fields, constructors, or setter methods.
+   Description: Automatically injects the dependencies into the Spring beans. It can be used on fields, constructors, or
+   setter methods.
 7. @Bean
-Description: Used to define a bean within a @Configuration annotated class. It's a method-level annotation.
+   Description: Used to define a bean within a @Configuration annotated class. It's a method-level annotation.
 
-  
 ## Contact
 
 For any questions or suggestions, feel free to open an issue or contact me directly:
