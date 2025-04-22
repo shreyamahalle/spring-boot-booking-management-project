@@ -3,7 +3,6 @@ package com.shreya.spring.controller;
 import com.shreya.spring.exception.CustomerException;
 import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.service.CustomerService;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
