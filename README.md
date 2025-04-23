@@ -15,6 +15,8 @@
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
+- [Best Practices Followed](BestPracticesFollowed)
+- [Future Scope](FutureScope)
 - [License](#license)
 
 # **spring-booking-management-project**
@@ -338,6 +340,13 @@ Customer --> DeliveryAgent : Association
 - Validation: javax.validation annotations (future improvement) to enforce domain constraints.
 - DTO Mapping: DTOs can be introduced for request/response abstraction (optional enhancement).
 - Lombok: Reduces boilerplate while maintaining readability.
+
+## Future Scope
+- Add unit tests using JUnit + Mockito
+- API authentication using Spring Security or JWT
+- Integration with Kafka or RabbitMQ for event-driven order tracking
+- CI/CD with GitHub Actions
+- Dockerization and deployment to Kubernetes or AWS ECS 
 ---
 
 ## 👨‍💻 Author
