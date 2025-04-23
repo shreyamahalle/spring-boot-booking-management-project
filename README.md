@@ -26,13 +26,13 @@ Spring Framework (XML-based configuration only) and applies solid Object-Oriente
 
 The Spring Booking Management System provides a modular approach to managing:
 
- Customers
+ - Customers
 
- Restaurants
+ - Restaurants
 
- Delivery Agents
+ - Delivery Agents
 
- Orders
+ - Orders
 
 It mimics real-world operations like customer registration, restaurant assignment, order placing, and delivery
 tracking — all managed using a clean layered architecture (Controller → Service → Repository).
