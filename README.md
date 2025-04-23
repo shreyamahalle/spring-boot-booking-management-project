@@ -7,7 +7,7 @@
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Module Responsibilities](#ModuleResponsibilities)
 - [Spring Annotation](#SpringAnnotation)
 - [Code Structure](#CodeStructure)
 - [Database Schema (POJO Classes)](DatabaseSchema)
@@ -155,13 +155,13 @@ Before you begin, ensure you have the following:
    mvn clean install
    ```
 
-## Usage
+## Module Responsibilities
 
-- **User Registration:** Navigate to the registration page and create a new account.
-- **User Login:** Log in with your credentials to access the application.
-- **CRUD Operations:** Perform create, read, update, and delete operations on the data.
-- **Session Management:** Manage user sessions effectively.
-
+- **Customer**: Handles user registration, city/area resolution, and personalization.
+- **Restaurant**: CRUD operations and geo-based filtering logic.
+- **Order**: Links Customers to Restaurants; encapsulates logistics and contact info.
+- **Delivery Agent**: Assignments and delivery lifecycle management.
+  
 ## Spring Annotations
 
 - **Overview of Spring Annotations
