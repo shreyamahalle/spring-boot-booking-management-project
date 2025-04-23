@@ -45,7 +45,7 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 
 ## Features
 
-## ** Key Features**
+## Key Features
 
 - ** Customer and Restaurant Booking Management**: Effortlessly handle customer bookings and restaurant data.
 - ** Delivery Agent Simulation**: Assign delivery agents based on location and availability.
@@ -57,7 +57,7 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 - ** REST API**: Full CRUD functionality exposed via REST.
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 This project is built with the following technologies:
 
