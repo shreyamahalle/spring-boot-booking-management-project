@@ -26,7 +26,7 @@ Spring Framework (XML-based configuration only) and applies solid Object-Oriente
 
 ## Introduction
 
-## ** Project Overview**
+## Project Overview
 
 The Spring Booking Management System provides a modular approach to managing:
 
