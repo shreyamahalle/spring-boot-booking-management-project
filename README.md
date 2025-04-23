@@ -47,14 +47,15 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 
 ## Key Features
 
-- ** Customer and Restaurant Booking Management**: Effortlessly handle customer bookings and restaurant data.
-- ** Delivery Agent Simulation**: Assign delivery agents based on location and availability.
-- ** Dynamic Order Handling**: Add, track, and manage orders through their entire lifecycle.
-- ** Seamless Java Integration**: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
+-  Customer and Restaurant Booking Management: Effortlessly handle customer bookings and restaurant data.
+-  Delivery Agent Simulation: Assign delivery agents based on location and availability.
+-  Dynamic Order Handling: Add, track, and manage orders through their entire lifecycle.
+-  Seamless Java Integration: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
   Restaurant).
-- ** Easy-to-Follow Structure**: Well-documented, clean code for learning and demonstration.
-- ** Layered Architecture**: Clean separation of concerns.
-- ** REST API**: Full CRUD functionality exposed via REST.
+-  Easy-to-Follow Structure: Well-documented, clean code for learning and demonstration.
+-  Layered Architecture: Clean separation of concerns.
+-  REST API: Full CRUD functionality exposed via REST.
+  
 ---
 
 ## Technology Stack
