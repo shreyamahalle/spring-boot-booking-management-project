@@ -59,7 +59,7 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 - ** REST API**: Full CRUD functionality exposed via REST.
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 This project is built with the following technologies:
 
@@ -192,6 +192,7 @@ Before you begin, ensure you have the following:
    setter methods.
 7. @Bean
    Description: Used to define a bean within a @Configuration annotated class. It's a method-level annotation.
+   
 
 ## Contact
 
@@ -209,20 +210,21 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## **Code Structure** ## 
 
-## **Packages Structure**
 
-- com.booking.configuration: Contains the configuration files, such as AppConfig.java.
-- com.booking.using.shreya: Contains the main application logic (App.java).
-- com.booking.using.shreya.model: Includes the model classes:
-    - Customer.java
-    - DeliveryAgent.java
-    - Order.java
-    - Restaurant.java
-- package names: com.booking.Customer.model
-- package names: com.booking.DeliveryAgent.model
-- package names: com.booking.Order.model
-- package names: com.booking.Restaurant.model
-- package names: com.booking.shreya.service
+src/
+└── main/
+    ├── java/
+    │   └── com.booking
+    │       ├── config/             # App configuration
+    │       ├── controller/         # REST controllers
+    │       ├── model/              # Entity classes
+    │       ├── repository/         # Data access interfaces
+    │       ├── service/            # Business logic
+    │       └── BookingApplication  # Main class
+    └── resources/
+        ├── application.properties
+        └── static/templates
+
 
 ## **Functionality**
 
