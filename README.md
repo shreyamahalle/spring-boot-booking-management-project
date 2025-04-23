@@ -58,7 +58,7 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 - ** REST API**: Full CRUD functionality exposed via REST.
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 This project is built with the following technologies:
 
