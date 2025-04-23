@@ -208,7 +208,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## **Code Structure** ## 
 
-
+```
 src/
 └── main/
     ├── java/
@@ -223,7 +223,7 @@ src/
         ├── application.properties
         └── static/templates
 
-
+```
 ## **Functionality**
 
 1. **Customer**
