@@ -11,8 +11,12 @@ spring-boot-booking-management-project
 - [Installation](#installation)
 - [Usage](#usage)
 - [Spring Annotation](#SpringAnnotation)
+- [Code Structure](#CodeStructure)
+- [Database Schema (POJO Classes)](DatabaseSchema)
+- [Class Diagram](ClassDiagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
+- [Author](Author~ShreyaMahalle)
 
 # **spring-booking-management-project**
 
