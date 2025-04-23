@@ -22,6 +22,7 @@
 Welcome to the Spring Booking Management Project, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
 
+> **Use case**: A food ordering platform where customers can register, explore nearby restaurants, place orders, and get deliveries from available agents based on location and serviceability.
 
 ## Introduction
 
