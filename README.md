@@ -52,31 +52,26 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 - ** Easy-to-Follow Structure**: Well-documented, clean code for learning and demonstration.
 - ** Layered Architecture**: Clean separation of concerns.
 - ** REST API**: Full CRUD functionality exposed via REST.
-
 ---
 
-# Technologies Used
-
-## **🛠️ Technologies Used**
+## 🛠️ Technologies Used
 
 This project is built with the following technologies:
 
-- **Java**: **Java 21** The core programming language used for developing the application.
-- **JSP (JavaServer Pages)**: For creating dynamic web content.
-- **Servlets**: For handling requests and responses in a web environment.
-- **Spring Framework**: Used for creating a flexible and scalable application architecture, handling dependency
-  injection, and simplifying configurations.
-- **Maven**: A project management and build automation tool to handle dependencies, building, and packaging.
-- **MySQL**: A reliable relational database system used to store customer, restaurant, delivery agent, and order data.
-- **JDBC**: Database connectivity
-- **HTML5/CSS3:** Frontend technologies.
-- **Git**: For version control and collaboration.
-- **Spring Boot**
-- **Spring Web**
-- **Spring Data JPA**
-- **Hibernate**
-- **Lombok**
-- **Maven**
+
+| Technology        | Purpose                                   |
+|------------------|-------------------------------------------|
+| Java 21           | Core language                            |
+| Spring Boot       | Application framework                    |
+| Spring Web        | RESTful APIs                             |
+| Spring Data JPA   | Database operations                      |
+| Hibernate         | ORM mapping                              |
+| JSP/Servlets      | Web interface                            |
+| MySQL             | Relational database                      |
+| Maven             | Project management and build             |
+| Lombok            | Boilerplate reduction                    |
+| HTML5/CSS3        | Frontend structure                       |
+| Git               | Version control                          |
 
 ---
 
