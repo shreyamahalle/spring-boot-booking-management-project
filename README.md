@@ -10,6 +10,7 @@ spring-boot-booking-management-project
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Spring Annotation](#SpringAnnotation)
 - [Contributing](#contributing)
 - [Contact](#contact)
 
