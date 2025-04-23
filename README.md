@@ -17,6 +17,7 @@ spring-boot-booking-management-project
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
+- [License](#license)
 
 # **spring-booking-management-project**
 
