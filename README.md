@@ -22,17 +22,17 @@ Spring Framework (XML-based configuration only) and applies solid Object-Oriente
 
 ## Introduction
 
-## **🚀 Project Overview**
+## ** Project Overview**
 
 The Spring Booking Management System provides a modular approach to managing:
 
-📋 Customers
+ Customers
 
-🍽️ Restaurants
+ Restaurants
 
-🚚 Delivery Agents
+ Delivery Agents
 
-📦 Orders
+ Orders
 
 It mimics real-world operations like customer registration, restaurant assignment, order placing, and delivery
 tracking — all managed using a clean layered architecture (Controller → Service → Repository).
@@ -44,14 +44,14 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 
 ## **✨ Key Features**
 
-- **📅 Customer and Restaurant Booking Management**: Effortlessly handle customer bookings and restaurant data.
-- **🚚 Delivery Agent Simulation**: Assign delivery agents based on location and availability.
-- **📦 Dynamic Order Handling**: Add, track, and manage orders through their entire lifecycle.
-- **💻 Seamless Java Integration**: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
+- ** Customer and Restaurant Booking Management**: Effortlessly handle customer bookings and restaurant data.
+- ** Delivery Agent Simulation**: Assign delivery agents based on location and availability.
+- ** Dynamic Order Handling**: Add, track, and manage orders through their entire lifecycle.
+- ** Seamless Java Integration**: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
   Restaurant).
-- **🔍 Easy-to-Follow Structure**: Well-documented, clean code for learning and demonstration.
-- **🧱 Layered Architecture**: Clean separation of concerns.
-- **💻 REST API**: Full CRUD functionality exposed via REST.
+- ** Easy-to-Follow Structure**: Well-documented, clean code for learning and demonstration.
+- ** Layered Architecture**: Clean separation of concerns.
+- ** REST API**: Full CRUD functionality exposed via REST.
 
 ---
 
@@ -82,7 +82,7 @@ This project is built with the following technologies:
 
 ## Getting Started
 
-## **💡 Installation and Setup**
+## ** Installation and Setup**
 
 ### **Prerequisites**
 
@@ -95,7 +95,7 @@ Before you begin, ensure you have the following:
 - **IDE**: Use IntelliJ IDEA, Eclipse, or any Java IDE you're comfortable with.
 - **Git (optional)**: For version control and easier collaboration.
 
-## **💡Steps to Get Started**
+## **Steps to Get Started**
 
 ## 1. **Clone the Repository:**
 
