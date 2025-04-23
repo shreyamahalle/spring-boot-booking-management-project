@@ -81,9 +81,9 @@ This project is built with the following technologies:
 
 ## Getting Started
 
-## ** Installation and Setup**
+## Installation and Setup
 
-### **Prerequisites**
+### Prerequisites
 
 Before you begin, ensure you have the following:
 
