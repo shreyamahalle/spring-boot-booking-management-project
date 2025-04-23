@@ -164,7 +164,7 @@ Before you begin, ensure you have the following:
   
 ## Spring Annotations
 
-- **Overview of Spring Annotations
+- Overview of Spring Annotations
   In this project, Spring annotations replace XML-based configuration for defining beans, enabling easier configuration
   and management of the application. The following annotations are used:
 
