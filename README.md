@@ -332,7 +332,12 @@ Customer --> DeliveryAgent : Association
 
 
 ```
-
+## Best Practices Followed
+- MVC Layering: Each layer has a single responsibility and adheres to open/closed principle.
+- Exception Handling: Extendable @ControllerAdvice class can be added for custom error management.
+- Validation: javax.validation annotations (future improvement) to enforce domain constraints.
+- DTO Mapping: DTOs can be introduced for request/response abstraction (optional enhancement).
+- Lombok: Reduces boilerplate while maintaining readability.
 ---
 
 ## 👨‍💻 Author
