@@ -21,8 +21,7 @@ spring-boot-booking-management-project
 
 # **spring-booking-management-project**
 
-Welcome to the **Spring Booking Management Project
-**, a simple yet powerful Java application that simulates a booking management system. This project is built using the
+Welcome to the Spring Booking Management Project, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
 ---
 
