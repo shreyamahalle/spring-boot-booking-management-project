@@ -40,7 +40,6 @@ The Spring Booking Management System provides a modular approach to managing:
 It mimics real-world operations like customer registration, restaurant assignment, order placing, and delivery
 tracking — all managed using a clean layered architecture (Controller → Service → Repository).
 
-
 ---
 
 ## Features
@@ -94,7 +93,7 @@ Before you begin, ensure you have the following:
 - **IDE**: Use IntelliJ IDEA, Eclipse, or any Java IDE you're comfortable with.
 - **Git (optional)**: For version control and easier collaboration.
 
-## **Steps to Get Started**
+## Steps to Get Started
 
 ## 1. **Clone the Repository:**
 
