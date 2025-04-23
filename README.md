@@ -1,7 +1,5 @@
 # spring-boot-booking-management-project
 
-spring-boot-booking-management-project
-
 ## Table of Contents
 
 - [Introduction](#introduction)
