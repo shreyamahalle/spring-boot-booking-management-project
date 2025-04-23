@@ -7,7 +7,7 @@
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Module Responsibilities](#ModuleResponsibilities)
+- [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotation](#SpringAnnotation)
 - [Code Structure](#CodeStructure)
 - [Database Schema (POJO Classes)](DatabaseSchema)
