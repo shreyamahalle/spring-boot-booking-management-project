@@ -7,12 +7,12 @@
 - [Features](#features)
 - [Technology Stack](#Technology-Stack)
 - [Getting Started](#Getting-Started)
-- [Installation](#installation)
+- [Installation and Setup](#Installation-and-Setup)
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotation](#SpringAnnotation)
 - [Code Structure](#CodeStructure)
 - [Database Schema (POJO Classes)](DatabaseSchema)
-- [Class Diagram](ClassDiagram)
+- [Class Diagram](Class-Diagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
@@ -257,7 +257,7 @@ src/
 
 ---
 
-# Class Diagram
+## Class Diagram
 
 ```mermaid
 ---
