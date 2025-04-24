@@ -15,10 +15,10 @@
 - [Class Diagram](#Class-Diagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
-- [Author](#Author~ShreyaMahalle)
 - [Best Practices Followed](#Best-Practices-Followed)
 - [Future Scope](#Future-Scope)
 - [License](#license)
+- [Author](#Author)
 
 # **spring-booking-management-project**
 
