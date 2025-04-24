@@ -4,9 +4,8 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Features](#Features)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
+- [Technology Stack](#Technology-Stack)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Module Responsibilities](#Module-Responsibilities)
