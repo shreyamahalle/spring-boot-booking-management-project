@@ -17,7 +17,7 @@
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
 - [Best Practices Followed](Best-Practices-Followed)
-- [Future Scope](FutureScope)
+- [Future Scope](Future-Scope)
 - [License](#license)
 
 # **spring-booking-management-project**
