@@ -13,7 +13,6 @@
 - [Code Structure ](#Code-Structure )
 - [Database Schema (POJO Classes)](#Database-Schema-(POJO-Classes))
 - [Class Diagram](#Class-Diagram)
-- [Contributing](#contributing)
 - [Contact](#contact)
 - [Best Practices Followed](#Best-Practices-Followed)
 - [Future Scope](#Future-Scope)
