@@ -1,6 +1,5 @@
 # spring-boot-booking-management-project
 
-spring-boot-booking-management-project
 
 ## Table of Contents
 
@@ -9,82 +8,82 @@ spring-boot-booking-management-project
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Module Responsibilities](#Module-Responsibilities)
+- [Spring Annotation](#SpringAnnotation)
+- [Code Structure](#CodeStructure)
+- [Database Schema (POJO Classes)](DatabaseSchema)
+- [Class Diagram](ClassDiagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
+- [Author](Author~ShreyaMahalle)
+- [Best Practices Followed](BestPracticesFollowed)
+- [Future Scope](FutureScope)
+- [License](#license)
 
 # **spring-booking-management-project**
 
-Welcome to the **Spring Booking Management Project
-**, a simple yet powerful Java application that simulates a booking management system. This project is built using the
+Welcome to the Spring Booking Management Project, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
----
+
+> **Use case**: A food ordering platform where customers can register, explore nearby restaurants, place orders, and get deliveries from available agents based on location and serviceability.
 
 ## Introduction
 
-## **🚀 Project Overview**
+## Project Overview
 
 The Spring Booking Management System provides a modular approach to managing:
 
-📋 Customers
-
-🍽️ Restaurants
-
-🚚 Delivery Agents
-
-📦 Orders
+ - Customers
+ - Restaurants
+ - Delivery Agents
+ - Orders
 
 It mimics real-world operations like customer registration, restaurant assignment, order placing, and delivery
 tracking — all managed using a clean layered architecture (Controller → Service → Repository).
-
 
 ---
 
 ## Features
 
-## **✨ Key Features**
+## Key Features
 
-- **📅 Customer and Restaurant Booking Management**: Effortlessly handle customer bookings and restaurant data.
-- **🚚 Delivery Agent Simulation**: Assign delivery agents based on location and availability.
-- **📦 Dynamic Order Handling**: Add, track, and manage orders through their entire lifecycle.
-- **💻 Seamless Java Integration**: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
+-  Customer and Restaurant Booking Management: Effortlessly handle customer bookings and restaurant data.
+-  Delivery Agent Simulation: Assign delivery agents based on location and availability.
+-  Dynamic Order Handling: Add, track, and manage orders through their entire lifecycle.
+-  Seamless Java Integration: Clean integration of Java models for each entity (Customer, Delivery Agent, Order,
   Restaurant).
-- **🔍 Easy-to-Follow Structure**: Well-documented, clean code for learning and demonstration.
-- **🧱 Layered Architecture**: Clean separation of concerns.
-- **💻 REST API**: Full CRUD functionality exposed via REST.
-
+-  Easy-to-Follow Structure: Well-documented, clean code for learning and demonstration.
+-  Layered Architecture: Clean separation of concerns.
+-  REST API: Full CRUD functionality exposed via REST.
+  
 ---
 
-# Technologies Used
-
-## **🛠️ Technologies Used**
+## Technology Stack
 
 This project is built with the following technologies:
 
-- **Java**: **Java 21** The core programming language used for developing the application.
-- **JSP (JavaServer Pages)**: For creating dynamic web content.
-- **Servlets**: For handling requests and responses in a web environment.
-- **Spring Framework**: Used for creating a flexible and scalable application architecture, handling dependency
-  injection, and simplifying configurations.
-- **Maven**: A project management and build automation tool to handle dependencies, building, and packaging.
-- **MySQL**: A reliable relational database system used to store customer, restaurant, delivery agent, and order data.
-- **JDBC**: Database connectivity
-- **HTML5/CSS3:** Frontend technologies.
-- **Git**: For version control and collaboration.
-- **Spring Boot**
-- **Spring Web**
-- **Spring Data JPA**
-- **Hibernate**
-- **Lombok**
-- **Maven**
+
+| Technology        | Purpose                                   |
+|------------------|-------------------------------------------|
+| Java 21           | Core language                            |
+| Spring Boot       | Application framework                    |
+| Spring Web        | RESTful APIs                             |
+| Spring Data JPA   | Database operations                      |
+| Hibernate         | ORM mapping                              |
+| JSP/Servlets      | Web interface                            |
+| MySQL             | Relational database                      |
+| Maven             | Project management and build             |
+| Lombok            | Boilerplate reduction                    |
+| HTML5/CSS3        | Frontend structure                       |
+| Git               | Version control                          |
 
 ---
 
 ## Getting Started
 
-## **💡 Installation and Setup**
+## Installation and Setup
 
-### **Prerequisites**
+### Prerequisites
 
 Before you begin, ensure you have the following:
 
@@ -95,7 +94,7 @@ Before you begin, ensure you have the following:
 - **IDE**: Use IntelliJ IDEA, Eclipse, or any Java IDE you're comfortable with.
 - **Git (optional)**: For version control and easier collaboration.
 
-## **💡Steps to Get Started**
+## Steps to Get Started
 
 ## 1. **Clone the Repository:**
 
@@ -156,16 +155,16 @@ Before you begin, ensure you have the following:
    mvn clean install
    ```
 
-## Usage
+## Module Responsibilities
 
-- **User Registration:** Navigate to the registration page and create a new account.
-- **User Login:** Log in with your credentials to access the application.
-- **CRUD Operations:** Perform create, read, update, and delete operations on the data.
-- **Session Management:** Manage user sessions effectively.
-
+- **Customer**: Handles user registration, city/area resolution, and personalization.
+- **Restaurant**: CRUD operations and geo-based filtering logic.
+- **Order**: Links Customers to Restaurants; encapsulates logistics and contact info.
+- **Delivery Agent**: Assignments and delivery lifecycle management.
+  
 ## Spring Annotations
 
-- **Overview of Spring Annotations
+- Overview of Spring Annotations
   In this project, Spring annotations replace XML-based configuration for defining beans, enabling easier configuration
   and management of the application. The following annotations are used:
 
@@ -192,6 +191,7 @@ Before you begin, ensure you have the following:
    setter methods.
 7. @Bean
    Description: Used to define a bean within a @Configuration annotated class. It's a method-level annotation.
+   
 
 ## Contact
 
@@ -209,21 +209,22 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## **Code Structure** ## 
 
-## **Packages Structure**
+```
+src/
+└── main/
+    ├── java/
+    │   └── com.booking
+    │       ├── config/             # App configuration
+    │       ├── controller/         # REST controllers
+    │       ├── model/              # Entity classes
+    │       ├── repository/         # Data access interfaces
+    │       ├── service/            # Business logic
+    │       └── BookingApplication  # Main class
+    └── resources/
+        ├── application.properties
+        └── static/templates
 
-- com.booking.configuration: Contains the configuration files, such as AppConfig.java.
-- com.booking.using.shreya: Contains the main application logic (App.java).
-- com.booking.using.shreya.model: Includes the model classes:
-    - Customer.java
-    - DeliveryAgent.java
-    - Order.java
-    - Restaurant.java
-- package names: com.booking.Customer.model
-- package names: com.booking.DeliveryAgent.model
-- package names: com.booking.Order.model
-- package names: com.booking.Restaurant.model
-- package names: com.booking.shreya.service
-
+```
 ## **Functionality**
 
 1. **Customer**
@@ -331,7 +332,19 @@ Customer --> DeliveryAgent : Association
 
 
 ```
+## Best Practices Followed
+- MVC Layering: Each layer has a single responsibility and adheres to open/closed principle.
+- Exception Handling: Extendable @ControllerAdvice class can be added for custom error management.
+- Validation: javax.validation annotations (future improvement) to enforce domain constraints.
+- DTO Mapping: DTOs can be introduced for request/response abstraction (optional enhancement).
+- Lombok: Reduces boilerplate while maintaining readability.
 
+## Future Scope
+- Add unit tests using JUnit + Mockito
+- API authentication using Spring Security or JWT
+- Integration with Kafka or RabbitMQ for event-driven order tracking
+- CI/CD with GitHub Actions
+- Dockerization and deployment to Kubernetes or AWS ECS 
 ---
 
 ## 👨‍💻 Author
