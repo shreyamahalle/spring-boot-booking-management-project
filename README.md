@@ -6,7 +6,7 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technology Stack](#Technology-Stack)
-- [Getting Started](#getting-started)
+- [Getting Started](#Getting-Started)
 - [Installation](#installation)
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotation](#SpringAnnotation)
