@@ -17,6 +17,7 @@
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
 - [Best Practices Followed](Best-Practices-Followed)
+- [Best Practices Followed](#Best-Practices-Followed)
 - [Future Scope](Future-Scope)
 - [License](#license)
 
