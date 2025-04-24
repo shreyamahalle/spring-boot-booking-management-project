@@ -9,7 +9,7 @@
 - [Getting Started](#Getting-Started)
 - [Installation and Setup](#Installation-and-Setup)
 - [Module Responsibilities](#Module-Responsibilities)
-- [Spring Annotation](#Spring-Annotation)
+- [Spring Annotations](#Spring-Annotations)
 - [Code Structure](#CodeStructure)
 - [Database Schema (POJO Classes)](#Database-Schema)
 - [Class Diagram](#Class-Diagram)
