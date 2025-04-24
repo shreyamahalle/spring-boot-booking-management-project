@@ -11,7 +11,7 @@
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure ](#Code-Structure )
-- [Database Schema (POJO Classes)](#Database-Schema)
+- [ Database Schema (POJO Classes)](#Database-Schema-(POJO-Classes))
 - [Class Diagram](#Class-Diagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
