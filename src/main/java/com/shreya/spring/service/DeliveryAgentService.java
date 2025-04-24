@@ -66,30 +66,11 @@ public class DeliveryAgentService implements DeliveryAgentServiceInterface {
         return deliveryAgentRepository.retrieveDeliveryAgents();
     }
 
-    public void createDeliveryAgent() {
-
-        try {
-
-            System.out.println("Please enter mobileNo");
-            int mobileNo = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Please enter id");
-            int id = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Please enter name");
-            String name = scanner.nextLine();
-
-            System.out.println("Please enter city");
-            String city = String.valueOf(Integer.parseInt(scanner.nextLine()));
-
-        } catch (Exception e) {
-            System.out.println("Invalid input type correct data");
-        }
-    }
-
-    @Override
     public void displayDeliveryAgent() {
-
     }
 }
+
+
+
+
 

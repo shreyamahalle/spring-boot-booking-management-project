@@ -41,14 +41,13 @@ public class OrderController {
                     case 1:
                         orderService.createOrder();
                         orderService.displayOrder();
-                        orderService.displayOrder();
                         break;
                     case 2:
                         orderService.displayOrder();
                         break;
                     case 3:
                         System.out.println("Performing create operation on Order");
-                        orderService.insertOrder(new Order(135, "pizza", "good", "gpay"));
+                        orderService.createOrder();
                         break;
                     case 4:
                         System.out.println("delete Order");
@@ -74,8 +73,6 @@ public class OrderController {
                 System.out.println("Error: " + e.getClass());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
-            } finally {
-                System.out.println("All Good ");
             }
         } while (option != 0);
     }

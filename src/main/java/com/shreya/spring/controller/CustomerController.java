@@ -40,7 +40,6 @@ public class CustomerController {
                 switch (option) {
                     case 1:
                         customerService.createCustomer();
-                        customerService.insertCustomer();
                         customerService.displayCustomerInfo();
                         break;
                     case 2:
@@ -48,7 +47,7 @@ public class CustomerController {
                         break;
                     case 3:
                         System.out.println("Performing create operation on Customer");
-                        customerService.insertCustomer();
+                        customerService.createCustomer();
                         break;
                     case 4:
                         System.out.println("delete Customer");

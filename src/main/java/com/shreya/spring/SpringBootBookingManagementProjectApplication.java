@@ -5,14 +5,10 @@ import com.shreya.spring.controller.*;
 import com.shreya.spring.exception.InvalideCustomerIDException;
 import com.shreya.spring.impl.CustomerImpl;
 import com.shreya.spring.impl.OrderNumberImpl;
-import com.shreya.spring.model.Customer;
-import com.shreya.spring.model.DeliveryAgent;
-import com.shreya.spring.model.Order;
 import com.shreya.spring.model.Restaurant;
 import com.shreya.spring.service.ConnectionService;
 import com.shreya.spring.service.OrderMultipleInheritanceService;
 import com.shreya.spring.service.OrderNumberService;
-import com.shreya.spring.service.OrderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -23,7 +19,6 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class SpringBootBookingManagementProjectApplication {
-
 
     public static void main(String[] args) throws InvalideCustomerIDException, SQLException {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -49,28 +44,18 @@ public class SpringBootBookingManagementProjectApplication {
                 case 1:
                     CustomerController controller = context.getBean(CustomerController.class); // correct
                     controller.run();
-                    Customer customer = new Customer();
-                    System.out.println("Customer created : " + customer);
                     break;
             }
             switch (option) {
                 case 2:
                     DeliveryAgentController deliveryAgentController = context.getBean(DeliveryAgentController.class);
                     deliveryAgentController.run();
-                    DeliveryAgent deliveryAgent = new DeliveryAgent();
-                    System.out.println("DeliveryAgent created : " + deliveryAgent);
                     break;
             }
             switch (option) {
                 case 3:
                     OrderController orderController = context.getBean(OrderController.class);
-                    OrderService orderService = new OrderService();
-                    OrderNumberService orderNumberService = new OrderNumberImpl();
                     orderController.run();
-                    orderService.createOrder();
-                    Order order = new Order();
-                    orderNumberService.createOrderNo();
-                    System.out.println("Order created : " + order);
                     break;
             }
             switch (option) {

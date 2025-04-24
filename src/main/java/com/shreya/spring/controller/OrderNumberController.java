@@ -12,7 +12,7 @@ import java.util.Scanner;
 @Component
 public class OrderNumberController {
 
-    OrderService orderService = new OrderService();
+    private OrderService orderService;
     Order order = new Order();
     private Scanner scanner;
 

@@ -34,7 +34,7 @@ public class DeliveryAgentController {
             try {
                 switch (option) {
                     case 1 -> {
-                        deliveryAgentService.createDeliveryAgent();
+                        deliveryAgentService.insertDeliveryAgent();
                         deliveryAgentService.displayDeliveryAgent();
                     }
                     case 2 -> deliveryAgentService.displayDeliveryAgent();

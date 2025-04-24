@@ -20,6 +20,26 @@ public class OrderService implements OrderNumberService {
     @Autowired
     private Scanner scanner;
 
+    public void createOrder() {
+
+        try {
+            System.out.println("Please enter id");
+            int id = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Please enter type");
+            String type = scanner.nextLine();
+
+            System.out.println("Please enter note");
+            String note = scanner.nextLine();
+
+            System.out.println("Please enter paymentMethod");
+            String paymentMethod = scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Invalid input type correct data");
+        }
+    }
+
     public void insertOrder(Order order) throws SQLException {
         orderRepository.addOrder(order);
     }
@@ -58,30 +78,6 @@ public class OrderService implements OrderNumberService {
 
     public List<Order> retrieveOrders() {
         return orderRepository.retrieveOrders();
-    }
-
-    void printCustomer(Order order) {
-        System.out.println(order);
-    }
-
-    public void createOrder() {
-
-        try {
-            System.out.println("Please enter id");
-            int id = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Please enter type");
-            String type = scanner.nextLine();
-
-            System.out.println("Please enter note");
-            String note = scanner.nextLine();
-
-            System.out.println("Please enter paymentMethod");
-            String paymentMethod = scanner.nextLine();
-
-        } catch (Exception e) {
-            System.out.println("Invalid input type correct data");
-        }
     }
 
     @Override
