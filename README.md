@@ -5,20 +5,19 @@
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
+- [Technology Stack](#Technology-Stack)
+- [Getting Started](#Getting-Started)
+- [Installation and Setup](#Installation-and-Setup)
 - [Module Responsibilities](#Module-Responsibilities)
-- [Spring Annotation](#SpringAnnotation)
-- [Code Structure](#CodeStructure)
-- [Database Schema (POJO Classes)](DatabaseSchema)
-- [Class Diagram](ClassDiagram)
-- [Contributing](#contributing)
+- [Spring Annotations](#Spring-Annotations)
+- [Code Structure ](#Code-Structure )
+- [Database Schema (POJO Classes)](#Database-Schema-(POJO-Classes))
+- [Class Diagram](#Class-Diagram)
 - [Contact](#contact)
-- [Author](Author~ShreyaMahalle)
-- [Best Practices Followed](BestPracticesFollowed)
-- [Future Scope](FutureScope)
+- [Best Practices Followed](#Best-Practices-Followed)
+- [Future Scope](#Future-Scope)
 - [License](#license)
+- [Author](#Author)
 
 # **spring-booking-management-project**
 
@@ -207,7 +206,7 @@ For any questions or suggestions, feel free to open an issue or contact me direc
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## **Code Structure** ## 
+## Code Structure 
 
 ```
 src/
@@ -246,7 +245,7 @@ src/
 4. Restaurant Management
    Registers new restaurants, displays restaurant details, and associates them with orders.
 
-## **📝 Database Schema (POJO Classes)**
+## Database Schema (POJO Classes)
 
 | **Entity**        | **Attributes**                              |
 |-------------------|---------------------------------------------|
@@ -257,7 +256,7 @@ src/
 
 ---
 
-# Class Diagram
+## Class Diagram
 
 ```mermaid
 ---
@@ -347,7 +346,7 @@ Customer --> DeliveryAgent : Association
 - Dockerization and deployment to Kubernetes or AWS ECS 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Shreya Mahalle  
 [GitHub](https://github.com/shreyamahalle) | [LinkedIn](https://linkedin.com/in/shreyamahalle)
