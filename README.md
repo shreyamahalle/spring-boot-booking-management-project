@@ -246,7 +246,7 @@ src/
 4. Restaurant Management
    Registers new restaurants, displays restaurant details, and associates them with orders.
 
-## **📝 Database Schema (POJO Classes)**
+## Database Schema (POJO Classes)
 
 | **Entity**        | **Attributes**                              |
 |-------------------|---------------------------------------------|
@@ -347,7 +347,7 @@ Customer --> DeliveryAgent : Association
 - Dockerization and deployment to Kubernetes or AWS ECS 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Shreya Mahalle  
 [GitHub](https://github.com/shreyamahalle) | [LinkedIn](https://linkedin.com/in/shreyamahalle)
