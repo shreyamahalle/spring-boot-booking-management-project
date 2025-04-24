@@ -11,14 +11,13 @@
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotation](#SpringAnnotation)
 - [Code Structure](#CodeStructure)
-- [Database Schema (POJO Classes)](DatabaseSchema)
-- [Class Diagram](Class-Diagram)
+- [Database Schema (POJO Classes)](#DatabaseSchema)
+- [Class Diagram](#Class-Diagram)
 - [Contributing](#contributing)
 - [Contact](#contact)
-- [Author](Author~ShreyaMahalle)
-- [Best Practices Followed](Best-Practices-Followed)
+- [Author](#Author~ShreyaMahalle)
 - [Best Practices Followed](#Best-Practices-Followed)
-- [Future Scope](Future-Scope)
+- [Future Scope](#Future-Scope)
 - [License](#license)
 
 # **spring-booking-management-project**
