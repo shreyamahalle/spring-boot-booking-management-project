@@ -24,6 +24,7 @@ public class SpringBootBookingManagementProjectApplication {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         SpringApplication.run(SpringBootBookingManagementProjectApplication.class, args);
+
         final ConnectionService connectionService = new ConnectionService();
         final Scanner sc = new Scanner(System.in);
         int option = 0;

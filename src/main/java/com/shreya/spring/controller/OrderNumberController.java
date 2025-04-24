@@ -3,11 +3,11 @@ package com.shreya.spring.controller;
 import com.shreya.spring.exception.CustomerException;
 import com.shreya.spring.model.Order;
 import com.shreya.spring.service.OrderService;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Scanner;
 
-@Controller
+@RestController
 public class OrderNumberController {
 
     private OrderService orderService;

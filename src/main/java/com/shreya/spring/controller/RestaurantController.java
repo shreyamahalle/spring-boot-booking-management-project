@@ -4,12 +4,12 @@ import com.shreya.spring.exception.CustomerException;
 import com.shreya.spring.model.Restaurant;
 import com.shreya.spring.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-@Controller
+@RestController
 public class RestaurantController {
 
     @Autowired

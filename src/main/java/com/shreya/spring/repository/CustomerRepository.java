@@ -50,7 +50,6 @@ public class CustomerRepository {
         }
     }
 
-
     public List<Customer> retrieveCustomers() {
         List<Customer> customers = new ArrayList<>();
         String query = "SELECT * FROM customer";
