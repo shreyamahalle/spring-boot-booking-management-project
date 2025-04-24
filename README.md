@@ -11,6 +11,7 @@
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure](#CodeStructure)
+- [Code Structure ](#Code-Structure )
 - [Database Schema (POJO Classes)](#Database-Schema)
 - [Class Diagram](#Class-Diagram)
 - [Contributing](#contributing)
@@ -207,7 +208,7 @@ For any questions or suggestions, feel free to open an issue or contact me direc
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## **Code Structure** ## 
+## Code Structure 
 
 ```
 src/
