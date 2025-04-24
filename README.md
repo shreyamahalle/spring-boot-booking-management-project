@@ -16,7 +16,7 @@
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [Author](Author~ShreyaMahalle)
-- [Best Practices Followed](BestPracticesFollowed)
+- [Best Practices Followed](Best-Practices-Followed)
 - [Future Scope](FutureScope)
 - [License](#license)
 
