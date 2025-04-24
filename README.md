@@ -4,6 +4,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Features](#Features)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
