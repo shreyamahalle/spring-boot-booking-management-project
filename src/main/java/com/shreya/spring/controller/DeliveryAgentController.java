@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import java.util.Scanner;
 
 @Controller
-@Component
 public class DeliveryAgentController {
 
     //  Autowire the service properly

@@ -5,14 +5,12 @@ import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.service.CustomerService;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 @Controller
-@Component
 @Builder
 public class CustomerController {
 
