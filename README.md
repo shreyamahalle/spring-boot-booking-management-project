@@ -7,7 +7,7 @@
 - [Technology Stack](#Technology-Stack)
 - [Getting Started](#Getting-Started)
 - [Installation and Setup](#Installation-and-Setup)
-- [ API Endpoints (CRUD)](#API-Endpoints-(CRUD))
+- [API Endpoints (CRUD)](#API-Endpoints-(CRUD))
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure ](#Code-Structure )
