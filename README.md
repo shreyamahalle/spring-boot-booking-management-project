@@ -1,6 +1,5 @@
 # spring-boot-booking-management-project
 
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -8,6 +7,8 @@
 - [Technology Stack](#Technology-Stack)
 - [Getting Started](#Getting-Started)
 - [Installation and Setup](#Installation-and-Setup)
+- [API Endpoints (CRUD)](#api-endpoints-crud)
+- [Postman Collection](#Postman-Collection)
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure ](#Code-Structure )
@@ -75,7 +76,7 @@ This project is built with the following technologies:
 | Lombok            | Boilerplate reduction                    |
 | HTML5/CSS3        | Frontend structure                       |
 | Git               | Version control                          |
-
+| Postman           | API Testing                              |
 ---
 
 ## Getting Started
@@ -154,7 +155,85 @@ Before you begin, ensure you have the following:
    ```bash
    mvn clean install
    ```
+## API Endpoints (CRUD)
 
+### 🧍 Customer APIs
+
+| Method | Endpoint             | Description               |
+|--------|----------------------|---------------------------|
+| GET    | `/api/customers`     | Get all customers         |
+| GET    | `/api/customers/{id}`| Get customer by ID        |
+| POST   | `/api/customers`     | Add a new customer        |
+| PUT    | `/api/customers/{id}`| Update existing customer  |
+| DELETE | `/api/customers/{id}`| Delete customer by ID     |
+
+---
+
+### 🍽️ Restaurant APIs
+
+| Method | Endpoint               | Description                 |
+|--------|------------------------|-----------------------------|
+| GET    | `/api/restaurants`     | Get all restaurants         |
+| POST   | `/api/restaurants`     | Add a restaurant            |
+| PUT    | `/api/restaurants/{id}`| Update restaurant           |
+| DELETE | `/api/restaurants/{id}`| Delete restaurant           |
+
+---
+
+### 📦 Order APIs
+
+| Method | Endpoint         | Description               |
+|--------|------------------|---------------------------|
+| GET    | `/api/orders`    | Get all orders            |
+| POST   | `/api/orders`    | Place new order           |
+| PUT    | `/api/orders`    | Update order details      |
+| DELETE | `/api/orders `   | Delete order by ID        |
+
+---
+
+### 🛵 Delivery Agent APIs
+
+| Method | Endpoint                | Description                |
+|--------|-------------------------|----------------------------|
+| GET    | `/api/agents`           | Get all delivery agents    |
+| POST   | `/api/agents`           | Add a delivery agent       |
+| PUT    | `/api/agents/{id}`      | Update agent details       |
+| DELETE | `/api/agents/{id}`      | Delete agent by ID         |
+
+---
+## Postman Collection
+
+You can test the REST APIs using Postman:
+
+### 🌐 Sample JSON for POST requests:
+
+**POST /api/customers**
+
+```json
+{
+  "name": "John Doe",
+  "username": "john123",
+  "mobileNo": "1234567890",
+  "city": "Mumbai",
+  "area": "Andheri"
+}
+``` 
+## POST /api/restaurants
+```json
+{
+  "name": "Pizza Palace",
+  "city": "Mumbai",
+  "area": "Bandra"
+}
+```
+POST /api/orders
+```json
+{
+  "customerId": 1,
+  "restaurantId": 2,
+  "deliveryAgentId": 3
+}
+```
 ## Module Responsibilities
 
 - **Customer**: Handles user registration, city/area resolution, and personalization.
@@ -225,6 +304,7 @@ src/
         └── static/templates
 
 ```
+
 ## **Functionality**
 
 1. **Customer**
@@ -344,7 +424,8 @@ Customer --> DeliveryAgent : Association
 - API authentication using Spring Security or JWT
 - Integration with Kafka or RabbitMQ for event-driven order tracking
 - CI/CD with GitHub Actions
-- Dockerization and deployment to Kubernetes or AWS ECS 
+- Dockerization and deployment to Kubernetes or AWS ECS
+  
 ---
 
 ## Author
