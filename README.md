@@ -7,7 +7,7 @@
 - [Technology Stack](#Technology-Stack)
 - [Getting Started](#Getting-Started)
 - [Installation and Setup](#Installation-and-Setup)
-- [API Endpoints (CRUD)](#API-Endpoints-(CRUD))
+- [API Endpoints (CRUD)](#api-endpoints-crud)
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure ](#Code-Structure )
@@ -154,8 +154,6 @@ Before you begin, ensure you have the following:
    ```bash
    mvn clean install
    ```
-
-
 ## API Endpoints (CRUD)
 
 ### 🧍 Customer APIs
