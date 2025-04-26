@@ -214,9 +214,9 @@ You can test the REST APIs using Postman:
   "city": "Mumbai",
   "area": "Andheri"
 }
-```
+``` 
 ## POST /api/restaurants
-```
+```json
 {
   "name": "Pizza Palace",
   "city": "Mumbai",
@@ -224,7 +224,7 @@ You can test the REST APIs using Postman:
 }
 ```
 POST /api/orders
-```
+```json
 {
   "customerId": 1,
   "restaurantId": 2,
