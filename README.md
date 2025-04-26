@@ -8,6 +8,7 @@
 - [Getting Started](#Getting-Started)
 - [Installation and Setup](#Installation-and-Setup)
 - [API Endpoints (CRUD)](#api-endpoints-crud)
+- [Postman Collection](#Postman-Collection)
 - [Module Responsibilities](#Module-Responsibilities)
 - [Spring Annotations](#Spring-Annotations)
 - [Code Structure ](#Code-Structure )
