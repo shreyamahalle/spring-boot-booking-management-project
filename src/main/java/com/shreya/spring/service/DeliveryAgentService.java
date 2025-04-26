@@ -2,75 +2,31 @@ package com.shreya.spring.service;
 
 import com.shreya.spring.model.DeliveryAgent;
 import com.shreya.spring.repository.DeliveryAgentRepository;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
 
 @Service
-@Data
+@RequiredArgsConstructor
+public class DeliveryAgentService {
 
-public class DeliveryAgentService implements DeliveryAgentServiceInterface {
+    private final DeliveryAgentRepository deliveryAgentRepository;
 
-    @Autowired
-    private DeliveryAgentRepository deliveryAgentRepository;
-    @Autowired
-    private Scanner scanner;
-
-    public void insertDeliveryAgent() {
-        System.out.println("Pls enter deliveryAgent mobileNo:");
-        int mobileNo = Integer.parseInt(scanner.nextLine());
-        System.out.println("Pls enter deliveryAgent id:");
-        int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Pls enter name:");
-        String name = scanner.nextLine();
-        System.out.println("Pls enter city :");
-        String city = scanner.nextLine();
-
-        DeliveryAgent deliveryAgent = new DeliveryAgent(mobileNo, id, name, city);
-
-        try {
-            if (deliveryAgentRepository.insertDeliveryAgent(deliveryAgent)) {
-                System.out.println("deliveryAgent inserted successfully!");
-            } else {
-                System.out.println("Failed to insert deliveryAgent.");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
+        return deliveryAgentRepository.insertDeliveryAgent(deliveryAgent);
     }
 
-    public void deleteDeliveryAgent() {
-
-        try {
-            if (deliveryAgentRepository.deleteDeliveryAgent(1)) {
-                System.out.println("deliveryAgent deleted successfully!");
-            } else {
-                System.out.println("Failed to delete deliveryAgent.");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public boolean deleteDeliveryAgent(int id) throws SQLException {
+        return deliveryAgentRepository.deleteDeliveryAgent(id);
     }
 
-    public void DeliveryAgent(DeliveryAgent deliveryAgent) {
-
-        deliveryAgentRepository.retrieveDeliveryAgent(1, "abc");
+    public DeliveryAgent getDeliveryAgentByIdAndName(int id, String name) throws SQLException {
+        return deliveryAgentRepository.retrieveDeliveryAgent(id, name);
     }
 
-    public List<DeliveryAgent> retrieveDeliveryAgents() {
-
+    public List<DeliveryAgent> retrieveAllDeliveryAgents() throws SQLException {
         return deliveryAgentRepository.retrieveDeliveryAgents();
     }
-
-    public void displayDeliveryAgent() {
-    }
 }
-
-
-
-
-

@@ -107,7 +107,7 @@ public class DeliveryAgentRepository {
         return deliveryAgents;
     }
 
-    public void retrieveDeliveryAgent(int id, String name) {
+    public DeliveryAgent retrieveDeliveryAgent(int id, String name) {
         DeliveryAgent deliveryAgent = null;
         String sql = "SELECT * FROM deliveryagent WHERE id = ? AND name = ?";
 
@@ -136,5 +136,6 @@ public class DeliveryAgentRepository {
                 }
             }
         }
+        return deliveryAgent;
     }
 }
