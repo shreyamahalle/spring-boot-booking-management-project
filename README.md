@@ -1,6 +1,5 @@
 # spring-boot-booking-management-project
 
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -75,7 +74,7 @@ This project is built with the following technologies:
 | Lombok            | Boilerplate reduction                    |
 | HTML5/CSS3        | Frontend structure                       |
 | Git               | Version control                          |
-
+| Postman           | API Testing                              |
 ---
 
 ## Getting Started
@@ -154,6 +153,69 @@ Before you begin, ensure you have the following:
    ```bash
    mvn clean install
    ```
+
+
+## API Endpoints (CRUD)
+
+### 🧍 Customer APIs
+
+| Method | Endpoint             | Description               |
+|--------|----------------------|---------------------------|
+| GET    | `/api/customers`     | Get all customers         |
+| GET    | `/api/customers/{id}`| Get customer by ID        |
+| POST   | `/api/customers`     | Add a new customer        |
+| PUT    | `/api/customers/{id}`| Update existing customer  |
+| DELETE | `/api/customers/{id}`| Delete customer by ID     |
+
+---
+
+### 🍽️ Restaurant APIs
+
+| Method | Endpoint               | Description                 |
+|--------|------------------------|-----------------------------|
+| GET    | `/api/restaurants`     | Get all restaurants         |
+| POST   | `/api/restaurants`     | Add a restaurant            |
+| PUT    | `/api/restaurants/{id}`| Update restaurant           |
+| DELETE | `/api/restaurants/{id}`| Delete restaurant           |
+
+---
+
+### 📦 Order APIs
+
+| Method | Endpoint         | Description               |
+|--------|------------------|---------------------------|
+| GET    | `/api/orders`    | Get all orders            |
+| POST   | `/api/orders`    | Place new order           |
+
+---
+
+### 🛵 Delivery Agent APIs
+
+| Method | Endpoint                | Description                |
+|--------|-------------------------|----------------------------|
+| GET    | `/api/agents`           | Get all delivery agents    |
+| POST   | `/api/agents`           | Add a delivery agent       |
+| PUT    | `/api/agents/{id}`      | Update agent details       |
+| DELETE | `/api/agents/{id}`      | Delete agent by ID         |
+
+---
+## Postman Collection
+
+You can test the REST APIs using Postman:
+
+### 🌐 Sample JSON for POST requests:
+
+**POST /api/customers**
+
+```json
+{
+  "name": "John Doe",
+  "username": "john123",
+  "mobileNo": "1234567890",
+  "city": "Mumbai",
+  "area": "Andheri"
+}
+```
 
 ## Module Responsibilities
 
