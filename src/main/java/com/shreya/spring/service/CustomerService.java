@@ -3,91 +3,42 @@ package com.shreya.spring.service;
 import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.model.Customer;
 import com.shreya.spring.repository.CustomerRepository;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Optional;
 
 @Service
-@Data
-
+@RequiredArgsConstructor
 public class CustomerService {
 
-    @Autowired
-    private CustomerRepository customerRepository;
-    @Autowired
-    private Scanner scanner;
+    private final CustomerRepository customerRepository;
 
-    public void createCustomer() {
-        Customer customer = new Customer();
-        customerRepository.createCustomer(customer);
-        try {
-            System.out.println("Please enter customer details:");
-
-            System.out.print("Enter ID: ");
-            int id = Integer.parseInt(scanner.nextLine());
-
-            System.out.print("Enter Name: ");
-            String name = scanner.nextLine();
-
-            System.out.print("Enter City: ");
-            String city = scanner.nextLine();
-
-            System.out.print("Enter Mobile Number: ");
-            int mobileNo = Integer.parseInt(scanner.nextLine());
-
-            System.out.print("Enter Age: ");
-            int age = Integer.parseInt(scanner.nextLine());
-
-            customer.setId(id);
-            customer.setName(name);
-            customer.setCity(city);
-            customer.setMobileNo(mobileNo);
-            customer.setAge(age);
-
-            // Insert into DB
-            customerRepository.createCustomer(customer);
-
-            System.out.println("Customer created successfully!");
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please check the data and try again.");
-        }
-    }
-    public void deleteCustomer() {
-        Scanner sc = new Scanner(System.in);
-        try {
-            System.out.println("Enter customer ID to delete:");
-            int id = Integer.parseInt(sc.nextLine());
-
-            if (customerRepository.deleteCustomer(id)) {
-                System.out.println("Customer deleted successfully!");
-            } else {
-                System.out.println("Failed to delete Customer.");
-            }
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please try again.");
-        }
+    public void addCustomer(Customer customer) throws SQLException {
+        customerRepository.addCustomer(customer);
     }
 
-    public void updateCustomer() throws SQLException {
-        if (customerRepository.updateCustomer(2, "shreya")) {
-            System.out.println("Customer updated successfully ");
-        } else {
-            System.out.println("Failed to update customer");
-        }
-
+    public boolean deleteCustomer(int id) throws SQLException {
+        return customerRepository.deleteCustomer(id);
     }
+
+    public boolean updateCustomer(Customer customer) throws SQLException {
+        return customerRepository.updateCustomer(customer);
+    }
+
 
     public List<Customer> retrieveCustomers() {
         return customerRepository.retrieveCustomers();
     }
 
-    public void displayCustomerInfo() throws CustomerNotfound {
-    }
-    public void displayCustomers() {
-
+    public Customer getCustomerById(int id) throws CustomerNotfound {
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        } else {
+            throw new CustomerNotfound("Customer not found with ID: " + id);
+        }
     }
 }

@@ -1,95 +1,81 @@
 package com.shreya.spring;
 
-import com.shreya.spring.configuration.AppConfig;
-import com.shreya.spring.controller.*;
 import com.shreya.spring.exception.InvalideCustomerIDException;
-import com.shreya.spring.impl.CustomerImpl;
-import com.shreya.spring.impl.OrderNumberImpl;
-import com.shreya.spring.model.Restaurant;
-import com.shreya.spring.service.ConnectionService;
-import com.shreya.spring.service.OrderMultipleInheritanceService;
-import com.shreya.spring.service.OrderNumberService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 @SpringBootApplication
 public class SpringBootBookingManagementProjectApplication {
 
     public static void main(String[] args) throws InvalideCustomerIDException, SQLException {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         SpringApplication.run(SpringBootBookingManagementProjectApplication.class, args);
 
-        final ConnectionService connectionService = new ConnectionService();
-        final Scanner sc = new Scanner(System.in);
-        int option = 0;
-        do {
-            System.out.println("-----------Booking Management-----------");
-            System.out.println("Please choose the option");
-            System.out.println("1. Create customer");
-            System.out.println("2. Create delivery agent");
-            System.out.println("3. Create order");
-            System.out.println("4. Create restaurant ");
-            System.out.println("5. Display Order Number");
-            System.out.println("6. Combo Pack Offer");
-            System.out.println("0. Exit project");
-            System.out.println("Select the option..");
-            option = Integer.parseInt(sc.nextLine());
-
-            switch (option) {
-                case 1:
-                    CustomerController controller = context.getBean(CustomerController.class); // correct
-                    controller.run();
-                    break;
-            }
-            switch (option) {
-                case 2:
-                    DeliveryAgentController deliveryAgentController = context.getBean(DeliveryAgentController.class);
-                    deliveryAgentController.run();
-                    break;
-            }
-            switch (option) {
-                case 3:
-                    OrderController orderController = context.getBean(OrderController.class);
-                    orderController.run();
-                    break;
-            }
-            switch (option) {
-                case 4:
-                    RestaurantController restaurantController = context.getBean(RestaurantController.class);
-                    restaurantController.run();
-                    Restaurant restaurant = new Restaurant();
-                    System.out.println("Restaurant created : " + restaurant);
-                    break;
-            }
-            switch (option) {
-                case 5:
-                    OrderNumberService orderNumberService = new OrderNumberImpl();
-                    CustomerImpl customerImpl = new CustomerImpl();
-                    OrderNumberController orderNumberController = new OrderNumberController();
-                    orderNumberController.run();
-                    orderNumberService.createOrderNo();
-                    customerImpl.printCustomer();
-                    customerImpl.createOrder();
-            }
-            switch (option) {
-                case 6:
-                    OrderMultipleInheritanceService orderMultipleInheritanceService = new OrderMultipleInheritanceService();
-                    orderMultipleInheritanceService.displayOrder();
-            }
-            switch (option) {
-                case 0:
-                    System.out.println("Exiting project");
-                    break;
-            }
-        }
-        while (option != 0);
-
-        System.out.println("THANK YOU!");
     }
 }
+
+
+//        final ConnectionService connectionService = new ConnectionService();
+//        final Scanner sc = new Scanner(System.in);
+//        int option = 0;
+//        do {
+//            System.out.println("-----------Booking Management-----------");
+//            System.out.println("Please choose the option");
+//            System.out.println("1. Create customer");
+//            System.out.println("2. Create delivery agent");
+//            System.out.println("3. Create order");
+//            System.out.println("4. Create restaurant ");
+//            System.out.println("5. Display Order Number");
+//            System.out.println("6. Combo Pack Offer");
+//            System.out.println("0. Exit project");
+//            System.out.println("Select the option..");
+//            option = Integer.parseInt(sc.nextLine());
+//
+//            switch (option) {
+//                case 1:
+//                    CustomerController controller = context.getBean(CustomerController.class); // correct
+//                    break;
+//            }
+//            switch (option) {
+//                case 2:
+//                    DeliveryAgentController deliveryAgentController = context.getBean(DeliveryAgentController.class);
+//                    break;
+//            }
+//            switch (option) {
+//                case 3:
+//                    OrderController orderController = context.getBean(OrderController.class);
+//                    break;
+//            }
+//            switch (option) {
+//                case 4:
+//                    RestaurantController restaurantController = context.getBean(RestaurantController.class);
+//                    break;
+//            }
+//            switch (option) {
+//                case 5:
+//                    OrderNumberService orderNumberService = new OrderNumberImpl();
+//                    CustomerImpl customerImpl = new CustomerImpl();
+//                    OrderNumberController orderNumberController = new OrderNumberController();
+//                    orderNumberController.run();
+//                    orderNumberService.createOrderNo();
+//                    customerImpl.printCustomer();
+//                    customerImpl.createOrder();
+//            }
+//            switch (option) {
+//                case 6:
+//                    OrderMultipleInheritanceService orderMultipleInheritanceService = new OrderMultipleInheritanceService();
+//                    orderMultipleInheritanceService.displayOrder();
+//            }
+//            switch (option) {
+//                case 0:
+//                    System.out.println("Exiting project");
+//                    break;
+//            }
+//        }
+//        while (option != 0);
+//
+//        System.out.println("THANK YOU!");
+//    }
+//}
