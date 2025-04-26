@@ -186,6 +186,8 @@ Before you begin, ensure you have the following:
 |--------|------------------|---------------------------|
 | GET    | `/api/orders`    | Get all orders            |
 | POST   | `/api/orders`    | Place new order           |
+| PUT    | `/api/orders`    | Update order details      |
+| DELETE | `/api/orders `   | Delete order by ID        |
 
 ---
 
