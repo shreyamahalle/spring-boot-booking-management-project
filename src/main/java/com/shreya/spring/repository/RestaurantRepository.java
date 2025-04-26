@@ -78,7 +78,7 @@ public class RestaurantRepository {
 
     public Restaurant retrieveRestaurant(int registerNo, String name) {
         Restaurant restaurant = null;
-        String sql = "SELECT * FROM restaurant WHERE id = ? AND name = ?";
+        String sql = "SELECT * FROM restaurant WHERE registerNo = ? AND name = ?";
 
         try {
             this.initConnection();

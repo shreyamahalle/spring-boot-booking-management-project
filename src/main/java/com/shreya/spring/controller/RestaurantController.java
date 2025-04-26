@@ -32,8 +32,19 @@ public class RestaurantController {
 
     @GetMapping("/{registerno}/{name}")
     public Restaurant getRestaurant(@PathVariable int registerno, @PathVariable String name) {
-        return restaurantService.getRestaurantById(registerno, name);
+        Restaurant restaurant = restaurantService.getRestaurantById(registerno, name);
+        if (restaurant != null) {
+            System.out.println("Restaurant Details: ");
+            System.out.println("registerno: " + restaurant.getRegisterNo());
+            System.out.println("Name: " + restaurant.getName());
+
+        } else {
+            System.out.println("Restaurant not found with registerno: " + registerno + " and Name: " + name);
+        }
+
+        return restaurant;
     }
+
 
     @DeleteMapping("/{registerno}")
     public String deleteRestaurant(@PathVariable int registerno) {
