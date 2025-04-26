@@ -30,15 +30,15 @@ public class RestaurantController {
         return restaurantService.retrieveRestaurants();
     }
 
-    @GetMapping("/{id}/{name}")
-    public Restaurant getRestaurant(@PathVariable int id, @PathVariable String name) {
-        return restaurantService.getRestaurantById(id, name);
+    @GetMapping("/{registerno}/{name}")
+    public Restaurant getRestaurant(@PathVariable int registerno, @PathVariable String name) {
+        return restaurantService.getRestaurantById(registerno, name);
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteRestaurant(@PathVariable int id) {
+    @DeleteMapping("/{registerno}")
+    public String deleteRestaurant(@PathVariable int registerno) {
         try {
-            if (restaurantService.deleteRestaurant(id)) {
+            if (restaurantService.deleteRestaurant(registerno)) {
                 return "Restaurant deleted successfully!";
             } else {
                 return "Failed to delete restaurant.";
@@ -48,10 +48,10 @@ public class RestaurantController {
         }
     }
 
-    @PutMapping("/{id}")
-    public String updateRestaurant(@PathVariable int id, @RequestParam String name) {
+    @PutMapping("/{registerNo}")
+    public String updateRestaurant(@PathVariable int registerNo, @RequestParam String name) {
         try {
-            if (restaurantService.updateRestaurant(id, name)) {
+            if (restaurantService.updateRestaurant(registerNo, name)) {
                 return "Restaurant updated successfully!";
             } else {
                 return "Failed to update restaurant.";
@@ -61,3 +61,21 @@ public class RestaurantController {
         }
     }
 }
+
+
+//    @PutMapping("/{registerno}")
+//    public ResponseEntity<String> updateRestaurant(@PathVariable int registerno, @RequestParam String name) {
+//        try {
+//            boolean updated = restaurantService.updateRestaurant(registerno, name);
+//            if (updated) {
+//                return ResponseEntity.ok("Restaurant updated successfully!");
+//            } else {
+//                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//                        .body("Failed to update restaurant.");
+//            }
+//        } catch (SQLException e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Error while updating restaurant: " + e.getMessage());
+//        }
+//    }
+//}

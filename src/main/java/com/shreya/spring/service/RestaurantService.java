@@ -25,17 +25,20 @@ public class RestaurantService {
     }
 
     // 3. Retrieve a Single Restaurant (optional)
-    public Restaurant getRestaurantById(int id, String name) {
-        return restaurantRepository.retrieveRestaurant(id, name);
+    public Restaurant getRestaurantById(int registerno, String name) {
+        return restaurantRepository.retrieveRestaurant(registerno, name);
     }
 
     // 4. Delete Restaurant by ID
-    public boolean deleteRestaurant(int id) throws SQLException {
-        return restaurantRepository.deleteRestaurant(id);
+    public boolean deleteRestaurant(int registerno) throws SQLException {
+        return restaurantRepository.deleteRestaurant(registerno);
     }
 
     // 5. Update Restaurant Name by ID
-    public boolean updateRestaurant(int id, String name) throws SQLException {
-        return restaurantRepository.updateRestaurant(id, name);
+    public boolean updateRestaurant(int registerno, String name) throws SQLException {
+        return restaurantRepository.updateRestaurant(registerno, name);
+
+//    public boolean updateRestaurant(int registerno, String name) throws SQLException {
+//        return restaurantRepository.updateRestaurant(registerno, name);
     }
 }

@@ -1,6 +1,5 @@
 package com.shreya.spring.repository;
 
-import com.shreya.spring.model.Customer;
 import com.shreya.spring.model.Restaurant;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
@@ -130,11 +129,11 @@ public class RestaurantRepository {
     }
 
     public boolean updateRestaurant(int registerNo, String name) throws SQLException {
-        Customer customer = null;
+        Restaurant restaurant = null;
         try {
             this.initConnection();
             Statement statement = connection.createStatement();
-            String sql = "UPDATE restaurant SET name = ? WHERE id = ?";
+            String sql = "UPDATE restaurant SET name = ? WHERE registerNo = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, name);
                 preparedStatement.setInt(2, registerNo);
@@ -152,3 +151,55 @@ public class RestaurantRepository {
         }
     }
 }
+
+
+//    public boolean updateRestaurant(int registerno, String name) throws SQLException {
+//        this.initConnection();
+//
+//        try {
+//            System.out.println("Attempting to update restaurant with registerno: " + registerno + " and name: " + name);
+//
+//            // Check if the restaurant exists before attempting the update
+//            String checkSql = "SELECT COUNT(*) FROM restaurant WHERE registerno = ?";
+//            try (PreparedStatement checkStmt = connection.prepareStatement(checkSql)) {
+//                checkStmt.setInt(1, registerno);
+//                try (ResultSet resultSet = checkStmt.executeQuery()) {
+//                    if (resultSet.next() && resultSet.getInt(1) == 0) {
+//                        System.out.println("No restaurant found with ID " + registerno);
+//                        return false;  // Return false if the ID does not exist
+//                    }
+//                }
+//            }
+//
+//            // SQL update query
+//            String sql = "UPDATE restaurant SET name = ? WHERE registerno = ?";
+//            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//                preparedStatement.setString(1, name);
+//                preparedStatement.setInt(2, registerno);
+//
+//                // Log the SQL before execution
+//                System.out.println("Executing SQL: " + preparedStatement.toString());
+//
+//                int rowsUpdated = preparedStatement.executeUpdate();
+//                if (rowsUpdated > 0) {
+//                    System.out.println("Restaurant with ID " + registerno + " updated successfully.");
+//                    return true;
+//                } else {
+//                    System.out.println("No rows updated for ID " + registerno);
+//                    return false;
+//                }
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("SQL error: " + e.getMessage());
+//            throw new SQLException("Error while updating restaurant with ID " + registerno, e);
+//        } finally {
+//            if (connection != null) {
+//                try {
+//                    connection.close();
+//                } catch (SQLException e) {
+//                    System.err.println("Error closing connection: " + e.getMessage());
+//                }
+//            }
+//        }
+//    }
+//}
