@@ -216,7 +216,22 @@ You can test the REST APIs using Postman:
   "area": "Andheri"
 }
 ```
-
+## POST /api/restaurants
+```
+{
+  "name": "Pizza Palace",
+  "city": "Mumbai",
+  "area": "Bandra"
+}
+```
+POST /api/orders
+```
+{
+  "customerId": 1,
+  "restaurantId": 2,
+  "deliveryAgentId": 3
+}
+```
 ## Module Responsibilities
 
 - **Customer**: Handles user registration, city/area resolution, and personalization.
