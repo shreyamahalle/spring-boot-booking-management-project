@@ -77,7 +77,7 @@ public class RestaurantRepository {
         return restaurants;
     }
 
-    public void retrieveRestaurant(int registerNo, String name) {
+    public Restaurant retrieveRestaurant(int registerNo, String name) {
         Restaurant restaurant = null;
         String sql = "SELECT * FROM restaurant WHERE id = ? AND name = ?";
 
@@ -105,6 +105,7 @@ public class RestaurantRepository {
                 }
             }
         }
+        return restaurant;
     }
 
     public boolean deleteRestaurant(int registerNo) throws SQLException {

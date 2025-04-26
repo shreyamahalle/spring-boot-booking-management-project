@@ -23,23 +23,27 @@ public class OrderService {
         }
     }
 
-    public List<Order> getAllOrders() {
+    // Retrieve all orders
+    public List<Order> retrieveAllOrders() {
         return orderRepository.retrieveOrders();
     }
 
-    public Order getOrderByIdAndType(int id, String type) {
+    // Retrieve specific order by id and type
+    public Order retrieveOrderByIdAndType(int id, String type) {
         return orderRepository.retrieveOrder(id, type);
     }
 
-    public String updateOrder(int id, String type) {
-        try {
-            boolean updated = orderRepository.updateOrder(id, type);
-            return updated ? "Order updated successfully." : "Order not found or not updated.";
-        } catch (SQLException e) {
-            return "Error while updating order: " + e.getMessage();
+    public String updateOrder(Order order) throws SQLException {
+        int orderId = order.getId();
+        String orderType = order.getType();
+
+        boolean updated = orderRepository.updateOrder(orderId, orderType);  // Update the order
+        if (updated) {
+            return "Order updated successfully!";
+        } else {
+            return "Failed to update Order.";
         }
     }
-
     public String deleteOrder(int id) {
         try {
             boolean deleted = orderRepository.deleteOrder(id);

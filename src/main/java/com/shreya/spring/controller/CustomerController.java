@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")  // Base URL: /customers
+@RequestMapping("/api/customers")  // Base URL: /customers
 public class CustomerController {
 
     @Autowired

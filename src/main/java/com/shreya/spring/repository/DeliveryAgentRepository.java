@@ -49,6 +49,35 @@ public class DeliveryAgentRepository {
         return false;
     }
 
+    // Update a DeliveryAgent
+    public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
+        String sql = "UPDATE deliveryagent SET name = ?, city = ?, mobileNo = ? WHERE id = ?";
+
+        try {
+            this.initConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, deliveryAgent.getName());
+            preparedStatement.setString(2, deliveryAgent.getCity());
+            preparedStatement.setInt(3, deliveryAgent.getMobileNo());
+            preparedStatement.setInt(4, deliveryAgent.getId());
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            System.err.println("SQL error: " + e.getMessage());
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.err.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+
     public boolean deleteDeliveryAgent(int id) throws SQLException {
         String sql = "DELETE FROM DeliveryAgent WHERE id = ?";
 

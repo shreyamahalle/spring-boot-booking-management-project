@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/deliveryAgents")
+@RequestMapping("api/deliveryAgents")
 @RequiredArgsConstructor
 public class DeliveryAgentController {
 
@@ -21,6 +21,12 @@ public class DeliveryAgentController {
     public String addDeliveryAgent(@RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         boolean success = deliveryAgentService.addDeliveryAgent(deliveryAgent);
         return success ? "Delivery Agent added successfully" : "Failed to add Delivery Agent";
+    }
+    @PutMapping("/{id}")
+    public String updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
+        deliveryAgent.setId(id);
+        deliveryAgentService.updateDeliveryAgent(deliveryAgent);
+        return "DeliveryAgent updated successfully!";
     }
 
     @DeleteMapping("/{id}")
