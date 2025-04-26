@@ -304,6 +304,7 @@ src/
         └── static/templates
 
 ```
+
 ## **Functionality**
 
 1. **Customer**
