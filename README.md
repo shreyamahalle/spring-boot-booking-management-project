@@ -337,14 +337,15 @@ src/
 ---
 
 
-## Class Diagram
+# Class Diagram
 
 ```mermaid
-```
-title: Foodease Food Order Booking System
+---
+title: booking management project
+---
+classDiagram
 
-```
-note "Foodease Food Order Booking System"
+ note " food order management "
 
 class Customer {
   +int customerId
