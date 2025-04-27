@@ -1,5 +1,4 @@
-# spring-boot-booking-management-project
-
+# foodease-food-ordering-booking-system
 ## Table of Contents
 
 - [Introduction](#introduction)
