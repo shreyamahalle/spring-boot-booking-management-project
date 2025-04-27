@@ -1,4 +1,4 @@
-# foodease-food-ordering-booking-system
+# foodease-food-order-booking-system
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -19,9 +19,9 @@
 - [License](#license)
 - [Author](#Author)
 
-# **foodease-food-ordering-booking-system**
+# **foodease-food-order-booking-system**
 
-Welcome to thefoodease-food-ordering-booking-system, a simple yet powerful Java application that simulates a booking management system. This project is built using the
+Welcome to thefoodease-food-order-booking-system, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
 
 > **Use case**: A food ordering platform where customers can register, explore nearby restaurants, place orders, and get deliveries from available agents based on location and serviceability.
@@ -99,7 +99,7 @@ Before you begin, ensure you have the following:
 ## 1. **Clone the Repository:**
 
    ```bash
-   git clone (https://github.com/shreyamahalle/foodease-food-ordering-booking-system.git)
+   git clone (https://github.com/shreyamahalle/foodease-food-order-booking-system.git)
 ```
 
 ## 2. **Navigate to the Project Directory:**
