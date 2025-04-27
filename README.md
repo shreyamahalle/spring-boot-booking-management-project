@@ -336,10 +336,16 @@ src/
 
 ---
 
+
 ## Class Diagram
-note "Foodease Food Order Booking System"
+
+```mermaid
+```
+title: Foodease Food Order Booking System
 
 ```
+note "Foodease Food Order Booking System"
+
 class Customer {
   +int customerId
   +String firstName
