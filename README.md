@@ -100,7 +100,7 @@ Before you begin, ensure you have the following:
 ## 1. **Clone the Repository:**
 
    ```bash
-   git clone [git@github.com:shreyamahalle/spring-boot-booking-management-project.git](https://github.com/shreyamahalle/spring-boot-food-order-management-system.git)
+   git clone (https://github.com/shreyamahalle/spring-boot-food-order-management-system.git)
 ```
 
 ## 2. **Navigate to the Project Directory:**
