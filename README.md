@@ -1,4 +1,4 @@
-# foodease-food-ordering-booking-system
+# foodease-food-order-booking-system
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -19,9 +19,9 @@
 - [License](#license)
 - [Author](#Author)
 
-# **foodease-food-ordering-booking-system**
+# **foodease-food-order-booking-system**
 
-Welcome to thefoodease-food-ordering-booking-system, a simple yet powerful Java application that simulates a booking management system. This project is built using the
+Welcome to thefoodease-food-order-booking-system, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
 
 > **Use case**: A food ordering platform where customers can register, explore nearby restaurants, place orders, and get deliveries from available agents based on location and serviceability.
@@ -99,7 +99,7 @@ Before you begin, ensure you have the following:
 ## 1. **Clone the Repository:**
 
    ```bash
-   git clone (https://github.com/shreyamahalle/foodease-food-ordering-booking-system.git)
+   git clone (https://github.com/shreyamahalle/foodease-food-order-booking-system.git)
 ```
 
 ## 2. **Navigate to the Project Directory:**
@@ -336,81 +336,195 @@ src/
 
 ---
 
-## Class Diagram
+
+# Class Diagram
 
 ```mermaid
 ---
-title: booking management project
+title: foodease-food-order-booking-system
 ---
 classDiagram
 
- note " food order management "
+ note " food order booking management "
 
- class Customer
- Customer : +int ID
- Customer : +String name
- Customer : +String city
- Customer : +int age
- Customer : +int contactNo
-
-class Customer{
- +createCustomer()
- +displayCustomer()
+class Customer {
+  +int customerId
+  +String firstName
+  +String lastName
+  +String email
+  +String phone
+  +String address
+  +createCustomer()
+  +updateCustomer()
+  +displayCustomer()
 }
 
-class DeliveryAgent
-DeliveryAgent : +int id
-DeliveryAgent : +String name
-DeliveryAgent : +String city
-DeliveryAgent : +mobileNo
-
-class DeliveryAgent{
-+createDeliveryAgent()
-+displayDeliveryAgent()
+class Restaurant {
+  +int restaurantId
+  +String name
+  +String cuisineType
+  +String address
+  +String contact
+  +String openingHours
+  +createRestaurant()
+  +updateRestaurant()
+  +displayRestaurant()
 }
 
-  Customer --|> Order  : Inheritance
-class Order{
- +createOrder()
- +displayOrder()
-}
- Order : +int Id
- Order : +String name
- Order : +String lastName
- Order : +int age
- Order : +int contactNo
- Order : +String address
-
-class Order{
- +createOrder()
- +displayOrder()
+class Order {
+  +int orderId
+  +Date orderDate
+  +String deliveryAddress
+  +String status
+  +createOrder()
+  +updateOrder()
+  +displayOrder()
 }
 
-Restaurant: +int registerNo
-Restaurant: +String Name
-Restaurant: +String city
-Restaurant: +String Area
-Restaurant: +int contactNo
-
-class Restaurant{
- +createRestaurant()
- +displayRestaurant()
+class Payment {
+  +int paymentId
+  +String paymentMethod
+  +double amount
+  +String status
+  +Date paymentDate
+  +createPayment()
+  +updatePayment()
+  +displayPayment()
 }
 
-Customer <-- Order : Association
-DeliveryAgent  <-- Order  : Assocciation
+class DeliveryAgent {
+  +int agentId
+  +String name
+  +String vehicleNumber
+  +String contact
+  +String status
+  +createDeliveryAgent()
+  +updateDeliveryAgent()
+  +displayDeliveryAgent()
+}
 
+class Feedback {
+  +int feedbackId
+  +int rating
+  +String comments
+  +Date feedbackDate
+  +createFeedback()
+  +displayFeedback()
+}
 
-Restaurant --> Customer : Association
-Restaurant --> Order : Association
-Restaurant --> DeliveryAgent : Association
+class Review {
+  +int reviewId
+  +int rating
+  +String comments
+  +Date reviewDate
+  +createReview()
+  +displayReview()
+}
 
-Customer --> DeliveryAgent : Association
+class OrderStatus {
+  +int statusId
+  +String status
+  +Date statusDate
+  +createOrderStatus()
+  +displayOrderStatus()
+}
 
+class BookingTable {
+  +int bookingId
+  +Date bookingDate
+  +int numberOfPeople
+  +String specialRequests
+  +createBooking()
+  +updateBooking()
+  +displayBooking()
+}
 
+Customer "1" --> "*" Order : places
+Customer "1" --> "*" Feedback : provides
+Customer "1" --> "*" Review : writes
+Customer "1" --> "*" BookingTable : makes
 
+Restaurant "1" --> "*" Order : receives
+Restaurant "1" --> "*" Review : has
+Restaurant "1" --> "*" BookingTable : accepts
+
+Order "1" --> "1" Payment : has
+Order "1" --> "1" DeliveryAgent : assigned to
+Order "1" --> "*" OrderStatus : has
+
+Payment --> Customer : paid by
+DeliveryAgent --> Order : delivers
+
+class CustomerController {
+  +createCustomer()
+  +getCustomer()
+  +updateCustomer()
+  +deleteCustomer()
+}
+
+class RestaurantController {
+  +createRestaurant()
+  +getRestaurant()
+  +updateRestaurant()
+  +deleteRestaurant()
+}
+
+class OrderController {
+  +createOrder()
+  +getOrder()
+  +updateOrder()
+  +cancelOrder()
+}
+
+CustomerController --> CustomerService
+RestaurantController --> RestaurantService
+OrderController --> OrderService
+
+class CustomerService {
+  +registerCustomer()
+  +authenticateCustomer()
+  +updateCustomerProfile()
+}
+
+class RestaurantService {
+  +registerRestaurant()
+  +updateRestaurantInfo()
+  +manageMenu()
+}
+
+class OrderService {
+  +placeOrder()
+  +trackOrder()
+  +cancelOrder()
+}
+
+CustomerService --> CustomerRepository
+RestaurantService --> RestaurantRepository
+OrderService --> OrderRepository
+
+class CustomerRepository {
+  +save()
+  +findById()
+  +findAll()
+  +delete()
+}
+
+class RestaurantRepository {
+  +save()
+  +findById()
+  +findAll()
+  +delete()
+}
+
+class OrderRepository {
+  +save()
+  +findById()
+  +findAll()
+  +delete()
+}
 
 ```
+
 ## Best Practices Followed
 - MVC Layering: Each layer has a single responsibility and adheres to open/closed principle.
 - Exception Handling: Extendable @ControllerAdvice class can be added for custom error management.
