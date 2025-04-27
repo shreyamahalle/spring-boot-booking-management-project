@@ -335,6 +335,20 @@ src/
 4. Restaurant Management
    Registers new restaurants, displays restaurant details, and associates them with orders.
 
+5. Feedback
+   Allows customers to leave feedback on restaurants and delivery services.
+   
+6. Review
+    Allows customers to leave ratings and reviews for restaurants and orders.
+
+7. BookingTable
+   Manages bookings for customers at restaurants, including tracking the booking status and details.
+
+8. Payment
+   Handles payment processing for orders and bookings, ensuring successful transactions.
+
+9. Orderstatus
+   Tracks and updates the status of customer orders, such as pending, delivered, or cancelled.    
 ## Database Schema (POJO Classes)
 
 | **Entity**        | **Attributes**                              |
