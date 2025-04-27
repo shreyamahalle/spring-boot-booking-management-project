@@ -341,11 +341,11 @@ src/
 
 ```mermaid
 ---
-title: booking management project
+title: foodease-food-order-booking-system
 ---
 classDiagram
 
- note " food order management "
+ note " food order booking management "
 
 class Customer {
   +int customerId
