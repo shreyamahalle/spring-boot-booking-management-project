@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Restaurant {
-    private int id;
-    private String name;
-    private String City;
-    private String Area;
+public class Payment {
+    private Long id;
+    private Order order;
+    private Double amount;
+    private String paymentMethod;
+    private String paymentStatus;
+    private String transactionId;
 }

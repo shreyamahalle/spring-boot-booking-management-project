@@ -10,9 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Restaurant {
-    private int id;
-    private String name;
-    private String City;
-    private String Area;
+public class Feedback {
+    private Long id;
+    private Customer customer;
+    private Order order;
+    private int rating;
+    private String comment;
+    private String feedbackDate;
+
 }

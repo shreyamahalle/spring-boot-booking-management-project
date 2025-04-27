@@ -30,26 +30,26 @@ public class RestaurantController {
         return restaurantService.retrieveRestaurants();
     }
 
-    @GetMapping("/{registerno}/{name}")
-    public Restaurant getRestaurant(@PathVariable int registerno, @PathVariable String name) {
-        Restaurant restaurant = restaurantService.getRestaurantById(registerno, name);
+    @GetMapping("/{id}/{name}")
+    public Restaurant getRestaurant(@PathVariable int id, @PathVariable String name) {
+        Restaurant restaurant = restaurantService.getRestaurantById(id, name);
         if (restaurant != null) {
             System.out.println("Restaurant Details: ");
-            System.out.println("registerno: " + restaurant.getRegisterNo());
+            System.out.println("id: " + restaurant.getId());
             System.out.println("Name: " + restaurant.getName());
 
         } else {
-            System.out.println("Restaurant not found with registerno: " + registerno + " and Name: " + name);
+            System.out.println("Restaurant not found with id: " + id + " and Name: " + name);
         }
 
         return restaurant;
     }
 
 
-    @DeleteMapping("/{registerno}")
-    public String deleteRestaurant(@PathVariable int registerno) {
+    @DeleteMapping("/{id}")
+    public String deleteRestaurant(@PathVariable int id) {
         try {
-            if (restaurantService.deleteRestaurant(registerno)) {
+            if (restaurantService.deleteRestaurant(id)) {
                 return "Restaurant deleted successfully!";
             } else {
                 return "Failed to delete restaurant.";
@@ -59,10 +59,10 @@ public class RestaurantController {
         }
     }
 
-    @PutMapping("/{registerNo}")
-    public String updateRestaurant(@PathVariable int registerNo, @RequestParam String name) {
+    @PutMapping("/{id}")
+    public String updateRestaurant(@PathVariable int id, @RequestParam String name) {
         try {
-            if (restaurantService.updateRestaurant(registerNo, name)) {
+            if (restaurantService.updateRestaurant(id, name)) {
                 return "Restaurant updated successfully!";
             } else {
                 return "Failed to update restaurant.";

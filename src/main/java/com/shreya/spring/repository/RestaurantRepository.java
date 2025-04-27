@@ -24,7 +24,7 @@ public class RestaurantRepository {
         this.initConnection();
         String query = "insert into restaurant values (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, restaurant.getRegisterNo());
+            preparedStatement.setInt(1, restaurant.getId());
             preparedStatement.setString(2, restaurant.getName());
             preparedStatement.setString(3, restaurant.getCity());
             preparedStatement.setString(4, restaurant.getArea());
