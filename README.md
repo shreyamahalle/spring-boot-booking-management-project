@@ -19,7 +19,7 @@
 - [License](#license)
 - [Author](#Author)
 
-# **spring-booking-management-project**
+# **foodease-food-ordering-booking-system**
 
 Welcome to the Spring Booking Management Project, a simple yet powerful Java application that simulates a booking management system. This project is built using the
 Spring Framework (XML-based configuration only) and applies solid Object-Oriented Programming (OOP) principles.
