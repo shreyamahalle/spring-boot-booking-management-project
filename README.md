@@ -36,6 +36,11 @@ The Spring Booking Management System provides a modular approach to managing:
  - Restaurants
  - Delivery Agents
  - Orders
+ - Feedback
+ - Review
+ - BookingTable
+ - Payment
+ - Orderstatus
 
 It mimics real-world operations like customer registration, restaurant assignment, order placing, and delivery
 tracking — all managed using a clean layered architecture (Controller → Service → Repository).
@@ -310,6 +315,11 @@ src/
 2. **DeliveryAgent**
 3. **Order**
 4. **Restaurant**
+5. **Feedback**
+6. **Review**
+7. **BookingTable**
+8. **Payment**
+9. **Orderstatus**
 
 ## **🔧 Core Functionality**
 
@@ -325,6 +335,20 @@ src/
 4. Restaurant Management
    Registers new restaurants, displays restaurant details, and associates them with orders.
 
+5. Feedback
+   Allows customers to leave feedback on restaurants and delivery services.
+   
+6. Review
+    Allows customers to leave ratings and reviews for restaurants and orders.
+
+7. BookingTable
+   Manages bookings for customers at restaurants, including tracking the booking status and details.
+
+8. Payment
+   Handles payment processing for orders and bookings, ensuring successful transactions.
+
+9. Orderstatus
+   Tracks and updates the status of customer orders, such as pending, delivered, or cancelled.    
 ## Database Schema (POJO Classes)
 
 | **Entity**        | **Attributes**                              |
