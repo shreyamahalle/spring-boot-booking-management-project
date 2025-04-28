@@ -10,161 +10,103 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DeliveryAgentRepository {
-    private static Connection connection = null;
 
-    private void initConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = new ConnectionService().getConnection();
-        }
-    }
+    public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
+        String query = "INSERT INTO deliveryAgent (id, name, city, mobileNo) VALUES (?, ?, ?, ?)";
 
-    public boolean insertDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
-        this.initConnection();
-        String query = "insert into deliveryAgent values (?, ?, ?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, deliveryAgent.getId());
-            preparedStatement.setString(2, deliveryAgent.getName());
-            preparedStatement.setString(3, deliveryAgent.getCity());
-            preparedStatement.setInt(4, deliveryAgent.getMobileNo());
-            System.out.println("inserting deliveryAgent data to table: " + deliveryAgent);
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
 
-            int rowsInserted = preparedStatement.executeUpdate();
+            ps.setInt(1, deliveryAgent.getId());
+            ps.setString(2, deliveryAgent.getName());
+            ps.setString(3, deliveryAgent.getCity());
+            ps.setInt(4, deliveryAgent.getMobileNo());
 
-            return rowsInserted > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("connection is closed: " + e.getMessage());
-
-                }
-            }
-        }
-        return false;
-    }
-
-    // Update a DeliveryAgent
-    public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
-        String sql = "UPDATE deliveryagent SET name = ?, city = ?, mobileNo = ? WHERE id = ?";
-
-        try {
-            this.initConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, deliveryAgent.getName());
-            preparedStatement.setString(2, deliveryAgent.getCity());
-            preparedStatement.setInt(3, deliveryAgent.getMobileNo());
-            preparedStatement.setInt(4, deliveryAgent.getId());
-
-            int rowsUpdated = preparedStatement.executeUpdate();
-            return rowsUpdated > 0;
-        } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
-            throw new RuntimeException(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing connection: " + e.getMessage());
-                }
-            }
-        }
-    }
-
-
-    public boolean deleteDeliveryAgent(int id) throws SQLException {
-        String sql = "DELETE FROM DeliveryAgent WHERE id = ?";
-
-        try {
-            this.initConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-
-            int rowsAffected = preparedStatement.executeUpdate();
-
+            int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
-
-        } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
-            throw new RuntimeException(e);  // Re-throw exception
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing connection: " + e.getMessage());
-                }
-            }
         }
     }
 
     public List<DeliveryAgent> retrieveDeliveryAgents() {
         List<DeliveryAgent> deliveryAgents = new ArrayList<>();
-        String sql = "SELECT * FROM deliveryagent";
+        String query = "SELECT * FROM deliveryAgent";
 
-        try {
-            this.initConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int mobileNo = resultSet.getInt("mobileNo");
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String city = resultSet.getString("city");
-
-                DeliveryAgent deliveryAgent = new DeliveryAgent(id, name, city, mobileNo);
+            while (rs.next()) {
+                DeliveryAgent deliveryAgent = new DeliveryAgent(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("city"),
+                        rs.getInt("mobileNo")
+                );
                 deliveryAgents.add(deliveryAgent);
             }
         } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing connection: " + e.getMessage());
-                }
-            }
+            e.printStackTrace();
         }
         return deliveryAgents;
     }
 
-    public DeliveryAgent retrieveDeliveryAgent(int id, String name) {
-        DeliveryAgent deliveryAgent = null;
-        String sql = "SELECT * FROM deliveryagent WHERE id = ? AND name = ?";
+    public DeliveryAgent findById(int id) throws SQLException {
+        String query = "SELECT * FROM deliveryagent WHERE id = ?";
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
 
-        try {
-            this.initConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            preparedStatement.setString(2, name);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String city = resultSet.getString("city");
-                int mobileNo = resultSet.getInt("mobileNo");
-
-                deliveryAgent = new DeliveryAgent(id, name, city, mobileNo);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing connection: " + e.getMessage());
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new DeliveryAgent(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("city"),
+                            rs.getInt("mobileNo")
+                    );
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return deliveryAgent;
+        return null; // Return null if no DeliveryAgent is found
+    }
+
+    public boolean deleteDeliveryAgent(int id) {
+        String query = "DELETE FROM deliveryAgent WHERE id = ?";
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setInt(1, id);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) {
+        String query = "UPDATE deliveryAgent SET name = ?, city = ?, mobileNo = ? WHERE id = ?";
+
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, deliveryAgent.getName());
+            ps.setString(2, deliveryAgent.getCity());
+            ps.setInt(3, deliveryAgent.getMobileNo());
+            ps.setInt(4, deliveryAgent.getId());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

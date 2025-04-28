@@ -15,7 +15,7 @@ public class DeliveryAgentService {
     private final DeliveryAgentRepository deliveryAgentRepository;
 
     public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
-        return deliveryAgentRepository.insertDeliveryAgent(deliveryAgent);
+        return deliveryAgentRepository.addDeliveryAgent(deliveryAgent);
     }
     public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
         return deliveryAgentRepository.updateDeliveryAgent(deliveryAgent);
@@ -25,9 +25,10 @@ public class DeliveryAgentService {
         return deliveryAgentRepository.deleteDeliveryAgent(id);
     }
 
-    public DeliveryAgent getDeliveryAgentByIdAndName(int id, String name) throws SQLException {
-        return deliveryAgentRepository.retrieveDeliveryAgent(id, name);
+    public DeliveryAgent getDeliveryAgentById(int id) throws SQLException {
+        return deliveryAgentRepository.findById(id);
     }
+
 
     public List<DeliveryAgent> retrieveAllDeliveryAgents() throws SQLException {
         return deliveryAgentRepository.retrieveDeliveryAgents();

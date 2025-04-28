@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class OrderStatus {
-    private Long id;              // Unique identifier for the order status
-    private String status;        // Status of the order (e.g., Pending, In Progress, Delivered)
-    private String description;   // Description or notes related to the order status
+    private long id;
+    private String status;
+    private String description;
 }

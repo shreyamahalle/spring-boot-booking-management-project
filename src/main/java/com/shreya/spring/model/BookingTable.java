@@ -23,7 +23,4 @@ public class BookingTable {
 
     public BookingTable(long id, String customerName, String restaurantName, Time bookingTime, int numberOfPeople, String status) {
     }
-
-    // public BookingTable(long id, String customerName, String restaurantName, String bookingTime, int numberOfPeople, String status) {
-    
 }

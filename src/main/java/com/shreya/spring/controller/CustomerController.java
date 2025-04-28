@@ -18,8 +18,7 @@ public class CustomerController {
 
     @PostMapping
     public String addCustomer(@RequestBody Customer customer) throws SQLException {
-        customerService.addCustomer(customer);
-        return "Customer created successfully!";
+       return customerService.addCustomer(customer);
     }
 
     @GetMapping

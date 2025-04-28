@@ -99,19 +99,17 @@ public class CustomerRepository {
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            // Set the customer details in the query
             ps.setString(1, customer.getName());
             ps.setString(2, customer.getCity());
             ps.setInt(3, customer.getMobileNo());
             ps.setInt(4, customer.getAge());
-            ps.setInt(5, customer.getId()); // Use customer ID to locate the record to update
+            ps.setInt(5, customer.getId());
 
-            // Execute the update
             int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0; // Returns true if the update is successful
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // Returns false if there's an error
+            return false;
         }
     }
 }

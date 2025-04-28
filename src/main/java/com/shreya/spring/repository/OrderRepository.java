@@ -17,12 +17,12 @@ public class OrderRepository {
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, order.getId());
-            preparedStatement.setString(2, order.getType());
-            preparedStatement.setString(3, order.getNote());
-            preparedStatement.setString(4, order.getPaymentMethod());
+             preparedStatement.setInt(1, order.getId());
+             preparedStatement.setString(2, order.getType());
+             preparedStatement.setString(3, order.getNote());
+             preparedStatement.setString(4, order.getPaymentMethod());
 
-            preparedStatement.executeUpdate();
+             preparedStatement.executeUpdate();
         }
     }
 

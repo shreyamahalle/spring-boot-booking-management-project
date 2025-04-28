@@ -16,8 +16,9 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public void addCustomer(Customer customer) throws SQLException {
+    public String addCustomer(Customer customer) throws SQLException {
         customerRepository.addCustomer(customer);
+        return null;
     }
 
     public boolean deleteCustomer(int id) throws SQLException {

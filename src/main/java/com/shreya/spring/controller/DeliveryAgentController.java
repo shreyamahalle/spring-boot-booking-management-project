@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/deliveryAgents")
@@ -22,6 +23,7 @@ public class DeliveryAgentController {
         boolean success = deliveryAgentService.addDeliveryAgent(deliveryAgent);
         return success ? "Delivery Agent added successfully" : "Failed to add Delivery Agent";
     }
+
     @PutMapping("/{id}")
     public String updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         deliveryAgent.setId(id);
@@ -40,8 +42,8 @@ public class DeliveryAgentController {
         return deliveryAgentService.retrieveAllDeliveryAgents();
     }
 
-    @GetMapping("/{id}/{name}")
-    public DeliveryAgent getDeliveryAgentByIdAndName(@PathVariable int id, @PathVariable String name) throws SQLException {
-        return deliveryAgentService.getDeliveryAgentByIdAndName(id, name);
+    @GetMapping("/{id}")
+    public DeliveryAgent getDeliveryAgentById(@PathVariable int id) throws SQLException {
+        return deliveryAgentService.getDeliveryAgentById(id);
     }
 }

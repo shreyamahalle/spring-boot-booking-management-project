@@ -13,12 +13,12 @@ import java.util.Optional;
 @Repository
 public class BookingTableRepository {
 
-    public boolean addBooking(BookingTable bookingTable) {
+    public boolean addBooking(BookingTable bookingTable) throws SQLException {
+
         if (bookingTable.getCustomerName() == null || bookingTable.getCustomerName().isEmpty()) {
             throw new IllegalArgumentException("Customer name cannot be null or empty.");
         }
 
-        // Format the booking time to a string (Adjust format if needed)
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedBookingTime = bookingTable.getBookingTime().format(formatter);
 
@@ -27,20 +27,17 @@ public class BookingTableRepository {
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            // Set parameters
             ps.setString(1, bookingTable.getCustomerName());
             ps.setString(2, bookingTable.getRestaurantName());
-            ps.setString(3, formattedBookingTime);  // Set formatted booking time
+            ps.setString(3, formattedBookingTime);
             ps.setInt(4, bookingTable.getNumberOfPeople());
             ps.setString(5, bookingTable.getStatus());
 
-            // Execute query
             int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;  // Return true if a row was inserted
+            return rowsAffected > 0;
         } catch (SQLException e) {
-            // Log the exception for debugging purposes
+
             e.printStackTrace();
-            // Optionally, throw a custom exception or return false if necessary
             return false;
         }
     }
