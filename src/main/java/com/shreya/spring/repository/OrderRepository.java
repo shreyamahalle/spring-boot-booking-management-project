@@ -4,7 +4,10 @@ import com.shreya.spring.model.Order;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +20,12 @@ public class OrderRepository {
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-             preparedStatement.setInt(1, order.getId());
-             preparedStatement.setString(2, order.getType());
-             preparedStatement.setString(3, order.getNote());
-             preparedStatement.setString(4, order.getPaymentMethod());
+            preparedStatement.setInt(1, order.getId());
+            preparedStatement.setString(2, order.getType());
+            preparedStatement.setString(3, order.getNote());
+            preparedStatement.setString(4, order.getPaymentMethod());
 
-             preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         }
     }
 

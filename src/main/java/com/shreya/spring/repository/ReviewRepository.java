@@ -6,7 +6,10 @@ import com.shreya.spring.model.Review;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,6 +103,7 @@ public class ReviewRepository {
             return false;
         }
     }
+
     public boolean updateReview(Review review) {
         if (review.getId() == null) {
             throw new IllegalArgumentException("Review ID is required for update");

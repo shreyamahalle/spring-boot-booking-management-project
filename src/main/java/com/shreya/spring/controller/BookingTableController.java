@@ -20,8 +20,9 @@ public class BookingTableController {
     public BookingTableController(BookingTableService bookingTableService) {
         this.bookingTableService = bookingTableService;
     }
+
     @PostMapping
-    public String bookingTableController (@RequestBody BookingTable bookingTable) throws SQLException {
+    public String bookingTableController(@RequestBody BookingTable bookingTable) throws SQLException {
         bookingTableService.addBooking(bookingTable);
         return bookingTableController(bookingTable);
     }
@@ -31,6 +32,7 @@ public class BookingTableController {
         List<BookingTable> bookings = bookingTableService.getAllBookings();
         return ResponseEntity.ok(bookings);
     }
+
     @GetMapping
     public List<BookingTable> getAllCustomers() {
         return bookingTableService.getAllBookings();

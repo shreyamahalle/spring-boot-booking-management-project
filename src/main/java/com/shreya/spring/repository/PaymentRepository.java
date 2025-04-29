@@ -11,14 +11,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class PaymentRepository {
 
     public boolean addPayment(Payment payment) throws SQLException {
         String query = "INSERT INTO payment(id,orderrid, amount, payment_method, payment_status,transaction_id )VALUES (?, ?, ?, ?, ?, ?)";
 
-        try(Connection connection = ConnectionService.getConnection();
-            PreparedStatement ps = connection.prepareStatement(query)) {
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setLong(1, payment.getId());
             ps.setInt(2, payment.getOrder().getId());
             ps.setDouble(3, payment.getAmount());
@@ -26,8 +27,7 @@ public class PaymentRepository {
             ps.setString(5, payment.getPaymentStatus());
             ps.setString(6, payment.getTransactionId());
             return ps.executeUpdate() > 0;
-        }
-    catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

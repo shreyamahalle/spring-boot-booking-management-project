@@ -24,18 +24,20 @@ public class OrderStatusController {
     public List<OrderStatus> getAllOrderStatus() throws SQLException {
         return orderStatusService.getAllOrderStatus();
     }
+
     @GetMapping("/{id}")
     public OrderStatus getOrderStatusById(@PathVariable long id) throws SQLException {
         return orderStatusService.getOrderStatusById(id);
     }
 
     @PutMapping("/{id}")
-    public boolean updateOrderStatus(@PathVariable long id, OrderStatus orderStatus){
+    public boolean updateOrderStatus(@PathVariable long id, OrderStatus orderStatus) {
         orderStatus.setId(id);
-       return orderStatusService.updateOrderStatus(orderStatus);
+        return orderStatusService.updateOrderStatus(orderStatus);
     }
+
     @DeleteMapping("/{id}")
-    public boolean deleteOderStatus(@PathVariable long id){
-       return orderStatusService.deleteOrderStatus(id);
+    public boolean deleteOderStatus(@PathVariable long id) {
+        return orderStatusService.deleteOrderStatus(id);
     }
 }

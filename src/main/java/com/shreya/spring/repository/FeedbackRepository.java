@@ -6,7 +6,10 @@ import com.shreya.spring.model.Order;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

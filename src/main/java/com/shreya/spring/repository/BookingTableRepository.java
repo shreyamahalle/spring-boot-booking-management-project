@@ -41,6 +41,7 @@ public class BookingTableRepository {
             return false;
         }
     }
+
     public List<BookingTable> retrieveBookings() {
         List<BookingTable> bookings = new ArrayList<>();
         String query = "SELECT * FROM booking_table";

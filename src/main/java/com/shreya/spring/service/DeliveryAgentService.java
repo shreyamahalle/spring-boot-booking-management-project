@@ -17,6 +17,7 @@ public class DeliveryAgentService {
     public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
         return deliveryAgentRepository.addDeliveryAgent(deliveryAgent);
     }
+
     public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
         return deliveryAgentRepository.updateDeliveryAgent(deliveryAgent);
     }

@@ -16,19 +16,21 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public String addOrder(@RequestBody Order order){
+    public String addOrder(@RequestBody Order order) {
         orderService.addOrder(order);
         return "Oder created successfully!!!!";
     }
+
     @GetMapping
-    public List<Order> getAllOrders(){
+    public List<Order> getAllOrders() {
         return orderService.retrieveAllOrders();
     }
 
     @GetMapping("/{id}/{type}")
-    public Order getOrderIdAndType(int id,String type){
-        return  orderService.retrieveOrderByIdAndType(id,type);
+    public Order getOrderIdAndType(int id, String type) {
+        return orderService.retrieveOrderByIdAndType(id, type);
     }
+
     @PutMapping("/{id}")
     public String updateOrder(@PathVariable int id, @RequestBody Order order) throws SQLException {
         order.setId(id);
