@@ -35,7 +35,7 @@ public class BookingTableService {
         return bookingTableRepository.deleteBooking(id);
     }
 
-    public boolean updateBooking(BookingTable bookingTable) {
+    public boolean updateBooking(long id, BookingTable bookingTable) {
         return bookingTableRepository.updateBooking(bookingTable);
     }
 }
