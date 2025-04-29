@@ -10,38 +10,38 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/deliveryAgents")
+@RequestMapping("api/deliveryAgentManagement")
 @RequiredArgsConstructor
 public class DeliveryAgentController {
 
     @Autowired
     private final DeliveryAgentService deliveryAgentService;
 
-    @PostMapping
+    @PostMapping("/deliveryAgent")
     public String addDeliveryAgent(@RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         boolean success = deliveryAgentService.addDeliveryAgent(deliveryAgent);
         return success ? "Delivery Agent added successfully" : "Failed to add Delivery Agent";
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/deliveryAgent/{id}")
     public String updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         deliveryAgent.setId(id);
         deliveryAgentService.updateDeliveryAgent(deliveryAgent);
         return "DeliveryAgent updated successfully!";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deliveryAgent/{id}")
     public String deleteDeliveryAgent(@PathVariable int id) throws SQLException {
         boolean success = deliveryAgentService.deleteDeliveryAgent(id);
         return success ? "Delivery Agent deleted successfully" : "Failed to delete Delivery Agent";
     }
 
-    @GetMapping
+    @GetMapping("/deliveryAgent")
     public List<DeliveryAgent> getAllDeliveryAgents() throws SQLException {
         return deliveryAgentService.retrieveAllDeliveryAgents();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/deliveryAgent/{id}")
     public DeliveryAgent getDeliveryAgentById(@PathVariable int id) throws SQLException {
         return deliveryAgentService.getDeliveryAgentById(id);
     }

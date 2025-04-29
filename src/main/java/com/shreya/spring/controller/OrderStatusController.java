@@ -9,34 +9,34 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/orderstatusmanagement")
+@RequestMapping("/api/orderStatusManagement")
 public class OrderStatusController {
 
     @Autowired
     private OrderStatusService orderStatusService;
 
-    @PostMapping
+    @PostMapping("/orderStatus")
     public boolean addOrderStatus(@RequestBody OrderStatus orderStatus) throws SQLException {
         return orderStatusService.addOrderStatus(orderStatus);
     }
 
-    @GetMapping
+    @GetMapping("/orderStatus")
     public List<OrderStatus> getAllOrderStatus() throws SQLException {
         return orderStatusService.getAllOrderStatus();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/orderStatus/{id}")
     public OrderStatus getOrderStatusById(@PathVariable long id) throws SQLException {
         return orderStatusService.getOrderStatusById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/orderStatus/{id}")
     public boolean updateOrderStatus(@PathVariable long id, OrderStatus orderStatus) {
         orderStatus.setId(id);
         return orderStatusService.updateOrderStatus(orderStatus);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/orderStatus/{id}")
     public boolean deleteOderStatus(@PathVariable long id) {
         return orderStatusService.deleteOrderStatus(id);
     }

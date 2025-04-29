@@ -9,38 +9,35 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/orderManagement")
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @PostMapping
+    @PostMapping("/order")
     public String addOrder(@RequestBody Order order) {
-        orderService.addOrder(order);
-        return "Oder created successfully!!!!";
+        return orderService.addOrder(order);
     }
 
-    @GetMapping
+    @GetMapping("/order")
     public List<Order> getAllOrders() {
         return orderService.retrieveAllOrders();
     }
 
-    @GetMapping("/{id}/{type}")
-    public Order getOrderIdAndType(int id, String type) {
+    @GetMapping("/order/{id}/{type}")
+    public Order getOrderIdAndType(@PathVariable int id, @PathVariable String type) {
         return orderService.retrieveOrderByIdAndType(id, type);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/order/{id}")
     public String updateOrder(@PathVariable int id, @RequestBody Order order) throws SQLException {
         order.setId(id);
-        orderService.updateOrder(order);
-        return "Order updated successfully!";
+        return orderService.updateOrder(order);
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteOrder(@PathVariable int id) throws SQLException {
-        boolean success = Boolean.parseBoolean(orderService.deleteOrder(id));
-        return success ? "Order deleted successfully" : "Failed to delete Order";
+    @DeleteMapping("/order/{id}")
+    public boolean deleteOrder(@PathVariable int id) throws SQLException {
+        return Boolean.parseBoolean(orderService.deleteOrder(id));
     }
 }

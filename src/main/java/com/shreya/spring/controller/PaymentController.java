@@ -9,34 +9,34 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/payments")
+@RequestMapping("/api/paymentManagement")
 public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
 
-    @PostMapping
+    @PostMapping("/payment")
     public boolean addPayment(@RequestBody Payment payment) throws SQLException {
         return paymentService.addPayment(payment);
     }
 
-    @GetMapping
+    @GetMapping("/payment")
     public List<Payment> getAllPayments() throws SQLException {
         return paymentService.getAllPayments();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/payment/{id}")
     public Payment getPaymentById(@PathVariable int id) throws SQLException {
         return paymentService.getPaymentById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/payment/{id}")
     public boolean updatePayment(@PathVariable int id, @RequestBody Payment payment) throws SQLException {
         payment.setId((long) id);
         return paymentService.updatePayment(payment);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/payment/{id}")
     public boolean deletePayment(@PathVariable int id) throws SQLException {
         return paymentService.deletePayment(id);
     }

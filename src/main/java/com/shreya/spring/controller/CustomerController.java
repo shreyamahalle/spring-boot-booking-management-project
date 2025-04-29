@@ -10,35 +10,35 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customermanagement")  // Base URL: /customers
+@RequestMapping("/api/customerManagement")  // Base URL: /customers
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping
+    @PostMapping("/customer")
     public String addCustomer(@RequestBody Customer customer) throws SQLException {
         return customerService.addCustomer(customer);
     }
 
-    @GetMapping
+    @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
         return customerService.retrieveCustomers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/customer/{id}")
     public Customer getCustomerById(@PathVariable int id) throws CustomerNotfound {
         return customerService.getCustomerById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/customer/{id}")
     public String updateCustomer(@PathVariable int id, @RequestBody Customer customer) throws SQLException {
         customer.setId(id);
         customerService.updateCustomer(customer);
         return "Customer updated successfully!";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/customer/{id}")
     public String deleteCustomer(@PathVariable int id) throws SQLException {
         customerService.deleteCustomer(id);
         return "Customer deleted successfully!";

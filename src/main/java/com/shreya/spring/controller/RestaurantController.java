@@ -9,13 +9,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/restaurants")
+@RequestMapping("/api/restaurantManagement")
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
-    @PostMapping
+    @PostMapping("/restaurant")
     public String createRestaurant(@RequestBody Restaurant restaurant) {
         try {
             restaurantService.insertRestaurant(restaurant);
@@ -25,12 +25,12 @@ public class RestaurantController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/restaurant")
     public List<Restaurant> getAllRestaurants() {
         return restaurantService.retrieveRestaurants();
     }
 
-    @GetMapping("/{id}/{name}")
+    @GetMapping("/restaurant/{id}/{name}")
     public Restaurant getRestaurant(@PathVariable int id, @PathVariable String name) {
         Restaurant restaurant = restaurantService.getRestaurantById(id, name);
         if (restaurant != null) {
@@ -46,7 +46,7 @@ public class RestaurantController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/restaurant/{id}")
     public String deleteRestaurant(@PathVariable int id) {
         try {
             if (restaurantService.deleteRestaurant(id)) {
@@ -59,7 +59,7 @@ public class RestaurantController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/restaurant/{id}")
     public String updateRestaurant(@PathVariable int id, @RequestParam String name) {
         try {
             if (restaurantService.updateRestaurant(id, name)) {
