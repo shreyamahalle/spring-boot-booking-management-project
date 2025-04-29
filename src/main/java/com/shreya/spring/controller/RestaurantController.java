@@ -74,19 +74,3 @@ public class RestaurantController {
 }
 
 
-//    @PutMapping("/{registerno}")
-//    public ResponseEntity<String> updateRestaurant(@PathVariable int registerno, @RequestParam String name) {
-//        try {
-//            boolean updated = restaurantService.updateRestaurant(registerno, name);
-//            if (updated) {
-//                return ResponseEntity.ok("Restaurant updated successfully!");
-//            } else {
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//                        .body("Failed to update restaurant.");
-//            }
-//        } catch (SQLException e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Error while updating restaurant: " + e.getMessage());
-//        }
-//    }
-//}
