@@ -37,8 +37,5 @@ public class RestaurantService {
     // 5. Update Restaurant Name by ID
     public boolean updateRestaurant(int id) throws SQLException {
         return restaurantRepository.updateRestaurant(id);
-
-//    public boolean updateRestaurant(int registerno, String name) throws SQLException {
-//        return restaurantRepository.updateRestaurant(registerno, name);
     }
 }

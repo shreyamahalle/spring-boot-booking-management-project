@@ -16,7 +16,7 @@ import java.util.List;
 public class RestaurantRepository {
 
     public void addRestaurant(Restaurant restaurant) throws SQLException {
-        String query = "INSERT INTO restaurant (registerNo, name, city, area) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO restaurant (id, name, city, area) VALUES (?, ?, ?, ?)";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -42,12 +42,12 @@ public class RestaurantRepository {
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-                int registerNo = resultSet.getInt("registerNo");
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String city = resultSet.getString("city");
                 String area = resultSet.getString("area");
 
-                Restaurant restaurant = new Restaurant(registerNo, name, city, area);
+                Restaurant restaurant = new Restaurant(id, name, city, area);
                 restaurants.add(restaurant);
             }
         } catch (SQLException e) {
@@ -56,22 +56,23 @@ public class RestaurantRepository {
         return restaurants;
     }
 
-    public Restaurant retrieveRestaurant(int registerNo, String name) {
+    public Restaurant retrieveRestaurant(int id) {
         Restaurant restaurant = null;
-        String sql = "SELECT * FROM restaurant WHERE registerNo = ? AND name = ?";
+        String sql = "SELECT * FROM restaurant WHERE id = ? AND name = ?";
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setInt(1, registerNo);
-            preparedStatement.setString(2, name);
+            preparedStatement.setInt(1, id);
+
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
+                    String name = resultSet.getString("name");
                     String city = resultSet.getString("city");
                     String area = resultSet.getString("area");
 
-                    restaurant = new Restaurant(registerNo, name, city, area);
+                    restaurant = new Restaurant(id, name, city, area);
                 }
             }
         } catch (SQLException e) {
@@ -80,25 +81,24 @@ public class RestaurantRepository {
         return restaurant;
     }
 
-    public boolean deleteRestaurant(int registerNo) throws SQLException {
-        String query = "DELETE FROM restaurant WHERE registerNo = ?";
+    public boolean deleteRestaurant(int id) throws SQLException {
+        String query = "DELETE FROM restaurant WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, registerNo);
+            preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean updateRestaurant(int registerNo) throws SQLException {
-        String sql = "UPDATE restaurant SET name = ? WHERE registerNo = ?";
+    public boolean updateRestaurant(int id) throws SQLException {
+        String sql = "UPDATE restaurant SET id = ? WHERE id = ?;";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, name);
-            preparedStatement.setInt(2, registerNo);
+            preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
