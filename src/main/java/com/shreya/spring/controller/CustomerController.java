@@ -32,15 +32,13 @@ public class CustomerController {
     }
 
     @PutMapping("/customer/{id}")
-    public String updateCustomer(@PathVariable int id, @RequestBody Customer customer) throws SQLException {
+    public boolean updateCustomer(@PathVariable int id, @RequestBody Customer customer) throws SQLException {
         customer.setId(id);
-        customerService.updateCustomer(customer);
-        return "Customer updated successfully!";
+      return customerService.updateCustomer(customer);
     }
 
     @DeleteMapping("/customer/{id}")
-    public String deleteCustomer(@PathVariable int id) throws SQLException {
-        customerService.deleteCustomer(id);
-        return "Customer deleted successfully!";
+    public boolean deleteCustomer(@PathVariable int id) throws SQLException {
+         return customerService.deleteCustomer(id);
     }
 }
