@@ -8,7 +8,6 @@ import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class BookingTableRepository {
@@ -67,7 +66,7 @@ public class BookingTableRepository {
         return bookings;
     }
 
-    public Optional<BookingTable> findById(Long id) {
+    public BookingTable findById(Long id) {
         String query = "SELECT * FROM booking_table WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -83,13 +82,12 @@ public class BookingTableRepository {
                             rs.getInt("number_of_people"),
                             rs.getString("status")
                     );
-                    return Optional.of(bookingTable);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.empty();
+        return null;
     }
 
     public boolean deleteBooking(Long id) {

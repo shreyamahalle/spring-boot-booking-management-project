@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -25,7 +24,7 @@ public class BookingTableService {
         return bookingTableRepository.retrieveBookings();
     }
 
-    public Optional<BookingTable> getBookingById(Long id) {
+    public BookingTable getBookingById(Long id) {
         return bookingTableRepository.findById(id);
     }
 

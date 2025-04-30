@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tableBookingManagement")
@@ -28,8 +27,8 @@ public class BookingTableController {
 
     @GetMapping("/tableBooking/{id}")
     public BookingTable getBookingById(@PathVariable Long id) {
-        Optional<BookingTable> booking = bookingTableService.getBookingById(id);
-        return booking.orElse(null);
+        System.out.println("Inside controller " + getBookingById(id));
+        return bookingTableService.getBookingById(id);
     }
 
     @PutMapping("/tableBooking/{id}")
