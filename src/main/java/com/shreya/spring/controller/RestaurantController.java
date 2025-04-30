@@ -31,15 +31,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurant/{id}/{name}")
-    public Restaurant getRestaurant(@PathVariable int id, @PathVariable String name) {
-        Restaurant restaurant = restaurantService.getRestaurantById(id, name);
+    public Restaurant getRestaurant(@PathVariable int id) {
+        Restaurant restaurant = restaurantService.getRestaurantById(id);
         if (restaurant != null) {
             System.out.println("Restaurant Details: ");
             System.out.println("id: " + restaurant.getId());
-            System.out.println("Name: " + restaurant.getName());
 
         } else {
-            System.out.println("Restaurant not found with id: " + id + " and Name: " + name);
+            System.out.println("Restaurant not found with id: " + id );
         }
 
         return restaurant;
@@ -60,9 +59,9 @@ public class RestaurantController {
     }
 
     @PutMapping("/restaurant/{id}")
-    public String updateRestaurant(@PathVariable int id, @RequestParam String name) {
+    public String updateRestaurant(@PathVariable int id) {
         try {
-            if (restaurantService.updateRestaurant(id, name)) {
+            if (restaurantService.updateRestaurant(id)) {
                 return "Restaurant updated successfully!";
             } else {
                 return "Failed to update restaurant.";

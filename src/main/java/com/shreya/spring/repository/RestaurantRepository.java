@@ -92,7 +92,7 @@ public class RestaurantRepository {
         }
     }
 
-    public boolean updateRestaurant(int registerNo, String name) throws SQLException {
+    public boolean updateRestaurant(int registerNo) throws SQLException {
         String sql = "UPDATE restaurant SET name = ? WHERE registerNo = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

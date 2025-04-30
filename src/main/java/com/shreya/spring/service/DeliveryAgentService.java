@@ -3,6 +3,7 @@ package com.shreya.spring.service;
 import com.shreya.spring.model.DeliveryAgent;
 import com.shreya.spring.repository.DeliveryAgentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeliveryAgentService {
 
+    @Autowired
     private final DeliveryAgentRepository deliveryAgentRepository;
 
     public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
