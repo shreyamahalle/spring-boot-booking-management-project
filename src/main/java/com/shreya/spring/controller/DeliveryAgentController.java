@@ -18,22 +18,19 @@ public class DeliveryAgentController {
     private final DeliveryAgentService deliveryAgentService;
 
     @PostMapping("/deliveryAgent")
-    public String addDeliveryAgent(@RequestBody DeliveryAgent deliveryAgent) throws SQLException {
-        boolean success = deliveryAgentService.addDeliveryAgent(deliveryAgent);
-        return success ? "Delivery Agent added successfully" : "Failed to add Delivery Agent";
+    public boolean addDeliveryAgent(@RequestBody DeliveryAgent deliveryAgent) throws SQLException {
+        return deliveryAgentService.addDeliveryAgent(deliveryAgent);
     }
 
     @PutMapping("/deliveryAgent/{id}")
-    public String updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
+    public boolean updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         deliveryAgent.setId(id);
-        deliveryAgentService.updateDeliveryAgent(deliveryAgent);
-        return "DeliveryAgent updated successfully!";
+        return deliveryAgentService.updateDeliveryAgent(deliveryAgent);
     }
 
     @DeleteMapping("/deliveryAgent/{id}")
-    public String deleteDeliveryAgent(@PathVariable int id) throws SQLException {
-        boolean success = deliveryAgentService.deleteDeliveryAgent(id);
-        return success ? "Delivery Agent deleted successfully" : "Failed to delete Delivery Agent";
+    public boolean deleteDeliveryAgent(@PathVariable int id) throws SQLException {
+        return deliveryAgentService.deleteDeliveryAgent(id);
     }
 
     @GetMapping("/deliveryAgent")

@@ -17,9 +17,8 @@ public class FeedbackController {
     private FeedbackService feedbackService;
 
     @PostMapping("/feedback")
-    public String addFeedback(@RequestBody Feedback feedback) throws SQLException {
-        boolean isAdded = feedbackService.addFeedback(feedback);
-        return isAdded ? "Feedback added successfully." : "Failed to add feedback.";
+    public boolean addFeedback(@RequestBody Feedback feedback) throws SQLException {
+        return feedbackService.addFeedback(feedback);
     }
 
     @GetMapping("/feedback")
@@ -33,14 +32,12 @@ public class FeedbackController {
     }
 
     @DeleteMapping("/feedback/{id}")
-    public String deleteFeedback(@PathVariable Long id) {
-        boolean isDeleted = feedbackService.deleteFeedback(id);
-        return isDeleted ? "Feedback deleted successfully." : "Failed to delete feedback.";
+    public boolean deleteFeedback(@PathVariable Long id) {
+       return feedbackService.deleteFeedback(id);
     }
 
     @PutMapping("/feedback")
-    public String updateFeedback(@RequestBody Feedback feedback) {
-        boolean isUpdated = feedbackService.updateFeedback(feedback);
-        return isUpdated ? "Feedback updated successfully." : "Failed to update feedback.";
+    public boolean updateFeedback(@RequestBody Feedback feedback) {
+       return feedbackService.updateFeedback(feedback);
     }
 }
