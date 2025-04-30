@@ -26,7 +26,7 @@ public class BookingTableController {
     }
 
     @GetMapping("/tableBooking/{id}")
-    public BookingTable getBookingById(@PathVariable Long id) {
+    public BookingTable getBookingById(@PathVariable("id") Long id) {
         System.out.println("Inside controller " + getBookingById(id));
         return bookingTableService.getBookingById(id);
     }
