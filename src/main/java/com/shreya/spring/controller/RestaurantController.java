@@ -40,10 +40,8 @@ public class RestaurantController {
         } else {
             System.out.println("Restaurant not found with id: " + id );
         }
-
         return restaurant;
     }
-
 
     @DeleteMapping("/restaurant/{id}")
     public String deleteRestaurant(@PathVariable int id) {
