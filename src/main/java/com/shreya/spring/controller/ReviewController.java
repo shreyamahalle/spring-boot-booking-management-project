@@ -15,7 +15,7 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping("/dd")
+    @PostMapping("/review")
     public boolean addReview(@RequestBody Review review) throws SQLException {
         return reviewService.addReview(review);
     }
