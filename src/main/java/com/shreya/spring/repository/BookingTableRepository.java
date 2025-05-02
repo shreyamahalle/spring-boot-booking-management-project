@@ -54,7 +54,8 @@ public class BookingTableRepository {
                         rs.getLong("id"),
                         rs.getString("customer_name"),
                         rs.getString("restaurant_name"),
-                        rs.getTime("booking_time"),
+                       // rs.getTime("booking_time"),
+                        rs.getTimestamp("booking_time").toLocalDateTime(),
                         rs.getInt("number_of_people"),
                         rs.getString("status")
                 );
@@ -74,11 +75,11 @@ public class BookingTableRepository {
             ps.setLong(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    BookingTable bookingTable = new BookingTable(
+                    return new BookingTable(
                             rs.getLong("id"),
                             rs.getString("customer_name"),
                             rs.getString("restaurant_name"),
-                            Time.valueOf(rs.getString("booking_time")),
+                            rs.getTimestamp("booking_time").toLocalDateTime(),
                             rs.getInt("number_of_people"),
                             rs.getString("status")
                     );
