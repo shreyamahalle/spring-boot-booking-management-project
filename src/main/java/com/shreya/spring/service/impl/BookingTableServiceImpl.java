@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+
 public class BookingTableServiceImpl implements BookingTableService {
 
     @Autowired
