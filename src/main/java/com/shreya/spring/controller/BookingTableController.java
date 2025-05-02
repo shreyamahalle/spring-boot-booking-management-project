@@ -15,7 +15,7 @@ public class BookingTableController {
     @Autowired
     private BookingTableService bookingTableService;
 
-    @PostMapping
+    @PostMapping("/tableBooking")
     public boolean addBooking(@RequestBody BookingTable bookingTable) throws SQLException {
         return bookingTableService.addBooking(bookingTable);
     }
