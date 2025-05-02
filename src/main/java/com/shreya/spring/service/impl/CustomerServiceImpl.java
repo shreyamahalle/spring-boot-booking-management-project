@@ -44,5 +44,8 @@ public class CustomerServiceImpl implements CustomerService {
             throw new CustomerNotfound("Customer not found with ID: " + id);
         }
     }
-}
 
+    public boolean updatePartialCustomer(Customer customer) throws SQLException {
+        return customerRepository.updatePartialCustomer(customer);
+    }
+}

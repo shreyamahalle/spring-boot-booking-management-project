@@ -41,4 +41,9 @@ public class CustomerController {
     public boolean deleteCustomer(@PathVariable int id) throws SQLException {
          return customerService.deleteCustomer(id);
     }
+
+    @PatchMapping("/customer/{id}")
+    public boolean updatePartialCustomer(@PathVariable("id") int id, @RequestBody Customer customer) throws SQLException {
+        return  customerService.updatePartialCustomer(customer);
+    }
 }

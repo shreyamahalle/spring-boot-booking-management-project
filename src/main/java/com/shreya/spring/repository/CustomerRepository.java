@@ -113,5 +113,25 @@ public class CustomerRepository {
             return false;
         }
     }
+
+    public boolean updatePartialCustomer(Customer customer) throws SQLException {
+        String query = "UPDATE customer SET name = ?, city = ?, mobileNo = ?, age = ? WHERE id = ?";
+
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getCity());
+            ps.setInt(3, customer.getMobileNo());
+            ps.setInt(4, customer.getAge());
+            ps.setInt(5, customer.getId());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 

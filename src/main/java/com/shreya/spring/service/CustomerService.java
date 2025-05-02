@@ -17,4 +17,7 @@ public interface CustomerService {
     List<Customer> retrieveCustomers();
 
     Customer getCustomerById(int id) throws CustomerNotfound;
+
+    boolean updatePartialCustomer(Customer customer)throws SQLException;
+
 }
