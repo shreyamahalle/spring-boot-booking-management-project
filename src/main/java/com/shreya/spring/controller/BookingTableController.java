@@ -40,4 +40,5 @@ public class BookingTableController {
     public boolean deleteBooking(@PathVariable Long id) {
         return bookingTableService.deleteBooking(id);
     }
+
 }
