@@ -16,7 +16,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/order")
-    public String addOrder(@RequestBody Order order) {
+    public String addOrder(@RequestBody Order order) throws SQLException {
         return orderService.addOrder(order);
     }
 
@@ -38,6 +38,6 @@ public class OrderController {
 
     @DeleteMapping("/order/{id}")
     public boolean deleteOrder(@PathVariable int id) throws SQLException {
-        return Boolean.parseBoolean(orderService.deleteOrder(id));
+        return orderService.deleteOrder(id);
     }
 }

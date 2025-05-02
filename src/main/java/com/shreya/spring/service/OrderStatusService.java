@@ -1,36 +1,18 @@
 package com.shreya.spring.service;
 
 import com.shreya.spring.model.OrderStatus;
-import com.shreya.spring.repository.OrderStatusRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
-public class OrderStatusService {
+public interface OrderStatusService {
 
-    @Autowired
-    private OrderStatusRepository orderStatusRepository;
+    boolean addOrderStatus(OrderStatus orderStatus) throws SQLException;
 
-    public boolean addOrderStatus(OrderStatus orderStatus) throws SQLException {
-        return orderStatusRepository.addorderStatus(orderStatus);
-    }
+    List<OrderStatus> getAllOrderStatus() throws SQLException;
 
-    public List<OrderStatus> getAllOrderStatus() throws SQLException {
-        return orderStatusRepository.retrieveOrderStatuses();
-    }
+    OrderStatus getOrderStatusById(Long id) throws SQLException;
 
-    public OrderStatus getOrderStatusById(Long id) throws SQLException {
-        return orderStatusRepository.retrieveOrderStatus(id);
-    }
+    boolean updateOrderStatus(OrderStatus orderStatus);
 
-    public boolean updateOrderStatus(OrderStatus orderStatus) {
-        return orderStatusRepository.updateOrderStatus(orderStatus);
-    }
-
-    public boolean deleteOrderStatus(Long id) {
-        return orderStatusRepository.deleteOrderStatus(id);
-    }
+    boolean deleteOrderStatus(Long id);
 }

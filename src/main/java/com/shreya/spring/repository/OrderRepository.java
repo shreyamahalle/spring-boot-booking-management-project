@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class OrderRepository {
 
-    public void addOrder(Order order) throws SQLException {
+    public String addOrder(Order order) throws SQLException {
         String query = "INSERT INTO orderr (id, type, note, paymentMethod) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = ConnectionService.getConnection();
@@ -27,6 +27,7 @@ public class OrderRepository {
 
             preparedStatement.executeUpdate();
         }
+        return query;
     }
 
     public List<Order> retrieveOrders() {

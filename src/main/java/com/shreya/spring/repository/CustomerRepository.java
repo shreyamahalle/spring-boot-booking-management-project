@@ -56,7 +56,7 @@ public class CustomerRepository {
         return customers;
     }
 
-    public Optional<Customer> findById(int id) {
+    public Customer findById(int id) {
         String query = "SELECT * FROM customer WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -71,13 +71,14 @@ public class CustomerRepository {
                             rs.getInt("mobileNo"),
                             rs.getInt("age")
                     );
-                    return Optional.of(customer);
+
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.empty();
+
+        return null;
     }
 
     public boolean deleteCustomer(int id) {

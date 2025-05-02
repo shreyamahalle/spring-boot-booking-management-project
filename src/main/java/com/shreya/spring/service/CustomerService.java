@@ -2,46 +2,19 @@ package com.shreya.spring.service;
 
 import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.model.Customer;
-import com.shreya.spring.repository.CustomerRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@RequiredArgsConstructor
-public class CustomerService {
+public interface CustomerService {
 
-    @Autowired
-    private final CustomerRepository customerRepository;
+    String addCustomer(Customer customer) throws SQLException;
 
-    public String addCustomer(Customer customer) throws SQLException {
-        customerRepository.addCustomer(customer);
-        return null;
-    }
+    boolean  deleteCustomer(int id) throws SQLException;
 
-    public boolean deleteCustomer(int id) throws SQLException {
-        return customerRepository.deleteCustomer(id);
-    }
+    boolean updateCustomer(Customer customer) throws SQLException;
 
-    public boolean updateCustomer(Customer customer) throws SQLException {
-        return customerRepository.updateCustomer(customer);
-    }
+    List<Customer> retrieveCustomers();
 
-
-    public List<Customer> retrieveCustomers() {
-        return customerRepository.retrieveCustomers();
-    }
-
-    public Customer getCustomerById(int id) throws CustomerNotfound {
-        Optional<Customer> optionalCustomer = customerRepository.findById(id);
-        if (optionalCustomer.isPresent()) {
-            return optionalCustomer.get();
-        } else {
-            throw new CustomerNotfound("Customer not found with ID: " + id);
-        }
-    }
+    Customer getCustomerById(int id) throws CustomerNotfound;
 }

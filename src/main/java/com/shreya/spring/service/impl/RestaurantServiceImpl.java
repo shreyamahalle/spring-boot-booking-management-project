@@ -1,4 +1,42 @@
 package com.shreya.spring.service.impl;
 
-public class RestaurantServiceImpl {
+import com.shreya.spring.model.Restaurant;
+import com.shreya.spring.repository.RestaurantRepository;
+import com.shreya.spring.service.RestaurantService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+@Service
+public class RestaurantServiceImpl implements RestaurantService {
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Override
+    public void insertRestaurant(Restaurant restaurant) throws SQLException {
+        restaurantRepository.addRestaurant(restaurant);
+    }
+
+    @Override
+    public List<Restaurant> retrieveRestaurants() {
+        return restaurantRepository.retrieveRestaurants();
+    }
+
+    @Override
+    public Restaurant getRestaurantById(int id) {
+        return restaurantRepository.retrieveRestaurant(id);
+    }
+
+    @Override
+    public boolean deleteRestaurant(int id) throws SQLException {
+        return restaurantRepository.deleteRestaurant(id);
+    }
+
+    @Override
+    public boolean updateRestaurant(int id) throws SQLException {
+        return restaurantRepository.updateRestaurant(id);
+    }
 }

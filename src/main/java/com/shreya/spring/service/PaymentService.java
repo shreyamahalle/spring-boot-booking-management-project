@@ -1,36 +1,18 @@
 package com.shreya.spring.service;
 
 import com.shreya.spring.model.Payment;
-import com.shreya.spring.repository.PaymentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
-public class PaymentService {
+public interface PaymentService {
 
-    @Autowired
-    private PaymentRepository paymentRepository;
+    boolean addPayment(Payment payment) throws SQLException;
 
-    public boolean addPayment(Payment payment) throws SQLException {
-        return paymentRepository.addPayment(payment);
-    }
+    List<Payment> getAllPayments() throws SQLException;
 
-    public List<Payment> getAllPayments() throws SQLException {
-        return paymentRepository.findAll();
-    }
+    Payment getPaymentById(int id) throws SQLException;
 
-    public Payment getPaymentById(int id) throws SQLException {
-        return paymentRepository.findById(id);
-    }
+    boolean updatePayment(Payment payment) throws SQLException;
 
-    public boolean updatePayment(Payment payment) throws SQLException {
-        return paymentRepository.update(payment);
-    }
-
-    public boolean deletePayment(int id) throws SQLException {
-        return paymentRepository.delete(id);
-    }
+    boolean deletePayment(int id) throws SQLException;
 }
