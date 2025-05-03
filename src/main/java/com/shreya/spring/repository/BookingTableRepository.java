@@ -1,6 +1,7 @@
 package com.shreya.spring.repository;
 
 import com.shreya.spring.model.BookingTable;
+import com.shreya.spring.model.Customer;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
@@ -124,4 +125,23 @@ public class BookingTableRepository {
             return false;
         }
     }
+//    public boolean updatePartialBookingTable(BookingTable bookingTable) throws SQLException {
+//        String query = "UPDATE booking_table SET customer_name = ?, restaurant_name = ?, booking_time = ?, number_of_people = ?, status = ? WHERE id = ?";
+//
+//        try (Connection connection = ConnectionService.getConnection();
+//             PreparedStatement ps = connection.prepareStatement(query)) {
+//
+//            ps.setString(1, bookingTable.getCustomerName());
+//            ps.setString(2, customer.getCity());
+//            ps.setInt(3, customer.getMobileNo());
+//            ps.setInt(4, customer.getAge());
+//            ps.setInt(5, customer.getId());
+//
+//            int rowsAffected = ps.executeUpdate();
+//            return rowsAffected > 0;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 }
