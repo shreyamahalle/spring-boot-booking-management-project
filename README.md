@@ -165,11 +165,11 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint             | Description               |
 |--------|----------------------|---------------------------|
-| GET    | `/api/customers`     | Get all customers         |
-| GET    | `/api/customers/{id}`| Get customer by ID        |
-| POST   | `/api/customers`     | Add a new customer        |
-| PUT    | `/api/customers/{id}`| Update existing customer  |
-| DELETE | `/api/customers/{id}`| Delete customer by ID     |
+| GET    | `/api/customer`     | Get all customers         |
+| GET    | `/api/customer/{id}`| Get customer by ID        |
+| POST   | `/api/customer`     | Add a new customer        |
+| PUT    | `/api/customer/{id}`| Update existing customer  |
+| DELETE | `/api/customer/{id}`| Delete customer by ID     |
 
 ---
 
