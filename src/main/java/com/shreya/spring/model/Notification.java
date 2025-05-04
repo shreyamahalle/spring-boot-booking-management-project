@@ -8,8 +8,8 @@ import lombok.*;
 @Builder
 public class Notification {
     private Long id;
-    private Long customerId;
+    private Long customer_id;
     private String message;
-    private boolean isRead;
+    private boolean is_read;
     private String timestamp;
 }
