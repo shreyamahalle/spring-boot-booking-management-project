@@ -1,0 +1,42 @@
+package com.shreya.spring.service.impl;
+
+import com.shreya.spring.model.MenuItem;
+import com.shreya.spring.repository.MenuItemRepository;
+import com.shreya.spring.service.MenuItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+@Service
+public class MenuItemServiceImpl implements MenuItemService {
+
+    @Autowired
+    private MenuItemRepository menuItemRepository;
+
+    @Override
+    public boolean addMenuItem(MenuItem menuItem) throws SQLException {
+        return menuItemRepository.addMenuItem(menuItem);
+    }
+
+    @Override
+    public List<MenuItem> getAllMenuItems() {
+        return menuItemRepository.retrieveMenuItems();
+    }
+
+    @Override
+    public MenuItem getMenuItemById(long id) {
+        return menuItemRepository.findById(id);
+    }
+
+    @Override
+    public boolean deleteMenuItem(long id) {
+        return menuItemRepository.deleteMenuItem(id);
+    }
+
+    @Override
+    public boolean updateMenuItem(MenuItem menuItem) {
+        return menuItemRepository.updateMenuItem(menuItem);
+    }
+}
