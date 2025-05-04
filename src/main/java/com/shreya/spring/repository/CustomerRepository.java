@@ -63,7 +63,7 @@ public class CustomerRepository {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    Customer customer = new Customer(
+                    return new Customer(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("city"),
