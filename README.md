@@ -165,11 +165,11 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint             | Description               |
 |--------|----------------------|---------------------------|
-| GET    | `/api/customers`     | Get all customers         |
-| GET    | `/api/customers/{id}`| Get customer by ID        |
-| POST   | `/api/customers`     | Add a new customer        |
-| PUT    | `/api/customers/{id}`| Update existing customer  |
-| DELETE | `/api/customers/{id}`| Delete customer by ID     |
+| GET    | `/api/customer`     | Get all customers         |
+| GET    | `/api/customer/{id}`| Get customer by ID        |
+| POST   | `/api/customer`     | Add a new customer        |
+| PUT    | `/api/customer/{id}`| Update existing customer  |
+| DELETE | `/api/customer/{id}`| Delete customer by ID     |
 
 ---
 
@@ -177,10 +177,10 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint               | Description                 |
 |--------|------------------------|-----------------------------|
-| GET    | `/api/restaurants`     | Get all restaurants         |
-| POST   | `/api/restaurants`     | Add a restaurant            |
-| PUT    | `/api/restaurants/{id}`| Update restaurant           |
-| DELETE | `/api/restaurants/{id}`| Delete restaurant           |
+| GET    | `/api/restaurant`     | Get all restaurants         |
+| POST   | `/api/restaurant`     | Add a restaurant            |
+| PUT    | `/api/restaurant/{id}`| Update restaurant           |
+| DELETE | `/api/restaurant/{id}`| Delete restaurant           |
 
 ---
 
@@ -188,10 +188,10 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint         | Description               |
 |--------|------------------|---------------------------|
-| GET    | `/api/orders`    | Get all orders            |
-| POST   | `/api/orders`    | Place new order           |
-| PUT    | `/api/orders`    | Update order details      |
-| DELETE | `/api/orders `   | Delete order by ID        |
+| GET    | `/api/order`    | Get all orders            |
+| POST   | `/api/order`    | Place new order           |
+| PUT    | `/api/order`    | Update order details      |
+| DELETE | `/api/order `   | Delete order by ID        |
 
 ---
 
@@ -199,10 +199,10 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint                | Description                |
 |--------|-------------------------|----------------------------|
-| GET    | `/api/agents`           | Get all delivery agents    |
-| POST   | `/api/agents`           | Add a delivery agent       |
-| PUT    | `/api/agents/{id}`      | Update agent details       |
-| DELETE | `/api/agents/{id}`      | Delete agent by ID         |
+| GET    | `/api/deliveryAgentagent`           | Get all delivery agents    |
+| POST   | `/api/agent`           | Add a delivery agent       |
+| PUT    | `/api/deliveryAgent/{id}`      | Update agent details       |
+| DELETE | `/api/deliveryAgent/{id}`      | Delete agent by ID         |
 
 ---
 ## Postman Collection
