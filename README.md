@@ -199,7 +199,7 @@ Before you begin, ensure you have the following:
 
 | Method | Endpoint                | Description                |
 |--------|-------------------------|----------------------------|
-| GET    | `/api/agents`           | Get all delivery agents    |
+| GET    | `/api/deliveryAgentagent`           | Get all delivery agents    |
 | POST   | `/api/agents`           | Add a delivery agent       |
 | PUT    | `/api/agents/{id}`      | Update agent details       |
 | DELETE | `/api/agents/{id}`      | Delete agent by ID         |
