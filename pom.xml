@@ -99,21 +99,17 @@
     <licenses>
     </licenses>
     <developers>
+
         <developer>
             <name>Shreya</name>
             <email>shreyamahalle2@gmail.com</email>
             <id>shreyamahalle</id>
-            <url>https://github.com/shreyamahalle</url>
+            <url>https://shreyamahalle.github.io</url>
+
             <roles>
                 <role>Developer</role>
             </roles>
+
         </developer>
     </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
-
 </project>
