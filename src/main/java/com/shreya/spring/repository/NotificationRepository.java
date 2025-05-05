@@ -4,6 +4,8 @@ import com.shreya.spring.model.Notification;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,11 @@ import java.util.List;
 @Repository
 public class NotificationRepository {
 
+    private static final Logger log = LoggerFactory.getLogger(NotificationRepository.class);
+
     public boolean saveNotification(Notification notification) throws SQLException {
         String query = "INSERT INTO notification (customer_id, message, is_read) VALUES (?, ?, ?)";
+        log.info("Inserting notification: {}", notification);
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {

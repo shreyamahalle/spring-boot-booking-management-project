@@ -1,7 +1,6 @@
 package com.shreya.spring.repository;
 
 import com.shreya.spring.model.BookingTable;
-import com.shreya.spring.model.Customer;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +8,13 @@ import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Repository
 public class BookingTableRepository {
+
+    private static final Logger log = LoggerFactory.getLogger(BookingTableRepository.class);
 
     public boolean addBooking(BookingTable bookingTable) throws SQLException {
 
@@ -23,6 +26,7 @@ public class BookingTableRepository {
         String formattedBookingTime = bookingTable.getBookingTime().format(formatter);
 
         String query = "INSERT INTO booking_table (customer_name, restaurant_name, booking_time, number_of_people, status) VALUES (?, ?, ?, ?, ?)";
+        log.info("Create booking {}", bookingTable);
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -45,6 +49,7 @@ public class BookingTableRepository {
     public List<BookingTable> retrieveBookings() {
         List<BookingTable> bookings = new ArrayList<>();
         String query = "SELECT * FROM booking_table";
+        log.info("Retrieve Bookings");
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query);
@@ -55,7 +60,7 @@ public class BookingTableRepository {
                         rs.getLong("id"),
                         rs.getString("customer_name"),
                         rs.getString("restaurant_name"),
-                       // rs.getTime("booking_time"),
+                        // rs.getTime("booking_time"),
                         rs.getTimestamp("booking_time").toLocalDateTime(),
                         rs.getInt("number_of_people"),
                         rs.getString("status")
@@ -70,6 +75,8 @@ public class BookingTableRepository {
 
     public BookingTable findById(Long id) {
         String query = "SELECT * FROM booking_table WHERE id = ?";
+        log.info("Find by id {}", id);
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -94,6 +101,8 @@ public class BookingTableRepository {
 
     public boolean deleteBooking(Long id) {
         String query = "DELETE FROM booking_table WHERE id = ?";
+        log.info("Delete booking by id {}", id);
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -108,6 +117,8 @@ public class BookingTableRepository {
 
     public boolean updateBooking(BookingTable bookingTable) {
         String query = "UPDATE booking_table SET customer_name = ?, restaurant_name = ?, booking_time = ?, number_of_people = ?, status = ? WHERE id = ?";
+        log.info("Update booking {}",bookingTable);
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -125,6 +136,10 @@ public class BookingTableRepository {
             return false;
         }
     }
+
+
+
+
 //    public boolean updatePartialBookingTable(BookingTable bookingTable) throws SQLException {
 //        String query = "UPDATE booking_table SET customer_name = ?, restaurant_name = ?, booking_time = ?, number_of_people = ?, status = ? WHERE id = ?";
 //

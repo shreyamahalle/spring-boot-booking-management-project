@@ -4,42 +4,51 @@ import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.repository.BookingTableRepository;
 import com.shreya.spring.service.BookingTableService;
 import lombok.AllArgsConstructor;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
 
 @Service
 @AllArgsConstructor
 
 public class BookingTableServiceImpl implements BookingTableService {
 
+    private static final Logger log = LoggerFactory.getLogger(BookingTableServiceImpl.class);
+
     @Autowired
     private final BookingTableRepository bookingTableRepository;
 
     @Override
     public boolean addBooking(BookingTable bookingTable) throws SQLException {
+        log.info("TableBooking added : {}", bookingTable);
         return bookingTableRepository.addBooking(bookingTable);
     }
 
     @Override
     public List<BookingTable> getAllBookings() {
+        log.info("get all bookings");
         return bookingTableRepository.retrieveBookings();
     }
 
     @Override
     public BookingTable getBookingById(Long id) {
+        log.info("get booking by id {}" , id);
         return bookingTableRepository.findById(id);
     }
 
     @Override
     public boolean deleteBooking(Long id) {
+        log.info("delete booking by id {}", id);
         return bookingTableRepository.deleteBooking(id);
     }
 
     @Override
     public boolean updateBooking(long id, BookingTable bookingTable) {
+        log.info("update booking by id {}",id,bookingTable);
         return bookingTableRepository.updateBooking(bookingTable);
     }
 }
