@@ -22,31 +22,30 @@ public class BookingTableController {
 
     @PostMapping("/tableBooking")
     public boolean addBooking(@RequestBody BookingTable bookingTable) throws SQLException {
-        log.info("API called: add booking {}", bookingTable);
+        log.info("Received request to add booking: {}", bookingTable);
         return bookingTableService.addBooking(bookingTable);
     }
 
     @GetMapping("/tableBookings")
     public List<BookingTable> getAllBookings() {
-        log.info("API called: all bookings");
+        log.info("Received request to fetch all bookings");
         return bookingTableService.getAllBookings();
     }
 
     @GetMapping("/tableBooking/{id}")
     public BookingTable getBookingById(@PathVariable("id") Long id) {
-        log.info("API called: get by id {}" , id);
+        log.info("Received request to fetch booking by ID: {}", id);
         return bookingTableService.getBookingById(id);
     }
 
     @PutMapping("/tableBooking/{id}")
     public boolean updateBooking(@PathVariable Long id, @RequestBody BookingTable bookingTable) {
-        log.info("API called: update booking {} ",id,bookingTable);
-        return bookingTableService.updateBooking(id, bookingTable);
+        log.info("Received request to update booking with ID: {}. New data: {}", id, bookingTable);        return bookingTableService.updateBooking(id, bookingTable);
     }
 
     @DeleteMapping("/tableBooking/{id}")
     public boolean deleteBooking(@PathVariable Long id) {
-        log.info("API called: delete by id {}", id);
+        log.info("Received request to delete booking with ID: {}", id);
         return bookingTableService.deleteBooking(id);
     }
 }
