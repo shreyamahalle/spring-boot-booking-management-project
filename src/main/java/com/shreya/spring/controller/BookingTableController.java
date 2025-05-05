@@ -40,7 +40,7 @@ public class BookingTableController {
 
     @PutMapping("/tableBooking/{id}")
     public boolean updateBooking(@PathVariable Long id, @RequestBody BookingTable bookingTable) {
-        log.info("API called: update booking {}",id,bookingTable);
+        log.info("API called: update booking {} ",id,bookingTable);
         return bookingTableService.updateBooking(id, bookingTable);
     }
 
