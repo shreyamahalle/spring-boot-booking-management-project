@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 @Service
 public class MenuItemServiceImpl implements MenuItemService {
 
+    private static final Logger log = LoggerFactory.getLogger(MenuItemServiceImpl.class);
+
     @Autowired
     private MenuItemRepository menuItemRepository;
 

@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
+    private static final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
+
     @Autowired
     private final CustomerRepository customerRepository;
 

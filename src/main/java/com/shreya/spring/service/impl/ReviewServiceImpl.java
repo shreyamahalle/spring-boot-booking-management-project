@@ -21,27 +21,31 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public boolean addReview(Review review) throws SQLException {
-        log.info("");
+        log.info("add review {}",review);
         return reviewRepository.addReview(review);
     }
 
     @Override
     public List<Review> getAllReviews() throws SQLException {
+        log.info("all review");
         return reviewRepository.retrieveReviews();
     }
 
     @Override
     public Review getReviewById(Long id) {
+        log.info("get Review ById {}", id);
         return reviewRepository.findById(id);
     }
 
     @Override
     public boolean updateReview(Review review) {
+        log.info("Update Review {}", review);
         return reviewRepository.updateReview(review);
     }
 
     @Override
     public boolean deleteReview(Long id) {
+        log.info("Delete Review {}", id);
         return reviewRepository.deleteReview(id);
     }
 }

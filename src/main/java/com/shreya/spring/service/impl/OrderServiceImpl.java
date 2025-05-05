@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 
 public class OrderServiceImpl implements OrderService {
 
+    private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
+
     @Autowired
     private OrderRepository orderRepository;
 

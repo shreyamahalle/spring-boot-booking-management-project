@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 
 public class DeliveryAgentServiceImpl implements DeliveryAgentService {
 
+    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentServiceImpl.class);
+
     @Autowired
     private DeliveryAgentRepository deliveryAgentRepository;
     @Override

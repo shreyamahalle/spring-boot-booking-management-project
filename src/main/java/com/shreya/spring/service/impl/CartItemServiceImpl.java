@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 @AllArgsConstructor
 public class CartItemServiceImpl implements CartItemService {
 
+    private static final Logger log = LoggerFactory.getLogger(CartItemServiceImpl.class);
+
     @Autowired
     private final CartItemRepository cartItemRepository;
 

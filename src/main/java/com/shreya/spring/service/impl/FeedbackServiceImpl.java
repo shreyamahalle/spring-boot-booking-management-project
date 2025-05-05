@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
 
+    private static final Logger log = LoggerFactory.getLogger(FeedbackServiceImpl.class);
+
     @Autowired
     private FeedbackRepository feedbackRepository;
 

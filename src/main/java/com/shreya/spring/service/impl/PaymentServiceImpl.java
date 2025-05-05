@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
+    private static final Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
+
     @Autowired
     private PaymentRepository paymentRepository;
 
