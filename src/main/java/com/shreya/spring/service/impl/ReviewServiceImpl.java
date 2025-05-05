@@ -8,15 +8,20 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
+
+    private static final Logger log = LoggerFactory.getLogger(ReviewServiceImpl.class);
 
     @Autowired
     private ReviewRepository reviewRepository;
 
     @Override
     public boolean addReview(Review review) throws SQLException {
+        log.info("");
         return reviewRepository.addReview(review);
     }
 

@@ -28,7 +28,7 @@ public class CartItemController {
 
     @GetMapping("/cartItem")
     public List<CartItem> getAllCartItems() {
-        log.info("API called: all cardItem {}");
+        log.info("API called: all cardItem ");
         return cartItemService.retrieveCartItem();
     }
 
