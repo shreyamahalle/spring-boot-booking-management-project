@@ -48,7 +48,7 @@ public class BookingTableServiceImpl implements BookingTableService {
 
     @Override
     public boolean updateBooking(long id, BookingTable bookingTable) {
-        log.info("update booking by id {}", id, bookingTable);
+        log.info("update booking by id {} with data {}", id, bookingTable);
         return bookingTableRepository.updateBooking(bookingTable);
     }
 }
