@@ -2,11 +2,14 @@ package com.shreya.spring.repository;
 
 import com.shreya.spring.model.Customer;
 import com.shreya.spring.service.ConnectionService;
-import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

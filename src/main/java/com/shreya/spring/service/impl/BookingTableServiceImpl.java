@@ -4,13 +4,13 @@ import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.repository.BookingTableRepository;
 import com.shreya.spring.service.BookingTableService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
 
 @Service
 @AllArgsConstructor
@@ -36,7 +36,7 @@ public class BookingTableServiceImpl implements BookingTableService {
 
     @Override
     public BookingTable getBookingById(Long id) {
-        log.info("get booking by id {}" , id);
+        log.info("get booking by id {}", id);
         return bookingTableRepository.findById(id);
     }
 
@@ -48,7 +48,7 @@ public class BookingTableServiceImpl implements BookingTableService {
 
     @Override
     public boolean updateBooking(long id, BookingTable bookingTable) {
-        log.info("update booking by id {}",id,bookingTable);
+        log.info("update booking by id {}", id, bookingTable);
         return bookingTableRepository.updateBooking(bookingTable);
     }
 }

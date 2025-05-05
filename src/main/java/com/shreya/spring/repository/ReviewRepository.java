@@ -4,6 +4,8 @@ import com.shreya.spring.model.Customer;
 import com.shreya.spring.model.Restaurant;
 import com.shreya.spring.model.Review;
 import com.shreya.spring.service.ConnectionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -12,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Repository
 public class ReviewRepository {

@@ -2,15 +2,14 @@ package com.shreya.spring.controller;
 
 import com.shreya.spring.model.Feedback;
 import com.shreya.spring.service.FeedbackService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/feedback")
@@ -42,7 +41,7 @@ public class FeedbackController {
     @DeleteMapping("/feedback/{id}")
     public boolean deleteFeedback(@PathVariable Long id) {
         log.info("Received request to delete feedback with id: {}", id);
-       return feedbackService.deleteFeedback(id);
+        return feedbackService.deleteFeedback(id);
     }
 
     @PutMapping("/feedback")

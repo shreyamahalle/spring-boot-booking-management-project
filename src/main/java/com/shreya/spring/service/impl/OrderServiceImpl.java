@@ -3,13 +3,13 @@ package com.shreya.spring.service.impl;
 import com.shreya.spring.model.Order;
 import com.shreya.spring.repository.OrderRepository;
 import com.shreya.spring.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 
@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean addOrder(Order order) throws SQLException {
-        log.info("add Order  {}" ,order);
+        log.info("add Order  {}", order);
         return orderRepository.addOrder(order);
     }
 

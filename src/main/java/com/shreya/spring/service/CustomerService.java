@@ -10,7 +10,7 @@ public interface CustomerService {
 
     String addCustomer(Customer customer) throws SQLException;
 
-    boolean  deleteCustomer(int id) throws SQLException;
+    boolean deleteCustomer(int id) throws SQLException;
 
     boolean updateCustomer(Customer customer) throws SQLException;
 
@@ -18,6 +18,6 @@ public interface CustomerService {
 
     Customer getCustomerById(int id) throws CustomerNotfound;
 
-    boolean updatePartialCustomer(Customer customer)throws SQLException;
+    boolean updatePartialCustomer(Customer customer) throws SQLException;
 
 }

@@ -5,13 +5,13 @@ import com.shreya.spring.model.Customer;
 import com.shreya.spring.repository.CustomerRepository;
 import com.shreya.spring.service.CustomerService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private final CustomerRepository customerRepository;
 
-    public String addCustomer(Customer customer) throws SQLException, SQLException {
+    public String addCustomer(Customer customer) throws SQLException {
         log.info("Saving Customer{}", customer);
         customerRepository.addCustomer(customer);
         return null;

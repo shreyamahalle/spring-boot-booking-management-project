@@ -2,13 +2,13 @@ package com.shreya.spring.controller;
 
 import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.service.BookingTableService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/tableBookingManagement")
@@ -40,7 +40,8 @@ public class BookingTableController {
 
     @PutMapping("/table/{id}")
     public boolean updateBooking(@PathVariable Long id, @RequestBody BookingTable bookingTable) {
-        log.info("Received request to update booking with ID: {}. New data: {}", id, bookingTable);        return bookingTableService.updateBooking(id, bookingTable);
+        log.info("Received request to update booking with ID: {}. New data: {}", id, bookingTable);
+        return bookingTableService.updateBooking(id, bookingTable);
     }
 
     @DeleteMapping("/table/{id}")

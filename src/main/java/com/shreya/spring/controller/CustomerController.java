@@ -3,13 +3,13 @@ package com.shreya.spring.controller;
 import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.model.Customer;
 import com.shreya.spring.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/customerManagement")  // Base URL: /customers
@@ -34,14 +34,15 @@ public class CustomerController {
 
     @GetMapping("/customer/{id}")
     public Customer getCustomerById(@PathVariable int id) throws CustomerNotfound {
-        log.info("Received request to fetch customer by id: {}", id);          return customerService.getCustomerById(id);
+        log.info("Received request to fetch customer by id: {}", id);
+        return customerService.getCustomerById(id);
     }
 
     @PutMapping("/customer/{id}")
     public boolean updateCustomer(@PathVariable int id, @RequestBody Customer customer) throws SQLException {
         log.info("Received request to update customer with id: {}", id);
         customer.setId(id);
-      return customerService.updateCustomer(customer);
+        return customerService.updateCustomer(customer);
     }
 
     @DeleteMapping("/customer/{id}")

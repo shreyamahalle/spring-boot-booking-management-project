@@ -4,13 +4,13 @@ import com.shreya.spring.model.CartItem;
 import com.shreya.spring.repository.CartItemRepository;
 import com.shreya.spring.service.CartItemService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 @AllArgsConstructor
