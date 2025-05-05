@@ -368,7 +368,7 @@ src/
 
 ```mermaid
 ---
-title: foodease-food-order-booking-system
+title: foodease-food-order-booking-system (Extended)
 ---
 classDiagram
 
@@ -466,6 +466,39 @@ class BookingTable {
   +displayBooking()
 }
 
+%% New Classes
+class MenuItem {
+  +int menuItemId
+  +String name
+  +String description
+  +double price
+  +boolean isAvailable
+  +createMenuItem()
+  +updateMenuItem()
+  +displayMenuItem()
+}
+
+class Notification {
+  +int notificationId
+  +String message
+  +Date sentDate
+  +boolean isRead
+  +sendNotification()
+  +markAsRead()
+  +displayNotification()
+}
+
+class Coupon {
+  +int couponId
+  +String code
+  +double discount
+  +Date expiryDate
+  +boolean isActive
+  +applyCoupon()
+  +validateCoupon()
+  +displayCoupon()
+}
+
 Customer "1" --> "*" Order : places
 Customer "1" --> "*" Feedback : provides
 Customer "1" --> "*" Review : writes
@@ -481,6 +514,12 @@ Order "1" --> "*" OrderStatus : has
 
 Payment --> Customer : paid by
 DeliveryAgent --> Order : delivers
+
+%% New Relationships
+Restaurant "1" --> "*" MenuItem : offers
+Order "*" --> "*" MenuItem : contains
+Customer "1" --> "*" Notification : receives
+Coupon "*" --> "*" Order : applied to
 
 class CustomerController {
   +createCustomer()
@@ -549,7 +588,6 @@ class OrderRepository {
   +findAll()
   +delete()
 }
-
 ```
 
 ## Best Practices Followed
