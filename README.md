@@ -36,6 +36,9 @@ The Spring Booking Management System provides a modular approach to managing:
  - Restaurants
  - Delivery Agents
  - Orders
+ - CartItem
+ - Coupon
+ - MenuItem
  - Feedback
  - Review
  - BookingTable
