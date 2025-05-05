@@ -3,22 +3,20 @@ package com.shreya.spring.repository;
 import com.shreya.spring.model.Customer;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CustomerRepository {
 
-    public boolean addCustomer(Customer customer) throws SQLException {
-        String query = "INSERT INTO customer (id, name, city, mobileNo, age) VALUES (?, ?, ?, ?, ?)";
+    private static final Logger log = LoggerFactory.getLogger(CustomerRepository.class);
 
+    public boolean addCustomer(Customer customer) {
+        String query = "INSERT INTO customer (id, name, city, mobileNo, age) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -29,14 +27,17 @@ public class CustomerRepository {
             ps.setInt(5, customer.getAge());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Added customer: {}", customer);
             return rowsAffected > 0;
+        } catch (SQLException e) {
+            log.error("Error adding customer: {}", customer, e);
+            throw new RuntimeException("Error adding customer", e);
         }
     }
 
     public List<Customer> retrieveCustomers() {
         List<Customer> customers = new ArrayList<>();
         String query = "SELECT * FROM customer";
-
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
@@ -51,8 +52,10 @@ public class CustomerRepository {
                 );
                 customers.add(customer);
             }
+            log.info("Retrieved {} customers", customers.size());
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error retrieving customers", e);
+            throw new RuntimeException("Error retrieving customers", e);
         }
         return customers;
     }
@@ -65,21 +68,21 @@ public class CustomerRepository {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new Customer(
+                    Customer customer = new Customer(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("city"),
                             rs.getInt("mobileNo"),
                             rs.getInt("age")
                     );
-
+                    log.info("Found customer with id: {}", id);
+                    return customer;
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error finding customer with id: {}", id, e);
         }
-
-        return null;
+        return null; // Return null if customer not found
     }
 
     public boolean deleteCustomer(int id) {
@@ -89,10 +92,11 @@ public class CustomerRepository {
 
             ps.setInt(1, id);
             int rowsAffected = ps.executeUpdate();
+            log.info("Deleted customer with id: {}", id);
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error deleting customer with id: {}", id, e);
+            throw new RuntimeException("Error deleting customer", e);
         }
     }
 
@@ -108,16 +112,16 @@ public class CustomerRepository {
             ps.setInt(5, customer.getId());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Updated customer with id: {}", customer.getId());
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error updating customer with id: {}", customer.getId(), e);
+            throw new RuntimeException("Error updating customer", e);
         }
     }
 
-    public boolean updatePartialCustomer(Customer customer) throws SQLException {
+    public boolean updatePartialCustomer(Customer customer) {
         String query = "UPDATE customer SET name = ?, city = ?, mobileNo = ?, age = ? WHERE id = ?";
-
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -128,11 +132,11 @@ public class CustomerRepository {
             ps.setInt(5, customer.getId());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Partially updated customer with id: {}", customer.getId());
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error partially updating customer with id: {}", customer.getId(), e);
+            throw new RuntimeException("Error partially updating customer", e);
         }
     }
 }
-

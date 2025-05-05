@@ -17,8 +17,11 @@ import org.slf4j.LoggerFactory;
 
 public class RestaurantRepository {
 
+    private static final Logger log = LoggerFactory.getLogger(RestaurantRepository.class);
+
     public void addRestaurant(Restaurant restaurant) throws SQLException {
         String query = "INSERT INTO restaurant (id, name, city, area) VALUES (?, ?, ?, ?)";
+        log.info("Adding restaurant: {}", restaurant);
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -38,6 +41,7 @@ public class RestaurantRepository {
     public List<Restaurant> retrieveRestaurants() {
         List<Restaurant> restaurants = new ArrayList<>();
         String query = "SELECT * FROM restaurant";
+        log.info("Retrieving all restaurants");
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -61,6 +65,7 @@ public class RestaurantRepository {
     public Restaurant retrieveRestaurant(int id) {
         Restaurant restaurant = null;
         String sql = "SELECT * FROM restaurant WHERE id = ? AND name = ?";
+        log.info("Retrieving restaurant with ID: {}", id);
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -85,6 +90,8 @@ public class RestaurantRepository {
 
     public boolean deleteRestaurant(int id) throws SQLException {
         String query = "DELETE FROM restaurant WHERE id = ?";
+        log.info("Deleting restaurant with ID: {}", id);
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -96,7 +103,9 @@ public class RestaurantRepository {
     }
 
     public boolean updateRestaurant(int id) throws SQLException {
-        String sql = "UPDATE restaurant SET id = ? WHERE id = ?;";
+        String sql = "UPDATE restaurant SET id = ? WHERE id = ?";
+        log.info("Updating restaurant ID to: {}", id);
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 

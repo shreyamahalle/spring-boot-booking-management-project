@@ -14,32 +14,39 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/orderStatusManagement")
 public class OrderStatusController {
 
+    private static final Logger log = LoggerFactory.getLogger(OrderStatusController.class);
+
     @Autowired
     private OrderStatusService orderStatusService;
 
     @PostMapping("/orderStatus")
     public boolean addOrderStatus(@RequestBody OrderStatus orderStatus) throws SQLException {
+        log.info("Adding OrderStatus: {}", orderStatus);
         return orderStatusService.addOrderStatus(orderStatus);
     }
 
     @GetMapping("/orderStatus")
     public List<OrderStatus> getAllOrderStatus() throws SQLException {
+        log.info("Fetching all OrderStatus entries");
         return orderStatusService.getAllOrderStatus();
     }
 
     @GetMapping("/orderStatus/{id}")
     public OrderStatus getOrderStatusById(@PathVariable long id) throws SQLException {
+        log.info("Fetching OrderStatus with ID: {}", id);
         return orderStatusService.getOrderStatusById(id);
     }
 
     @PutMapping("/orderStatus/{id}")
     public boolean updateOrderStatus(@PathVariable long id, OrderStatus orderStatus) {
         orderStatus.setId(id);
+        log.info("Updating OrderStatus with ID: {} | New Data: {}", id, orderStatus);
         return orderStatusService.updateOrderStatus(orderStatus);
     }
 
     @DeleteMapping("/orderStatus/{id}")
     public boolean deleteOderStatus(@PathVariable long id) {
+        log.info("Deleting OrderStatus with ID: {}", id);
         return orderStatusService.deleteOrderStatus(id);
     }
 }

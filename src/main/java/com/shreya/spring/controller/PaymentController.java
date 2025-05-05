@@ -14,32 +14,39 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/paymentManagement")
 public class PaymentController {
 
+    private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
+
     @Autowired
     private PaymentService paymentService;
 
     @PostMapping("/payment")
     public boolean addPayment(@RequestBody Payment payment) throws SQLException {
+        log.info("Adding payment: {}", payment);
         return paymentService.addPayment(payment);
     }
 
     @GetMapping("/payment")
     public List<Payment> getAllPayments() throws SQLException {
+        log.info("Fetching all payments");
         return paymentService.getAllPayments();
     }
 
     @GetMapping("/payment/{id}")
     public Payment getPaymentById(@PathVariable int id) throws SQLException {
+        log.info("Fetching payment by ID: {}", id);
         return paymentService.getPaymentById(id);
     }
 
     @PutMapping("/payment/{id}")
     public boolean updatePayment(@PathVariable int id, @RequestBody Payment payment) throws SQLException {
         payment.setId((long) id);
+        log.info("Updating payment ID: {} with data: {}", id, payment);
         return paymentService.updatePayment(payment);
     }
 
     @DeleteMapping("/payment/{id}")
     public boolean deletePayment(@PathVariable int id) throws SQLException {
+        log.info("Deleting payment by ID: {}", id);
         return paymentService.deletePayment(id);
     }
 }

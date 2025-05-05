@@ -18,8 +18,12 @@ import org.slf4j.LoggerFactory;
 @Repository
 public class ReviewRepository {
 
+    private static final Logger log = LoggerFactory.getLogger(ReviewRepository.class);
+
     public boolean addReview(Review review) {
         String query = "INSERT INTO review (rating, comment, review_date, customerid, restaurantid ) VALUES (? , ? , ? , ? , ? )";
+
+        log.info("Adding review: {}", review);
 
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -40,6 +44,8 @@ public class ReviewRepository {
     public List<Review> retrieveReviews() {
         List<Review> reviews = new ArrayList<>();
         String query = "SELECT * FROM review";
+
+        log.info("Retrieving all reviews");
 
         try (Connection con = ConnectionService.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -66,6 +72,7 @@ public class ReviewRepository {
 
     public Review findById(Long id) {
         String query = "SELECT * FROM review WHERE id = ?";
+        log.info("Fetching review with ID: {}", id);
 
         try (Connection con = ConnectionService.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -93,6 +100,7 @@ public class ReviewRepository {
 
     public boolean deleteReview(Long id) {
         String query = "DELETE FROM review WHERE id = ?";
+        log.info("Deleting review with ID: {}", id);
 
         try (Connection con = ConnectionService.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -112,6 +120,8 @@ public class ReviewRepository {
         }
 
         String query = "UPDATE review SET rating = ?, comment = ?, review_date = ?, customerid = ?, restaurantid = ? WHERE id = ?";
+
+        log.info("Updating review: {}", review);
 
         try (Connection con = ConnectionService.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {

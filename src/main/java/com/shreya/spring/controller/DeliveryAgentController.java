@@ -16,34 +16,39 @@ import org.slf4j.LoggerFactory;
 @RequiredArgsConstructor
 public class DeliveryAgentController {
 
-
+    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentController.class);
 
     @Autowired
     private final DeliveryAgentService deliveryAgentService;
 
     @PostMapping("/deliveryAgent")
     public boolean addDeliveryAgent(@RequestBody DeliveryAgent deliveryAgent) throws SQLException {
+        log.info("Received request to add delivery agent: {}", deliveryAgent);
         return deliveryAgentService.addDeliveryAgent(deliveryAgent);
     }
 
     @PutMapping("/deliveryAgent/{id}")
     public boolean updateDeliveryAgent(@PathVariable int id, @RequestBody DeliveryAgent deliveryAgent) throws SQLException {
         deliveryAgent.setId(id);
+        log.info("Received request to update delivery agent with id: {}", id);
         return deliveryAgentService.updateDeliveryAgent(deliveryAgent);
     }
 
     @DeleteMapping("/deliveryAgent/{id}")
     public boolean deleteDeliveryAgent(@PathVariable int id) throws SQLException {
+        log.info("Received request to delete delivery agent with id: {}", id);
         return deliveryAgentService.deleteDeliveryAgent(id);
     }
 
     @GetMapping("/deliveryAgent")
     public List<DeliveryAgent> getAllDeliveryAgents() throws SQLException {
+        log.info("Received request to fetch all delivery agents");
         return deliveryAgentService.retrieveAllDeliveryAgents();
     }
 
     @GetMapping("/deliveryAgent/{id}")
     public DeliveryAgent getDeliveryAgentById(@PathVariable int id) throws SQLException {
+        log.info("Received request to fetch delivery agent by id: {}", id);
         return deliveryAgentService.getDeliveryAgentById(id);
     }
 }

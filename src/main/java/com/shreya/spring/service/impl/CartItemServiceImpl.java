@@ -23,47 +23,48 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public boolean addCartItem(CartItem cartItem) throws SQLException {
+        log.info("Saving CartItem{}", cartItem);
         return cartItemRepository.addCartItem(cartItem);
     }
 
     @Override
     public boolean deleteCartItem(int id) {
-        try {
-            return cartItemRepository.deleteCartItem(id);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error deleting cart item", e);
-        }
+        log.info("Deleting cart item with ID: {}", id);
+        return cartItemRepository.deleteCartItem(id);
+
     }
 
     @Override
     public boolean updateCartItem(CartItem cartItem) throws SQLException {
+        log.info("Updating cart item: {}", cartItem);
         return cartItemRepository.updateCartItem(cartItem);
     }
 
     @Override
     public List<CartItem> retrieveCartItem() {
-        try {
-            return cartItemRepository.retrieveCartItems();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving cart items", e);
-        }
+        log.info("Retrieving all cart items");
+        List<CartItem> items = cartItemRepository.retrieveCartItems();
+        log.info("Retrieved {} cart items", items.size());
+        return items;
     }
 
     @Override
     public CartItem getCartItem(int id) {
-        try {
-            return cartItemRepository.findById(id);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error fetching cart item", e);
+        log.info("Fetching cart item with ID: {}", id);
+        CartItem item = cartItemRepository.findById(id);
+        if (item != null) {
+            log.info("Cart item found: {}", item);
+        } else {
+            log.warn("Cart item not found for ID: {}", id);
         }
+        return item;
     }
 
     @Override
     public boolean updatePartialCartItem(CartItem cartItem) {
-        try {
-            return cartItemRepository.updatePartialCartItem(cartItem);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error partially updating cart item", e);
-        }
+        log.info("Partially updating cart item: {}", cartItem);
+        boolean updated = cartItemRepository.updatePartialCartItem(cartItem);
+        log.info("Partial update success: {}", updated);
+        return updated;
     }
 }

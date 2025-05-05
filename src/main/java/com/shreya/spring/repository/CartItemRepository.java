@@ -3,43 +3,39 @@ package com.shreya.spring.repository;
 import com.shreya.spring.model.CartItem;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CartItemRepository {
 
+    private static final Logger log = LoggerFactory.getLogger(CartItemRepository.class);
+
     public boolean addCartItem(CartItem cartItem) {
-
-        String query = "INSERT INTO cart_item (customer_id ,menu_item_id, quantity) VALUES (?, ?, ?)";
-
+        String query = "INSERT INTO cart_item (customer_id, menu_item_id, quantity) VALUES (?, ?, ?)";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            //ps.setLong(1, cartItem.getId());
             ps.setLong(1, cartItem.getCustomer_id());
-            ps.setLong(2, cartItem.getMenu_item_id());  // Correct field name
+            ps.setLong(2, cartItem.getMenu_item_id());
             ps.setInt(3, cartItem.getQuantity());
 
             int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;  // Returns true if the item was added successfully
-
+            log.info("Cart item added: {}", cartItem);
+            return rowsAffected > 0;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            log.error("Error adding cart item: {}", cartItem, e);
+            throw new RuntimeException("Error adding cart item", e);
         }
     }
 
-    public List<CartItem> retrieveCartItems() throws SQLException {
+    public List<CartItem> retrieveCartItems() {
         List<CartItem> cartItemList = new ArrayList<>();
         String query = "SELECT * FROM cart_item";
-
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
@@ -53,19 +49,20 @@ public class CartItemRepository {
                 );
                 cartItemList.add(cartItem);
             }
+            log.info("Retrieved {} cart items", cartItemList.size());
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error retrieving cart items", e);
+            throw new RuntimeException("Error retrieving cart items", e);
         }
         return cartItemList;
     }
 
-
-    public CartItem findById(int id) throws SQLException {
+    public CartItem findById(int id) {
         String query = "SELECT * FROM cart_item WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            ps.setLong(1, id);
+            ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return new CartItem(
@@ -77,56 +74,73 @@ public class CartItemRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error finding cart item with id: {}", id, e);
         }
         return null;
     }
 
-    public boolean deleteCartItem(int id) throws SQLException {
+    public boolean deleteCartItem(int id) {
         String query = "DELETE FROM cart_item WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            ps.setLong(1, id);
+            ps.setInt(1, id);
             int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                log.info("Cart item deleted with id: {}", id);
+            } else {
+                log.warn("No cart item found with id: {}", id);
+            }
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error deleting cart item with id: {}", id, e);
+            throw new RuntimeException("Error deleting cart item", e);
         }
     }
 
-    public boolean updateCartItem(CartItem cartItem) throws SQLException {
-        String query = "UPDATE cart_item SET customer_id = ?, menu_item_id = ?,quantity = ?";
+    public boolean updateCartItem(CartItem cartItem) {
+        String query = "UPDATE cart_item SET customer_id = ?, menu_item_id = ?, quantity = ? WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setLong(1, cartItem.getCustomer_id());
             ps.setLong(2, cartItem.getMenu_item_id());
             ps.setInt(3, cartItem.getQuantity());
+            ps.setLong(4, cartItem.getId());
+
             int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                log.info("Updated cart item with id: {}", cartItem.getId());
+            } else {
+                log.warn("No cart item found with id: {}", cartItem.getId());
+            }
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error updating cart item with id: {}", cartItem.getId(), e);
+            throw new RuntimeException("Error updating cart item", e);
         }
     }
 
-    public boolean updatePartialCartItem(CartItem cartItem) throws SQLException {
-        String query = "UPDATE cart_item set customer_id = ?, menu_item_id = ?,quantity = ?";
+    public boolean updatePartialCartItem(CartItem cartItem) {
+        String query = "UPDATE cart_item SET customer_id = ?, menu_item_id = ?, quantity = ? WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
-            ps.setLong(1,cartItem.getCustomer_id());
-            ps.setLong(2,cartItem.getMenu_item_id());
-            ps.setInt(3,cartItem.getQuantity());
+            ps.setLong(1, cartItem.getCustomer_id());
+            ps.setLong(2, cartItem.getMenu_item_id());
+            ps.setInt(3, cartItem.getQuantity());
+            ps.setLong(4, cartItem.getId());
 
             int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                log.info("Partially updated cart item with id: {}", cartItem.getId());
+            } else {
+                log.warn("No cart item found with id: {}", cartItem.getId());
+            }
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error partially updating cart item with id: {}", cartItem.getId(), e);
+            throw new RuntimeException("Error partially updating cart item", e);
         }
     }
 }
-

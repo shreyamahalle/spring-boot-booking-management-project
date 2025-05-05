@@ -3,19 +3,20 @@ package com.shreya.spring.repository;
 import com.shreya.spring.model.Coupon;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Repository
 public class CouponRepository {
 
-    public boolean saveCoupon(Coupon coupon) throws SQLException {
-        String query = "INSERT INTO coupon (code, description, discount_amount, active) VALUES (?, ?, ?, ?)";
+    private static final Logger log = LoggerFactory.getLogger(CouponRepository.class);
 
+    public boolean saveCoupon(Coupon coupon) {
+        String query = "INSERT INTO coupon (code, description, discount_amount, active) VALUES (?, ?, ?, ?)";
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
@@ -24,14 +25,18 @@ public class CouponRepository {
             ps.setDouble(3, coupon.getDiscountAmount());
             ps.setBoolean(4, coupon.isActive());
 
-            return ps.executeUpdate() > 0;
+            boolean result = ps.executeUpdate() > 0;
+            log.info("Coupon saved: {}", coupon);
+            return result;
+        } catch (SQLException e) {
+            log.error("Error saving coupon: {}", coupon, e);
+            throw new RuntimeException("Error saving coupon", e);
         }
     }
 
     public List<Coupon> getAllCoupons() {
         List<Coupon> coupons = new ArrayList<>();
         String query = "SELECT * FROM coupon";
-
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
@@ -45,58 +50,60 @@ public class CouponRepository {
                         rs.getBoolean("active")
                 ));
             }
-
+            log.info("Retrieved {} coupons", coupons.size());
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error retrieving coupons", e);
+            throw new RuntimeException("Error retrieving coupons", e);
         }
-
         return coupons;
     }
 
     public Coupon getCouponById(Long id) {
         String query = "SELECT * FROM coupon WHERE id = ?";
-
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setLong(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new Coupon(
+                    Coupon coupon = new Coupon(
                             rs.getLong("id"),
                             rs.getString("code"),
                             rs.getString("description"),
                             rs.getDouble("discount_amount"),
                             rs.getBoolean("active")
                     );
+                    log.info("Found coupon with id: {}", id);
+                    return coupon;
                 }
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error finding coupon with id: {}", id, e);
         }
-
         return null;
     }
 
     public boolean deleteCoupon(Long id) {
         String query = "DELETE FROM coupon WHERE id = ?";
-
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setLong(1, id);
-            return ps.executeUpdate() > 0;
-
+            boolean result = ps.executeUpdate() > 0;
+            if (result) {
+                log.info("Coupon deleted with id: {}", id);
+            } else {
+                log.warn("Coupon with id {} not found", id);
+            }
+            return result;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error deleting coupon with id: {}", id, e);
+            throw new RuntimeException("Error deleting coupon", e);
         }
     }
 
     public boolean updateCoupon(Coupon coupon) {
         String query = "UPDATE coupon SET code = ?, description = ?, discount_amount = ?, active = ? WHERE id = ?";
-
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
@@ -106,11 +113,16 @@ public class CouponRepository {
             ps.setBoolean(4, coupon.isActive());
             ps.setLong(5, coupon.getId());
 
-            return ps.executeUpdate() > 0;
-
+            boolean result = ps.executeUpdate() > 0;
+            if (result) {
+                log.info("Updated coupon with id: {}", coupon.getId());
+            } else {
+                log.warn("Coupon with id {} not found", coupon.getId());
+            }
+            return result;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error updating coupon with id: {}", coupon.getId(), e);
+            throw new RuntimeException("Error updating coupon", e);
         }
     }
 }

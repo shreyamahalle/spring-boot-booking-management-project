@@ -23,33 +23,43 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     public String addCustomer(Customer customer) throws SQLException, SQLException {
+        log.info("Saving Customer{}", customer);
         customerRepository.addCustomer(customer);
         return null;
     }
 
     public boolean deleteCustomer(int id) throws SQLException {
+        log.info("delete Customer{}", id);
         return customerRepository.deleteCustomer(id);
     }
 
     public boolean updateCustomer(Customer customer) throws SQLException {
+        log.info("update Customer{}", customer);
         return customerRepository.updateCustomer(customer);
     }
 
 
     public List<Customer> retrieveCustomers() {
+        log.info("all Customer");
         return customerRepository.retrieveCustomers();
     }
 
     public Customer getCustomerById(int id) throws CustomerNotfound {
         Customer customer = customerRepository.findById(id);
+        log.info("Fetching customer by ID: {}", id);
+
         if (customer != null) {
+            log.info("Customer found: {}", customer);
             return customer;
+
         } else {
+            log.error("Customer not found with ID: {}", id);
             throw new CustomerNotfound("Customer not found with ID: " + id);
         }
     }
 
     public boolean updatePartialCustomer(Customer customer) throws SQLException {
+        log.info("update Partial Customer: {}", customer);
         return customerRepository.updatePartialCustomer(customer);
     }
 }

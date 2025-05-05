@@ -3,22 +3,20 @@ package com.shreya.spring.repository;
 import com.shreya.spring.model.DeliveryAgent;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class DeliveryAgentRepository {
 
-    public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
-        String query = "INSERT INTO deliveryAgent (id, name, city, mobileNo) VALUES (?, ?, ?, ?)";
+    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentRepository.class);
 
+    public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) {
+        String query = "INSERT INTO deliveryAgent (id, name, city, mobileNo) VALUES (?, ?, ?, ?)";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -28,7 +26,11 @@ public class DeliveryAgentRepository {
             ps.setInt(4, deliveryAgent.getMobileNo());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Added delivery agent: {}", deliveryAgent);
             return rowsAffected > 0;
+        } catch (SQLException e) {
+            log.error("Error adding delivery agent: {}", deliveryAgent, e);
+            throw new RuntimeException("Error adding delivery agent", e);
         }
     }
 
@@ -49,32 +51,36 @@ public class DeliveryAgentRepository {
                 );
                 deliveryAgents.add(deliveryAgent);
             }
+            log.info("Retrieved {} delivery agents", deliveryAgents.size());
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error retrieving delivery agents", e);
+            throw new RuntimeException("Error retrieving delivery agents", e);
         }
         return deliveryAgents;
     }
 
-    public DeliveryAgent findById(int id) throws SQLException {
-        String query = "SELECT * FROM deliveryagent WHERE id = ?";
+    public DeliveryAgent findById(int id) {
+        String query = "SELECT * FROM deliveryAgent WHERE id = ?";
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new DeliveryAgent(
+                    DeliveryAgent deliveryAgent = new DeliveryAgent(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("city"),
                             rs.getInt("mobileNo")
                     );
+                    log.info("Found delivery agent with id: {}", id);
+                    return deliveryAgent;
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error finding delivery agent with id: {}", id, e);
         }
-        return null; // Return null if no DeliveryAgent is found
+        return null; // Return null if not found
     }
 
     public boolean deleteDeliveryAgent(int id) {
@@ -84,17 +90,16 @@ public class DeliveryAgentRepository {
 
             ps.setInt(1, id);
             int rowsAffected = ps.executeUpdate();
+            log.info("Deleted delivery agent with id: {}", id);
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error deleting delivery agent with id: {}", id, e);
+            throw new RuntimeException("Error deleting delivery agent", e);
         }
     }
 
-
     public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) {
         String query = "UPDATE deliveryAgent SET name = ?, city = ?, mobileNo = ? WHERE id = ?";
-
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -104,10 +109,11 @@ public class DeliveryAgentRepository {
             ps.setInt(4, deliveryAgent.getId());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Updated delivery agent with id: {}", deliveryAgent.getId());
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error updating delivery agent with id: {}", deliveryAgent.getId(), e);
+            throw new RuntimeException("Error updating delivery agent", e);
         }
     }
 }

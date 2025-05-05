@@ -21,26 +21,31 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Override
     public boolean addMenuItem(MenuItem menuItem) throws SQLException {
+        log.info("Saving menuItem for customerId {}", menuItem);
         return menuItemRepository.addMenuItem(menuItem);
     }
 
     @Override
     public List<MenuItem> getAllMenuItems() {
+        log.info("all menuItem");
         return menuItemRepository.retrieveMenuItems();
     }
 
     @Override
     public MenuItem getMenuItemById(long id) {
+        log.info("get Menu Item ById {}", id);
         return menuItemRepository.findById(id);
     }
 
     @Override
     public boolean deleteMenuItem(long id) {
+        log.info("delete MenuItem {}", id);
         return menuItemRepository.deleteMenuItem(id);
     }
 
     @Override
     public boolean updateMenuItem(MenuItem menuItem) {
+        log.info("update MenuItem  {}", menuItem);
         return menuItemRepository.updateMenuItem(menuItem);
     }
 }

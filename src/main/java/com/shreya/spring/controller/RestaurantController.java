@@ -14,39 +14,47 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/restaurantManagement")
 public class RestaurantController {
 
+    private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
+
     @Autowired
     private RestaurantService restaurantService;
 
     @PostMapping("/restaurant")
     public String createRestaurant(@RequestBody Restaurant restaurant) {
+        log.info("Creating restaurant: {}", restaurant);
         try {
             restaurantService.insertRestaurant(restaurant);
             return "Restaurant added successfully!";
         } catch (SQLException e) {
+            log.error("Error inserting restaurant: {}", e.getMessage(), e);
             throw new RuntimeException("Error while inserting restaurant", e);
         }
     }
 
     @GetMapping("/restaurant")
     public List<Restaurant> getAllRestaurants() {
+        log.info("Fetching all restaurants");
         return restaurantService.retrieveRestaurants();
     }
 
     @GetMapping("/restaurant/{id}/{name}")
     public Restaurant getRestaurant(@PathVariable int id) {
+        log.info("Fetching restaurant with ID: {}", id);
+
         Restaurant restaurant = restaurantService.getRestaurantById(id);
         if (restaurant != null) {
-            System.out.println("Restaurant Details: ");
-            System.out.println("id: " + restaurant.getId());
+            log.info("Restaurant found: {}", restaurant);
 
         } else {
-            System.out.println("Restaurant not found with id: " + id );
+            log.warn("Restaurant not found with ID: {}", id);
         }
         return restaurant;
     }
 
     @DeleteMapping("/restaurant/{id}")
     public String deleteRestaurant(@PathVariable int id) {
+        log.info("Deleting restaurant with ID: {}", id);
+
         try {
             if (restaurantService.deleteRestaurant(id)) {
                 return "Restaurant deleted successfully!";
@@ -54,12 +62,14 @@ public class RestaurantController {
                 return "Failed to delete restaurant.";
             }
         } catch (SQLException e) {
+            log.error("Error deleting restaurant ID {}: {}", id, e.getMessage(), e);
             throw new RuntimeException("Error while deleting restaurant", e);
         }
     }
 
     @PutMapping("/restaurant/{id}")
     public String updateRestaurant(@PathVariable int id) {
+        log.info("Updating restaurant with ID: {}", id);
         try {
             if (restaurantService.updateRestaurant(id)) {
                 return "Restaurant updated successfully!";
@@ -67,6 +77,7 @@ public class RestaurantController {
                 return "Failed to update restaurant.";
             }
         } catch (SQLException e) {
+            log.error("Error updating restaurant ID {}: {}", id, e.getMessage(), e);
             throw new RuntimeException("Error while updating restaurant", e);
         }
     }

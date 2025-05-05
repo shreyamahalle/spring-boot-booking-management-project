@@ -21,17 +21,20 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public String addOrder(Order order) throws SQLException {
+    public boolean addOrder(Order order) throws SQLException {
+        log.info("add Order  {}" ,order);
         return orderRepository.addOrder(order);
     }
 
     @Override
     public List<Order> retrieveAllOrders() {
+        log.info("all Order");
         return orderRepository.retrieveOrders();
     }
 
     @Override
     public Order retrieveOrderByIdAndType(int id, String type) {
+        log.info("Retrieving Order by ID: {} and Type: {}", id, type);
         return orderRepository.retrieveOrder(id, type);
     }
 
@@ -39,12 +42,16 @@ public class OrderServiceImpl implements OrderService {
     public String updateOrder(Order order) throws SQLException {
         int orderId = order.getId();
         String orderType = order.getType();
+
+        log.info("Updating order with ID: {} to new type: {}", orderId, orderType);
+
         boolean updated = orderRepository.updateOrder(orderId, orderType);  // Update the order
         return orderType;
     }
 
     @Override
     public boolean deleteOrder(int id) throws SQLException {
+        log.info("delete  Order by ID: {}", id);
         return orderRepository.deleteOrder(id);
     }
 }

@@ -21,7 +21,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public boolean saveNotification(Notification notification) throws SQLException {
-        log.info("Saving notification for customerId {}", notification.getCustomer_id());
+        log.info("Saving notification for customerId {}", notification);
         return notificationRepository.saveNotification(notification);
     }
 

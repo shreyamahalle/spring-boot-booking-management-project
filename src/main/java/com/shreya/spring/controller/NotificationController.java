@@ -14,26 +14,32 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/notificationManagement")
 public class NotificationController {
 
+    private static final Logger log = LoggerFactory.getLogger(NotificationController.class);
+
     @Autowired
     private NotificationService notificationService;
 
     @PostMapping
     public boolean addNotification(@RequestBody Notification notification) throws SQLException {
+        log.info("Adding new notification: {}", notification);
         return notificationService.saveNotification(notification);
     }
 
     @GetMapping
     public List<Notification> getAll() {
+        log.info("Fetching all notifications");
         return notificationService.getAllNotifications();
     }
 
     @GetMapping("/customer/{customerId}")
     public List<Notification> getByCustomer(@PathVariable Long customerId) {
+        log.info("Fetching notifications for customer ID: {}", customerId);
         return notificationService.getNotificationsByCustomerId(customerId);
     }
 
     @PutMapping("/read/{id}")
     public boolean markAsRead(@PathVariable Long id) {
+        log.info("Marking notification as read with ID: {}", id);
         return notificationService.markAsRead(id);
     }
 }

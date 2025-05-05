@@ -21,26 +21,31 @@ public class OrderStatusServiceImpl implements OrderStatusService {
 
     @Override
     public boolean addOrderStatus(OrderStatus orderStatus) throws SQLException {
+        log.info("add Order Status {}" ,orderStatus);
         return orderStatusRepository.addorderStatus(orderStatus);
     }
 
     @Override
     public List<OrderStatus> getAllOrderStatus() throws SQLException {
+        log.info("all Order Status");
         return orderStatusRepository.retrieveOrderStatuses();
     }
 
     @Override
     public OrderStatus getOrderStatusById(Long id) throws SQLException {
+        log.info("get Order Status by id{}" ,id);
         return orderStatusRepository.retrieveOrderStatus(id);
     }
 
     @Override
     public boolean updateOrderStatus(OrderStatus orderStatus) {
+        log.info("update Order Status {}" ,orderStatus);
         return orderStatusRepository.updateOrderStatus(orderStatus);
     }
 
     @Override
     public boolean deleteOrderStatus(Long id) {
+        log.info("delete Order Status {}" ,id);
         return orderStatusRepository.deleteOrderStatus(id);
     }
 }

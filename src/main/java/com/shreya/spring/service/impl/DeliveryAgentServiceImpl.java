@@ -20,28 +20,34 @@ public class DeliveryAgentServiceImpl implements DeliveryAgentService {
 
     @Autowired
     private DeliveryAgentRepository deliveryAgentRepository;
+
     @Override
     public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
+        log.info("Saving DeliveryAgent{}", deliveryAgent);
         return deliveryAgentRepository.addDeliveryAgent(deliveryAgent);
     }
 
     @Override
     public boolean updateDeliveryAgent(DeliveryAgent deliveryAgent) throws SQLException {
+        log.info("update DeliveryAgent{}", deliveryAgent);
         return deliveryAgentRepository.updateDeliveryAgent(deliveryAgent);
     }
 
     @Override
     public boolean deleteDeliveryAgent(int id) throws SQLException {
+        log.info("delete DeliveryAgent{}", id);
         return deliveryAgentRepository.deleteDeliveryAgent(id);
     }
 
     @Override
     public DeliveryAgent getDeliveryAgentById(int id) throws SQLException {
+        log.info("get DeliveryAgent by id{}", id);
         return deliveryAgentRepository.findById(id);
     }
 
     @Override
     public List<DeliveryAgent> retrieveAllDeliveryAgents() throws SQLException {
+        log.info("all DeliveryAgent");
         return deliveryAgentRepository.retrieveDeliveryAgents();
     }
 }

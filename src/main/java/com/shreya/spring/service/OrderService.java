@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    String addOrder(Order order) throws SQLException;
+    boolean addOrder(Order order) throws SQLException;
 
     List<Order> retrieveAllOrders();
 

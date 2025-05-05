@@ -22,26 +22,31 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public boolean addFeedback(Feedback feedback) throws SQLException {
+        log.info("Saving feedback{}", feedback);
         return feedbackRepository.addFeedback(feedback);
     }
 
     @Override
     public List<Feedback> getAllFeedbacks() {
+        log.info("all feedbacks");
         return feedbackRepository.retrieveFeedbacks();
     }
 
     @Override
     public Optional<Feedback> getFeedbackById(Long id) {
+        log.info("get Feedback ById {}",id);
         return feedbackRepository.findById(id);
     }
 
     @Override
     public boolean deleteFeedback(Long id) {
+        log.info("delete Feedback ById {}",id);
         return feedbackRepository.deleteFeedback(id);
     }
 
     @Override
     public boolean updateFeedback(Feedback feedback) {
+        log.info("update Feedback  {}",feedback);
         return feedbackRepository.updateFeedback(feedback);
     }
 }

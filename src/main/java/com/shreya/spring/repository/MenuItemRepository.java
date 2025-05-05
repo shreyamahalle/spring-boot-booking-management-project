@@ -3,17 +3,19 @@ package com.shreya.spring.repository;
 import com.shreya.spring.model.MenuItem;
 import com.shreya.spring.service.ConnectionService;
 import org.springframework.stereotype.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Repository
 public class MenuItemRepository {
 
-    public boolean addMenuItem(MenuItem menuItem) throws SQLException {
+    private static final Logger log = LoggerFactory.getLogger(MenuItemRepository.class);
+
+    public boolean addMenuItem(MenuItem menuItem) {
         String query = "INSERT INTO menu_item (name, description, price, restaurant_id) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = ConnectionService.getConnection();
@@ -25,7 +27,12 @@ public class MenuItemRepository {
             ps.setLong(4, menuItem.getRestaurantId());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("MenuItem added: {}", menuItem);
             return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            log.error("Error adding MenuItem: {}", menuItem, e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -38,40 +45,36 @@ public class MenuItemRepository {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                MenuItem menuItem = new MenuItem(
-                        rs.getLong("id"),
-                        rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getDouble("price"),
-                        rs.getLong("restaurant_id")
-                );
+                MenuItem menuItem = mapRowToMenuItem(rs);
                 menuItems.add(menuItem);
             }
+
+            log.info("Retrieved {} menu items", menuItems.size());
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error retrieving menu items", e);
+            throw new RuntimeException(e);
         }
+
         return menuItems;
     }
 
     public MenuItem findById(long id) {
         String query = "SELECT * FROM menu_item WHERE id = ?";
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setLong(1, id);
+
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new MenuItem(
-                            rs.getLong("id"),
-                            rs.getString("name"),
-                            rs.getString("description"),
-                            rs.getDouble("price"),
-                            rs.getLong("restaurant_id")
-                    );
+                    return mapRowToMenuItem(rs);
                 }
             }
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error finding menu item by id: {}", id, e);
         }
 
         return null;
@@ -79,20 +82,25 @@ public class MenuItemRepository {
 
     public boolean deleteMenuItem(long id) {
         String query = "DELETE FROM menu_item WHERE id = ?";
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setLong(1, id);
             int rowsAffected = ps.executeUpdate();
+            log.info("Deleted menu item with id: {}", id);
             return rowsAffected > 0;
+
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error deleting menu item with id: {}", id, e);
         }
+
+        return false;
     }
 
     public boolean updateMenuItem(MenuItem menuItem) {
         String query = "UPDATE menu_item SET name = ?, description = ?, price = ?, restaurant_id = ? WHERE id = ?";
+
         try (Connection connection = ConnectionService.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
 
@@ -103,10 +111,23 @@ public class MenuItemRepository {
             ps.setLong(5, menuItem.getId());
 
             int rowsAffected = ps.executeUpdate();
+            log.info("Updated menu item with id: {}", menuItem.getId());
             return rowsAffected > 0;
+
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            log.error("Error updating menu item with id: {}", menuItem.getId(), e);
         }
+
+        return false;
+    }
+
+    private MenuItem mapRowToMenuItem(ResultSet rs) throws SQLException {
+        return new MenuItem(
+                rs.getLong("id"),
+                rs.getString("name"),
+                rs.getString("description"),
+                rs.getDouble("price"),
+                rs.getLong("restaurant_id")
+        );
     }
 }
