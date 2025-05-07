@@ -94,10 +94,15 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
-
     <url/>
+
     <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
     </licenses>
+
     <developers>
 
         <developer>
