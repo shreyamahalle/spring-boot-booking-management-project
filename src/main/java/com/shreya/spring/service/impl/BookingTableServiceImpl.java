@@ -30,8 +30,10 @@ public class BookingTableServiceImpl implements BookingTableService {
 
     @Override
     public List<BookingTable> getAllBookings() {
-        log.info("get all bookings");
-        return bookingTableRepository.retrieveBookings();
+        log.debug("Service: Fetching all bookings");
+        List<BookingTable> bookings = bookingTableRepository.retrieveBookings();
+        log.debug("Service: Retrieved {} bookings", bookings.size());
+        return bookings;
     }
 
     @Override

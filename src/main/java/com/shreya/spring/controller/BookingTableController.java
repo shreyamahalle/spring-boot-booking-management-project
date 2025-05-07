@@ -22,14 +22,18 @@ public class BookingTableController {
 
     @PostMapping("/table")
     public boolean addBooking(@RequestBody BookingTable bookingTable) throws SQLException {
-        log.info("Received request to add booking: {}", bookingTable);
-        return bookingTableService.addBooking(bookingTable);
+        log.debug("Received request to add booking: {}", bookingTable);
+        boolean response =  bookingTableService.addBooking(bookingTable);
+        log.debug("Booking added successfully: {}", response);
+        return response;
     }
 
     @GetMapping("/table")
     public List<BookingTable> getAllBookings() {
-        log.info("Received request to fetch all bookings");
-        return bookingTableService.getAllBookings();
+        log.debug("Entered getAllBookings()");
+        List<BookingTable> bookings = bookingTableService.getAllBookings();
+        log.debug("Fetched {} bookings", bookings.size());
+        return bookings;
     }
 
     @GetMapping("/table/{id}")
