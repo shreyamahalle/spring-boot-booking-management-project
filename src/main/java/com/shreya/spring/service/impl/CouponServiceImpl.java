@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class CouponServiceImpl implements CouponService {
 
-    private static final Logger log = LoggerFactory.getLogger(CouponServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(CouponServiceImpl.class);
 
     @Autowired
     private CouponRepository couponRepository;

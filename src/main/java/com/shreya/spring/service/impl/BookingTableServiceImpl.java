@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BookingTableServiceImpl implements BookingTableService {
 
-    private static final Logger log = LoggerFactory.getLogger(BookingTableServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(BookingTableServiceImpl.class);
 
     @Autowired
     private final BookingTableRepository bookingTableRepository;

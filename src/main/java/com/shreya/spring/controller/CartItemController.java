@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/cartItemManagement")
 public class CartItemController {
 
-    private static final Logger log = LoggerFactory.getLogger(CartItemController.class);
+    private final Logger log = LoggerFactory.getLogger(CartItemController.class);
 
     @Autowired
     private CartItemService cartItemService;

@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class DeliveryAgentRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentRepository.class);
+    private final Logger log = LoggerFactory.getLogger(DeliveryAgentRepository.class);
 
     public boolean addDeliveryAgent(DeliveryAgent deliveryAgent) {
         String query = "INSERT INTO deliveryAgent (id, name, city, mobileNo) VALUES (?, ?, ?, ?)";

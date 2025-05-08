@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
-    private static final Logger log = LoggerFactory.getLogger(RestaurantServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(RestaurantServiceImpl.class);
 
     @Autowired
     private RestaurantRepository restaurantRepository;

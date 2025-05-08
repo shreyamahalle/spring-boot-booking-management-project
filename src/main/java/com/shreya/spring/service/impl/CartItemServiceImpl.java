@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CartItemServiceImpl implements CartItemService {
 
-    private static final Logger log = LoggerFactory.getLogger(CartItemServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(CartItemServiceImpl.class);
 
     @Autowired
     private final CartItemRepository cartItemRepository;

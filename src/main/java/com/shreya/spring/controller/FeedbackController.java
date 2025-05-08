@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api/feedback")
 public class FeedbackController {
 
-    private static final Logger log = LoggerFactory.getLogger(FeedbackController.class);
+    private final Logger log = LoggerFactory.getLogger(FeedbackController.class);
 
     @Autowired
     private FeedbackService feedbackService;

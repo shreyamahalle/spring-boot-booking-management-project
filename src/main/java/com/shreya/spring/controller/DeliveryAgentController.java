@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeliveryAgentController {
 
-    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentController.class);
+    private final Logger log = LoggerFactory.getLogger(DeliveryAgentController.class);
 
     @Autowired
     private final DeliveryAgentService deliveryAgentService;

@@ -19,7 +19,7 @@ import java.util.Optional;
 @Repository
 public class FeedbackRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(FeedbackRepository.class);
+    private final Logger log = LoggerFactory.getLogger(FeedbackRepository.class);
 
     public boolean addFeedback(Feedback feedback) {
         String query = "INSERT INTO feedback (customer_id, order_id, rating, comment, feedback_date) VALUES (?, ?, ?, ?, ?)";

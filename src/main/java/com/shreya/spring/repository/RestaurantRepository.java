@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RestaurantRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(RestaurantRepository.class);
+    private final Logger log = LoggerFactory.getLogger(RestaurantRepository.class);
 
     public void addRestaurant(Restaurant restaurant) throws SQLException {
         String query = "INSERT INTO restaurant (id, name, city, area) VALUES (?, ?, ?, ?)";

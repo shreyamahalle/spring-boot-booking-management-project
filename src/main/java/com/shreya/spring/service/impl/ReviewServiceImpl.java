@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-    private static final Logger log = LoggerFactory.getLogger(ReviewServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(ReviewServiceImpl.class);
 
     @Autowired
     private ReviewRepository reviewRepository;

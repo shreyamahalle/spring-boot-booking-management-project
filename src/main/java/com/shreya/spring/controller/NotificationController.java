@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/notificationManagement")
 public class NotificationController {
 
-    private static final Logger log = LoggerFactory.getLogger(NotificationController.class);
+    private final Logger log = LoggerFactory.getLogger(NotificationController.class);
 
     @Autowired
     private NotificationService notificationService;

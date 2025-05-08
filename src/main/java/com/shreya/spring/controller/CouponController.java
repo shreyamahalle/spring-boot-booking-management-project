@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/couponManagement")
 public class CouponController {
 
-    private static final Logger log = LoggerFactory.getLogger(CouponController.class);
+    private final Logger log = LoggerFactory.getLogger(CouponController.class);
 
     @Autowired
     private CouponService couponService;

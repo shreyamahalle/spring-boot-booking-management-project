@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/customerManagement")  // Base URL: /customers
 public class CustomerController {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
+    private final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/reviewManagement")
 public class ReviewController {
 
-    private static final Logger log = LoggerFactory.getLogger(ReviewController.class);
+    private final Logger log = LoggerFactory.getLogger(ReviewController.class);
     @Autowired
     private ReviewService reviewService;
 

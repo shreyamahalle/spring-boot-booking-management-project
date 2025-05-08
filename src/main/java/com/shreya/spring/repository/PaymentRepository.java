@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class PaymentRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(PaymentRepository.class);
+    private final Logger log = LoggerFactory.getLogger(PaymentRepository.class);
 
     public boolean addPayment(Payment payment) throws SQLException {
         String query = "INSERT INTO payment(id, orderrid, amount, payment_method, payment_status, transaction_id) VALUES (?, ?, ?, ?, ?, ?)";

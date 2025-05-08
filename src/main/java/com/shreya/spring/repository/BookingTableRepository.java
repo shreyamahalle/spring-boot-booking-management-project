@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class BookingTableRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(BookingTableRepository.class);
+    private final Logger log = LoggerFactory.getLogger(BookingTableRepository.class);
 
     public boolean addBooking(BookingTable bookingTable) {
 

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/paymentManagement")
 public class PaymentController {
 
-    private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
+    private final Logger log = LoggerFactory.getLogger(PaymentController.class);
 
     @Autowired
     private PaymentService paymentService;

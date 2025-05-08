@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class MenuItemServiceImpl implements MenuItemService {
 
-    private static final Logger log = LoggerFactory.getLogger(MenuItemServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(MenuItemServiceImpl.class);
 
     @Autowired
     private MenuItemRepository menuItemRepository;

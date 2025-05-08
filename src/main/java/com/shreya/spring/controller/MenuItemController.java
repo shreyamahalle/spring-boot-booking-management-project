@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/menuItemManagement")
 public class MenuItemController {
 
-    private static final Logger log = LoggerFactory.getLogger(MenuItemController.class);
+    private final Logger log = LoggerFactory.getLogger(MenuItemController.class);
 
     @Autowired
     private MenuItemService menuItemService;

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-    private static final Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
 
     @Autowired
     private PaymentRepository paymentRepository;

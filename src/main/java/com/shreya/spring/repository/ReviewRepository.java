@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public class ReviewRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(ReviewRepository.class);
+    private final Logger log = LoggerFactory.getLogger(ReviewRepository.class);
 
     public boolean addReview(Review review) {
         String query = "INSERT INTO review (rating, comment, review_date, customerid, restaurantid ) VALUES (? , ? , ? , ? , ? )";

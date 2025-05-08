@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class CouponRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(CouponRepository.class);
+    private final Logger log = LoggerFactory.getLogger(CouponRepository.class);
 
     public boolean saveCoupon(Coupon coupon) {
         String query = "INSERT INTO coupon (code, description, discount_amount, active) VALUES (?, ?, ?, ?)";

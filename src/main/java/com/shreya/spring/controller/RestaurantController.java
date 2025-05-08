@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/restaurantManagement")
 public class RestaurantController {
 
-    private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
+    private final Logger log = LoggerFactory.getLogger(RestaurantController.class);
 
     @Autowired
     private RestaurantService restaurantService;

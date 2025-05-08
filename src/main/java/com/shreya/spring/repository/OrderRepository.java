@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class OrderRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderRepository.class);
+    private final Logger log = LoggerFactory.getLogger(OrderRepository.class);
 
     public boolean addOrder(Order order) {
         String query = "INSERT INTO orderr (id, type, note, paymentMethod) VALUES (?, ?, ?, ?)";

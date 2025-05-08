@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class NotificationRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(NotificationRepository.class);
+    private final Logger log = LoggerFactory.getLogger(NotificationRepository.class);
 
     public boolean saveNotification(Notification notification) {
         String query = "INSERT INTO notification (customer_id, message, is_read) VALUES (?, ?, ?)";

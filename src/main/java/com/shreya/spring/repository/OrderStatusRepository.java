@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public class OrderStatusRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderStatusRepository.class);
+    private final Logger log = LoggerFactory.getLogger(OrderStatusRepository.class);
 
     public boolean addorderStatus(OrderStatus orderStatus) {
         String query = "INSERT INTO order_status (status, description) VALUES (?, ?)";

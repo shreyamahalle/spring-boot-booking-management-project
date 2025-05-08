@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
 
-    private static final Logger log = LoggerFactory.getLogger(FeedbackServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(FeedbackServiceImpl.class);
 
     @Autowired
     private FeedbackRepository feedbackRepository;

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface NotificationService {
+
     boolean saveNotification(Notification notification) throws SQLException;
 
     List<Notification> getAllNotifications();

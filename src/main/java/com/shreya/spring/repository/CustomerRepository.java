@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class CustomerRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomerRepository.class);
+    private final Logger log = LoggerFactory.getLogger(CustomerRepository.class);
 
     public boolean addCustomer(Customer customer) {
         String query = "INSERT INTO customer (id, name, city, mobileNo, age) VALUES (?, ?, ?, ?, ?)";

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class OrderStatusServiceImpl implements OrderStatusService {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderStatusServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(OrderStatusServiceImpl.class);
 
     @Autowired
     private OrderStatusRepository orderStatusRepository;

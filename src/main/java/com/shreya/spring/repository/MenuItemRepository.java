@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class MenuItemRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(MenuItemRepository.class);
+    private final Logger log = LoggerFactory.getLogger(MenuItemRepository.class);
 
     public boolean addMenuItem(MenuItem menuItem) {
         String query = "INSERT INTO menu_item (name, description, price, restaurant_id) VALUES (?, ?, ?, ?)";

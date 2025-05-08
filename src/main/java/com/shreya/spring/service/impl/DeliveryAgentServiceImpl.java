@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DeliveryAgentServiceImpl implements DeliveryAgentService {
 
-    private static final Logger log = LoggerFactory.getLogger(DeliveryAgentServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(DeliveryAgentServiceImpl.class);
 
     @Autowired
     private DeliveryAgentRepository deliveryAgentRepository;

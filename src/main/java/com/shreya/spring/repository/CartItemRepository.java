@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class CartItemRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(CartItemRepository.class);
+    private final Logger log = LoggerFactory.getLogger(CartItemRepository.class);
 
     public boolean addCartItem(CartItem cartItem) {
         String query = "INSERT INTO cart_item (customer_id, menu_item_id, quantity) VALUES (?, ?, ?)";

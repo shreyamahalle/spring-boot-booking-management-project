@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/orderStatusManagement")
 public class OrderStatusController {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderStatusController.class);
+    private final Logger log = LoggerFactory.getLogger(OrderStatusController.class);
 
     @Autowired
     private OrderStatusService orderStatusService;

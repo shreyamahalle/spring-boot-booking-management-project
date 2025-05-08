@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BookingTableController {
 
-    private static final Logger log = LoggerFactory.getLogger(BookingTableController.class);
+    private final Logger log = LoggerFactory.getLogger(BookingTableController.class);
 
     @Autowired
     private BookingTableService bookingTableService;
