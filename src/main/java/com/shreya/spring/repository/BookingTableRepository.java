@@ -1,5 +1,6 @@
 package com.shreya.spring.repository;
 
+import com.shreya.spring.exception.CustomerNotfound;
 import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.service.ConnectionService;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class BookingTableRepository {
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
+
         } catch (SQLException e) {
             log.error("Error creating booking: {}", bookingTable, e);
             throw new RuntimeException("Error creating booking", e);
@@ -90,13 +92,16 @@ public class BookingTableRepository {
                             rs.getInt("number_of_people"),
                             rs.getString("status")
                     );
+                } else {
+                    throw new CustomerNotfound("Booking with ID " + id + " not found.");
                 }
+            } catch (CustomerNotfound e) {
+                throw new RuntimeException(e);
             }
         } catch (SQLException e) {
             log.error("Error finding booking by id: {}", id, e);
             throw new RuntimeException("Error finding booking", e);
         }
-        return null;
     }
 
     public boolean deleteBooking(Long id) {

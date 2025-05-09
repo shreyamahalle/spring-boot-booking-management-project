@@ -1,10 +1,11 @@
 package com.shreya.spring.controller;
-
 import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.service.BookingTableService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -29,11 +30,11 @@ public class BookingTableController {
     }
 
     @GetMapping("/table")
-    public List<BookingTable> getAllBookings() {
+    public ResponseEntity<List<BookingTable>>getAllBookings() {
         log.debug("Entered getAllBookings()");
         List<BookingTable> bookings = bookingTableService.getAllBookings();
         log.debug("Fetched {} bookings", bookings.size());
-        return bookings;
+        return new ResponseEntity<List<BookingTable>>(bookings, HttpStatus.OK);
     }
 
     @GetMapping("/table/{id}")
