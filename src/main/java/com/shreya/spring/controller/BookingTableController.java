@@ -1,4 +1,5 @@
 package com.shreya.spring.controller;
+
 import com.shreya.spring.model.BookingTable;
 import com.shreya.spring.service.BookingTableService;
 import org.slf4j.Logger;
