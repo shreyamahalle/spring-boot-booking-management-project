@@ -11,7 +11,6 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Review {
     private Long id;
     private int rating;

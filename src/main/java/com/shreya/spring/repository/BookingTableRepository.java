@@ -75,6 +75,7 @@ public class BookingTableRepository {
     }
 
     public BookingTable findById(Long id) {
+
         String query = "SELECT * FROM booking_table WHERE id = ?";
         log.info("Finding booking by id: {}", id);
 

@@ -10,6 +10,7 @@
     </appender>
 
     <appender name="STDFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
         <file>logs/spring-boot-foodease-food-order-booking-management-logging-app.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
