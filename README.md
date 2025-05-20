@@ -1,4 +1,3 @@
-# foodease-food-order-booking-system
 <table align="center">
   <tr>
     <td>
@@ -10,6 +9,7 @@
   </tr>
 </table>
 
+# foodease-food-order-booking-system
 
 ## Table of Contents
 
