@@ -74,7 +74,6 @@ tracking — all managed using a clean layered architecture (Controller → Serv
 -  Easy-to-Follow Structure: Well-documented, clean code for learning and demonstration.
 -  Layered Architecture: Clean separation of concerns.
 -  REST API: Full CRUD functionality exposed via REST.
-  
 ---
 
 ## Technology Stack
