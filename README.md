@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-# foodease-food-order-booking-system
+# Foodease Food Order Booking System
 
 ## Table of Contents
 
